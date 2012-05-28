@@ -17,6 +17,7 @@ namespace NameName.Model
    private Guid _DepartID;
    private bool _DeleteFlag;
 
+    [SubSonic.SqlGeneration.Schema.SubSonicPrimaryKey]
    public string UserName
    {
       get

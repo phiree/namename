@@ -5,13 +5,15 @@
  ***********************************************************************/
 
 using System;
+using SubSonic.SqlGeneration.Schema;
 namespace NameName.Model
 {public class AreaInfo
 {
    private Guid _AreaID;
-   private int _AreaName;
+   private string _AreaName;
    private bool _DeleteFlag;
 
+   [SubSonicPrimaryKey]
    public Guid AreaID
    {
       get
@@ -24,8 +26,8 @@ namespace NameName.Model
             this._AreaID = value;
       }
    }
-   
-   public int AreaName
+
+   public string AreaName
    {
       get
       {

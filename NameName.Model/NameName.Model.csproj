@@ -20,9 +20,10 @@
     <StartupObject />
     <FileUpgradeFlags>
     </FileUpgradeFlags>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <OldToolsVersion>0.0</OldToolsVersion>
     <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -63,6 +64,9 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SubSonic.Core">
+      <HintPath>..\lib\SubSonic.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Name>System</Name>
       <HintPath>%25windowsDirectory%25\\Microsoft.NET\\Framework\\v1.0.3705\\System.dll</HintPath>

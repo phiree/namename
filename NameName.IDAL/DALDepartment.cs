@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace NameName.BLL
+namespace NameName.DAL
 {
-    public class Class1
+    class DALDepartment
     {
     }
 }
