@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div>
-        <a href="/department/edit.aspx">增加部门</a> <a href="/department/edit.aspx">增加用户</a>
+        <a href="/department/edit.aspx">增加部门</a> <a href="/member/edit.aspx">增加用户</a>
     </div>
     <div>
         <asp:Repeater runat="server" ID="rptDepart" 

@@ -10,8 +10,17 @@ namespace NameName.DAL
     {
         public Account_Period GetCurrAccount()
         {
-            Account_Period Acurr = Reposi.Single<Account_Period>(x => x.EndDate == null);
-            return Acurr;
+         var query = from v in Reposi.All<Account_Period>()
+            where v.EndDate == null
+            select v;
+         var ps = query.ToList();
+         
+           if (ps.Count == 0) return null;
+           else
+           {
+               return ps[0];
+           }
+            
         }
 
         public void AccountInit()
