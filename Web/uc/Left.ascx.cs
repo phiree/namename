@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class uc_left : System.Web.UI.UserControl
+{
+    UserCookieInfo uc;
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        uc = new WebUserCookie(WebUserCookie.CookierUser).GetCookiesValues();
+
+        //权限处理
+
+    }
+
+}

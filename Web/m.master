@@ -1,19 +1,44 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="m.master.cs" Inherits="m" %>
 
+<%@ Register Src="uc/left.ascx" TagName="left" TagPrefix="uc1" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
-    <asp:ContentPlaceHolder id="head" runat="server">
-    </asp:ContentPlaceHolder>
+    <title>门店销售系统</title>
+    <link href="/css/common.css" type="text/css" rel="Stylesheet" />
+    <link href="/css/FrameWork.css" type="text/css" rel="Stylesheet" />
+    <script type="text/javascript" src="/js/frameJS.js"> </script>
 </head>
-<body>
+<body onresize="ResetSize();" onload="ResetSize();">
     <form id="form1" runat="server">
     <div>
-        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-        
-        </asp:ContentPlaceHolder>
+        <div class="cbanner">
+            <div class="cbannertitle">
+                么么 办公系统</div>
+            <div class="cbannercancelright">
+                <a href="/login.aspx" title="点击回到登录窗口">注销</a> | <a href="javascript:window.history.go(0)"
+                    title="点击刷新页面">刷新</a> | <a href="javascript:void(0);" onclick="closeWindow();" title="点击关闭窗口">
+                        关闭窗口</a>
+            </div>
+            <div class="cbannercancelleft">
+                <span id="dun" runat="server">庄严</span> | <a href="javascript:window.history.go(-1)"
+                    title="点击后退">后退</a> | <a href="/default.aspx" title="点击回到首页">首页</a> | <a href="javascript:window.history.go(1)"
+                        title="点击前进">前进</a>
+            </div>
+        </div>
+        <div class="cupanddownline">
+            <div class="cleftandrightlinetop">
+            </div>
+        </div>
+        <div id="cleft" class="cleft">
+            <uc1:left ID="left1" runat="server" />
+        </div>
+        <div id="cleftandrightline" class="cleftandrightline">
+        </div>
+        <div id="cright" class="cright">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
     </div>
     </form>
 </body>

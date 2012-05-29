@@ -8,10 +8,8 @@ using NameName.DAL;
 using NameName.Model;
 public partial class Member_Edit : System.Web.UI.Page
 {
-
-    bool IsNew;
     string UserName;
-   
+
     protected void Page_Load(object sender, EventArgs e)
     {
         UserName = Request["username"];
@@ -25,11 +23,11 @@ public partial class Member_Edit : System.Web.UI.Page
 
     private void BindUser()
     {
-        
+
         //显示控制
 
     }
-    
+
     private void BindDepart()
     {
         DALDepart dalDepart = new DALDepart();
@@ -42,18 +40,18 @@ public partial class Member_Edit : System.Web.UI.Page
 
     private void BindRight()
     {
-       //zy
+        //zy
     }
 
     private void SaveUser()
-    { 
-      
+    {
+
     }
     private void DeleteUser()
     { }
 
     private void InitPwd()
-    { 
+    {
     }
 
 }

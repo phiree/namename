@@ -1,0 +1,84 @@
+﻿body
+{
+	margin: auto;
+	padding: 0px;
+	width: 100%;
+	text-align: center;
+}
+
+.clogin
+{
+	margin: auto;
+	text-align: left;
+	width: 480px;
+	height: 280px;
+	padding: 10px;
+	background: url(/images/hint.gif);
+}
+.ctitle
+{
+	width: 460px;
+	line-height: 32px;
+	padding: 0px 10px;
+	font-family: 幼圆;
+	font-size: 16px;
+	font-weight: bolder;
+}
+.cctitle
+{
+	width: 440px;
+	height: 64px;
+	font-family: 幼圆;
+	font-size: 14px;
+	font-weight: bolder;
+}
+.cctpic
+{
+	float: left;
+	width: 64px;
+	text-align: center;
+	height: 64px;
+}
+.cctt
+{
+	float: left;
+	width: 366px;
+	height: 64px;
+	padding-left: 10px;
+	line-height: 64px;
+}
+.ccontent
+{
+	width: 440px;
+	height: 200px;
+	line-height: 30px;
+	padding: 20px;
+	font-size: 16px;
+	overflow: hidden;
+}
+.ccb
+{
+	width: 398px;
+	height: 106px;
+	line-height: 30px;
+	font-size: 12px;
+	padding-left: 42px;
+	overflow: hidden;
+}
+.ccbcenter
+{
+	text-align: center;
+}
+.clink
+{
+	width: 440px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 12px;
+	overflow: hidden;
+}
+.clink a
+{
+	text-decoration: none;
+	color: #3fa600;
+}

@@ -1,0 +1,189 @@
+﻿/*******************************************************/
+/**********                                   **********/
+/**********   名称：框架                      **********/
+/**********   日期：2010-10-03                **********/
+/**********   作者：csx                       **********/
+/**********   主页：http://wetob.taobao.com   **********/
+/**********                                   **********/
+/*******************************************************/
+
+body
+{
+	margin: 0px;
+	padding: 0px;
+	font-family: 微软雅黑;
+}
+
+/*banner*/
+.cbanner
+{
+	position: relative;
+	width: 100%;
+	height: 90px;
+}
+.cbannertitle
+{
+	position: absolute;
+	padding-left: 100px;
+	line-height: 70px;
+	font-family: 微软雅黑;
+	font-size: 40px;
+	font-weight: bolder;
+}
+.cbannercancelright
+{
+	float: right;
+	height: 20px;
+	padding-top: 70px;
+	padding-right: 20px;
+	font-size: 13px;
+	color: #3fa600;
+}
+.cbannercancelleft
+{
+	float: left;
+	height: 20px;
+	padding-top: 70px;
+	padding-left: 20px;
+	font-size: 14px;
+	color: #3fa600;
+}
+.cbannercancelright a
+{
+	text-decoration: none;
+	color: #3fa600;
+}
+.cbannercancelleft a
+{
+	text-decoration: none;
+	color: #3fa600;
+}
+
+/*上线之间的线*/
+.cupanddownline
+{
+	width: 100%;
+	position: relative;
+	height: 15px;
+	background-image: url(/images/line-x.png);
+	background-position: -0px 0px;
+	background-repeat: repeat-x;
+}
+
+/*left*/
+.cleft
+{
+	width: 199px;
+	float: left;
+	line-height: 30px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+.cleftbox
+{
+	padding-left: 5px;
+	width: 190px;
+}
+.cleftclose
+{
+	width: 20px;
+	height: 28px;
+	float: left;
+	text-align: center;
+	background-image: url(/images/main.png);
+	background-position: -30px -90px;
+}
+.cleftopen
+{
+	width: 20px;
+	height: 30px;
+	float: left;
+	text-align: center;
+	background-image: url(/images/main.png);
+	background-position: -5px -90px;
+}
+.cleftTit
+{
+	width: 100%;
+	line-height: 30px;
+	height: 30px;
+	cursor: pointer;
+}
+.cleftTitText
+{
+	line-height: 30px;
+	float: left;
+}
+.cleftTitText h3
+{
+	font-size: 16px;
+	color: #434e54;
+	cursor: pointer;
+}
+.cleft a
+{
+	color: #3fa600;
+}
+.cleftupdownline
+{
+	width: 100%;
+	height: 2px;
+	line-height: 2px;
+	overflow: hidden;
+	background-image: url(/images/main.png);
+	background-position: -5px -64px;
+}
+
+.cli
+{
+	/*padding-left: 15px;*/
+	line-height: 25px;
+	font-size: 14px; 
+}
+.clihover
+{
+	background: url("/images/main.png") -8px -31px no-repeat;
+	line-height: 25px;
+	padding-left: 18px;
+	font-size: 14px; 
+}
+
+/*cleftandrightlinetop*/
+.cleftandrightlinetop
+{
+	width: 24px;
+	height: 10px; /*padding-top: 10px;*/
+	top: 11px;
+	left: 192px;
+	position: absolute;
+	background-image: url(/images/main.png);
+	background-position: -11px -8px;
+	background-repeat: no-repeat;
+	overflow: hidden;
+}
+
+/*cleftandrightline*/
+.cleftandrightline
+{
+	width: 15px; /*height: 70px;*/
+	float: left;
+	background-image: url(/images/line-y.png);
+	background-position: -0px -1px;
+	background-repeat: repeat-y;
+}
+
+/*right*/
+.cright
+{
+	float: left;
+	padding: 5px 0 0 0;
+	width: 500px;
+	overflow: auto;
+}
+
+.cleftbox a
+{
+	text-decoration: none;
+	color: Black;
+	width: 100%;
+}

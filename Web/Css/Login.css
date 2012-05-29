@@ -1,0 +1,125 @@
+﻿body
+{
+	color: #666;
+	background-color: #FFF;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	margin-bottom: 0px;
+}
+FORM, UL, LI
+{
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+A
+{
+	color: #005eac;
+	text-decoration: none;
+}
+A:visited
+{
+	color: #005eac;
+}
+A:hover
+{
+	color: #ff5500;
+}
+A:active
+{
+	color: #005eac;
+}
+IMG
+{
+	border: 0px;
+}
+.input_width_150
+{
+	width: 150px;
+}
+#login_body
+{
+	position: absolute;
+	margin-top: -140px;
+	width: 727px;
+	height: 230px;
+	margin-left: -350px;
+	top: 50%;
+	left: 50%;
+}
+#login_div
+{
+	background-image: URL(../images/login_bg.gif);
+	width: 727px;
+	height: 200px;
+}
+.login_btn
+{
+	width: 82px;
+	height: 81px;
+	margin: 25px 0 0 20px;
+	_margin-left: 0px;
+}
+#login_form_div
+{
+	margin-left: 400px;
+	line-height: 26px;
+	padding-top: 20px;
+}
+#login_form_div table
+{	
+	font-size: 14px;
+	line-height: 26px;
+}
+
+.left
+{
+	float: left;
+}
+.right
+{
+	float: right;
+}
+.clear
+{
+	clear: both;
+}
+.mouse
+{
+	cursor: pointer;
+}
+#login_footer
+{
+	text-align: center;
+	color: #999999;
+}
+
+#body
+{
+	width: 1000px;
+	margin: 0px auto 0px auto;
+}
+#header
+{
+	padding-top: 10px;
+}
+#header span
+{
+	float: right;
+	border-right: 1px dotted #ccc;
+	padding-right: 10px;
+	margin-right: 10px;
+}
+#logo
+{
+	background-image: URL(logo.jpg);
+	background-repeat: no-repeat;
+	width: 417px;
+	height: 39px;
+}
+cus a:hover
+{
+	background: #f4f4f4;
+	border-color: #006699;
+	text-decoration: none;
+}
