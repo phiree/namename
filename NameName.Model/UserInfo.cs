@@ -14,7 +14,7 @@ namespace NameName.Model
         private string _Pwd;
         private string _Tel;
         private string _Mobile;
-        private long _RightSet;
+        private int _RightSet;
         private Guid _DepartID;
         private bool _DeleteFlag;
 
@@ -84,7 +84,7 @@ namespace NameName.Model
             }
         }
 
-        public long RightSet
+        public int RightSet
         {
             get
             {

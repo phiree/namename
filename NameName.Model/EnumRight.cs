@@ -6,11 +6,11 @@
 
 using System;
 namespace NameName.Model
-{ public enum EnumRight : long
+{ public enum EnumRight 
 {
-    管理员 = (1L << 1),
-    总经理 = (1L << 2),
-    财务 = (1L << 3),
-    采购 = (1L << 4),
-    门店 = (1L << 5)
+    管理员 = (1 << 1),
+    总经理 = (1 << 2),
+    财务 = (1 << 3),
+    采购 = (1 << 4),
+    门店 = (1 << 5)
 }}
