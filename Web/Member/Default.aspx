@@ -16,8 +16,8 @@
             <ItemTemplate>
                 <tr>
                     <td colspan="3">
-                        <a href='/department/edit.aspx?departmentid=<%#Eval("DepartmentId") %>'>
-                            <%#Eval("DepartmentName") %></a>
+                        <a href='/department/edit.aspx?departmentid=<%#Eval("DepartId") %>'>
+                            <%#Eval("DepartName") %></a>
                     </td>
                 </tr>
                 <asp:Repeater runat="server" ID="rptUsers">
