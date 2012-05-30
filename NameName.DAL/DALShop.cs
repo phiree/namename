@@ -48,7 +48,7 @@ namespace NameName.DAL
             Save(shopinfo);
             return true;
         }
-
+       public void  SetManager(Guid shopinfo,string userName)       {               }
 
     }
 }
