@@ -8,7 +8,15 @@ namespace NameName.DAL
 {
     public class DALUser : DALBase
     {
-
+        /// <summary>
+        /// 获得某个部门没有分配的人员
+        /// </summary>
+        /// <param name="departid"></param>
+        /// <returns></returns>
+        public IList<UserInfo> GetUsersByDepartAndNotAssign(Guid departid)
+        {
+            return null;
+        }
 
         public IList<UserInfo> GetUsers()
         {

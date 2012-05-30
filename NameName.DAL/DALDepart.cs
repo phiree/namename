@@ -8,9 +8,19 @@ namespace NameName.DAL
 {
     public class DALDepart : DALBase
     {
+        /// <summary>
+        /// 获得没有分配的门店人员的部门
+        /// </summary>
+        /// <returns></returns>
+        public IList<DepartInfo> GetDepartsByNotAssignUser()
+        {
+            //没有删除的，没有分配的门店人员
+
+            return null;
+        }
+
         public IList<DepartInfo> GetDeparts()
         {
-
             string sql = " select d from DepartInfo d where d.DeleteFlag=false order by d.OrderNO";
             IQuery query = session.CreateQuery(sql);
             IList<DepartInfo> departs = query.Future<DepartInfo>().ToList();
@@ -25,12 +35,12 @@ namespace NameName.DAL
             {
                 depart.DepartID = Guid.NewGuid();
                 session.Save(depart);
-               // Reposi.Add(depart);
+                // Reposi.Add(depart);
             }
             else
             {
                 session.Update(depart);
-            //    Reposi.Update(depart);
+                //    Reposi.Update(depart);
             }
         }
         public DepartInfo GetById(Guid departid)
@@ -42,7 +52,7 @@ namespace NameName.DAL
         public bool Delete(Guid departid)
         {
             DepartInfo depart = GetById(departid);
-            if (depart.DepartUsers.Where(x=>x.DeleteFlag==false). Count() > 0) return false;
+            if (depart.DepartUsers.Where(x => x.DeleteFlag == false).Count() > 0) return false;
             depart.DeleteFlag = true;
             Save(depart);
             return true;
