@@ -10,7 +10,7 @@ namespace NameName.DAL
     {
         public IList<ShopInfo> GetShops()
         {
-            string sql = " select u from ShopInfo u ";
+            string sql = " select u from ShopInfo u where DeleteFlag=false";
             IQuery query = session.CreateQuery(sql);
             IList<ShopInfo> shops = query.Future<ShopInfo>().ToList();
           
