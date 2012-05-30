@@ -52,6 +52,11 @@ namespace NameName.DAL
             //  return Reposi.Single<UserInfo>(x => x.UserName == username && x.DeleteFlag == false);
         }
 
+        public UserInfo GetByUserName(string username,bool deleteflag)
+        {
+            return Reposi.Single<UserInfo>(x=>x.UserName==username&&x.DeleteFlag==deleteflag);
+        }
+
         public void Delete(string username)
         {
             UserInfo user = GetByUserName(username);
