@@ -21,6 +21,7 @@ public partial class Shop_Edit : System.Web.UI.Page
         shopid = Request["shopid"];
         if (!IsPostBack)
         {
+            aSelect.HRef = "/Shop/UserSelect.aspx?ShopID=" + shopid;
             BindArea();
             BindShopInfo();
 

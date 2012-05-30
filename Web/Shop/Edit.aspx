@@ -65,7 +65,7 @@
     </div>
     <div class="ciline" runat="server" id="divShopUser">
         <div class="cill">
-            <a href="#">选择店员</a>
+            <a href="/Shop/UserSelect.aspx?ShopID=XXX" runat="server" id="aSelect">选择店员</a>
         </div>
         <div class="cilr">
             <div class="cilineforgridview">
@@ -80,8 +80,12 @@
                         <asp:BoundField DataField="TrueName" HeaderText="姓名" />
                         <asp:BoundField DataField="Tel" HeaderText="电话" />
                         <asp:BoundField DataField="Fax" HeaderText="手机" />
-                        <asp:BoundField DataField="Fax" HeaderText="店长" />
-                        <asp:BoundField DataField="UserName" HeaderText="删除" />
+                        <asp:BoundField DataField="IsManage" HeaderText="店长" />
+                        <asp:TemplateField HeaderText="删除">
+                            <ItemTemplate>
+                                <a href="#" onclick='DeleteShopUser(<%# Eval("UserName") %>,this)'>删除</a>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                     <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Center" CssClass="cigvp"
                         Font-Size="15px" />
@@ -104,4 +108,13 @@
             <asp:Button runat="server" ID="btnDelete" Text="删除" OnClick="btnDelete_Click" />
         </div>
     </div>
+    <script language="javascript" type="text/javascript" src="/js/jquery-1.4.1.js" />
+    <script language="javascript" type="text/javascript">
+        function DeleteShopUser(username, btn) {
+            $.get("/ajax/ShopUserDelete.ashx?username=" + username, function () {
+                var currRowIndex = btn.parentNode.parentNode.rowIndex;
+                btn.parentNode.parentNode.parentNode.deleteRow(currRowIndex);
+            });
+        }
+    </script>
 </asp:Content>
