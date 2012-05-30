@@ -120,8 +120,8 @@
                 btn.parentNode.parentNode.parentNode.deleteRow(currRowIndex);
             });
         }
-        function SetIsManage(shopid, username) {
-            $.get("/ajax/ShopUserSetManager.ashx?shopid=" + shopid + "&username=" + username, function () {
+        function SetIsManage(username) {
+            $.get("/ajax/ShopUserSetManager.ashx?username=" + username, function () {
                 window.open(window.location.href);
             });
         }

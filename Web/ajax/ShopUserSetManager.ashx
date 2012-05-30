@@ -12,7 +12,7 @@ public class ShopUserSetManager : IHttpHandler
     {
         context.Response.ContentType = "text/plain";
 
-        new DALShopInfo().SetManager(new Guid(context.Request["shopid"], context.Request["username"]));
+        new DALShopInfo().SetManager(new Guid(context.Request["username"]));
 
         context.Response.Write("OK");
     }

@@ -30,7 +30,7 @@ public partial class Shop_Edit : System.Web.UI.Page
 
     protected string GetManagerInfo(object ismanager, object username)
     {
-        string ss = "<input type='checkbox' onclick='SetIsManage(" + shopid + "," + username + ")' ";
+        string ss = "<input type='checkbox' onclick='SetIsManage(" + username + ")' ";
         if (Convert.ToBoolean(ismanager))
         {
             ss += " checked= 'checked' ";
