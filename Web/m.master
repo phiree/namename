@@ -4,11 +4,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>门店销售系统</title>
+    <title>么么 办公系统</title>
     <link href="/css/common.css" type="text/css" rel="Stylesheet" />
     <link href="/css/FrameWork.css" type="text/css" rel="Stylesheet" />
+    <link href="/css/PageStyle.css" type="text/css" rel="Stylesheet" />
     <script type="text/javascript" src="/js/frameJS.js"> </script>
-    <asp:ContentPlaceHolder runat="server" ID="head"></asp:ContentPlaceHolder>
 </head>
 <body onresize="ResetSize();" onload="ResetSize();">
     <form id="form1" runat="server">
@@ -37,8 +37,10 @@
         <div id="cleftandrightline" class="cleftandrightline">
         </div>
         <div id="cright" class="cright">
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
+            <div class="cibody" id="cibody">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
         </div>
     </div>
     </form>

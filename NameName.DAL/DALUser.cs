@@ -9,13 +9,13 @@ namespace NameName.DAL
     {
         public IList<UserInfo> GetUserByDepartment(Guid departId)
         {
-            IList<UserInfo> users = Reposi.Find<UserInfo>(x => x.DepartID == departId);
+            IList<UserInfo> users = Reposi.Find<UserInfo>(x => x.DepartID == departId && x.DeleteFlag == false).OrderBy(x => x.OrderNO).ToList();
             return users;
         }
 
         public IList<UserInfo> GetUsers()
         {
-            IList<UserInfo> users = Reposi.Find<UserInfo>(x => !x.DeleteFlag);
+            IList<UserInfo> users = Reposi.Find<UserInfo>(x => !x.DeleteFlag).OrderBy(x => x.OrderNO).ToList();
             return users;
         }
 
@@ -40,6 +40,13 @@ namespace NameName.DAL
         {
             UserInfo user = GetByUserName(username);
             user.DeleteFlag = true;
+            Save(user);
+        }
+
+        public void InitPwd(string username)
+        {
+            UserInfo user = GetByUserName(username);
+            user.Pwd = "1111";
             Save(user);
         }
 

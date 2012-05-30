@@ -9,14 +9,14 @@ namespace NameName.DAL
     {
         public IList<DepartInfo> GetDeparts()
         {
-            IList<DepartInfo> Departs = Reposi.Find<DepartInfo>(x => x.DeleteFlag==false);
+            IList<DepartInfo> Departs = Reposi.Find<DepartInfo>(x => x.DeleteFlag == false).OrderBy(x => x.OrderNO).ToList();
 
             return Departs;
         }
 
         public void Save(DepartInfo depart)
         {
-            if ( depart.DepartID == null||depart.DepartID==Guid.Empty)
+            if (depart.DepartID == null || depart.DepartID == Guid.Empty)
             {
                 depart.DepartID = Guid.NewGuid();
                 Reposi.Add(depart);
@@ -37,7 +37,5 @@ namespace NameName.DAL
             depart.DeleteFlag = true;
             Save(depart);
         }
-
-
     }
 }

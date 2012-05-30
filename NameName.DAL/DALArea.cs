@@ -6,15 +6,37 @@ using NameName.Model;
 
 namespace NameName.DAL
 {
-    public class DALArea:DALBase
+    public class DALArea : DALBase
     {
-        public void AddArea(string areaName)
+        public IList<AreaInfo> GetAreas()
         {
-            AreaInfo area = new AreaInfo();
-            area.AreaID = Guid.NewGuid();
-            area.AreaName = areaName;
-            area.DeleteFlag = false;
-            Reposi.Add<AreaInfo>(area);
+            IList<AreaInfo> areas = Reposi.Find<AreaInfo>(x => x.DeleteFlag == false).OrderBy(x => x.OrderNO).ToList();
+
+            return areas;
+        }
+
+        public void Save(AreaInfo areainfo)
+        {
+            if (areainfo.AreaID == null || areainfo.AreaID == Guid.Empty)
+            {
+                areainfo.AreaID = Guid.NewGuid();
+                Reposi.Add(areainfo);
+            }
+            else
+            {
+                Reposi.Update(areainfo);
+            }
+        }
+        public AreaInfo GetByAreaID(Guid areaid)
+        {
+            return Reposi.Single<AreaInfo>(areaid);
+        }
+
+        public void Delete(Guid areaid)
+        {
+            AreaInfo Area = GetByAreaID(areaid);
+            Area.DeleteFlag = true;
+            Save(Area);
         }
     }
 }

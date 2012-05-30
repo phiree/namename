@@ -14,6 +14,7 @@ namespace NameName.Model
         private string _Pwd;
         private string _Tel;
         private string _Mobile;
+        private int _OrderNO;
         private int _RightSet;
         private Guid _DepartID;
         private bool _DeleteFlag;
@@ -81,6 +82,19 @@ namespace NameName.Model
             {
                 if (this._Mobile != value)
                     this._Mobile = value;
+            }
+        }
+
+        public int OrderNO
+        {
+            get
+            {
+                return _OrderNO;
+            }
+            set
+            {
+                if (this._OrderNO != value)
+                    this._OrderNO = value;
             }
         }
 

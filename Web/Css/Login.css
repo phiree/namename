@@ -49,7 +49,7 @@ IMG
 }
 #login_div
 {
-	background-image: URL(../images/login_bg.gif);
+	background-image: URL(/images/login_bg.gif);
 	width: 727px;
 	height: 200px;
 }

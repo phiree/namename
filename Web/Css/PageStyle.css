@@ -1,0 +1,284 @@
+﻿body
+{
+	font-family: 微软雅黑;
+}
+
+.cit
+{
+	/*position: relative;*/
+	font-size: 14px;
+	font-family: 幼圆;
+	font-weight: bolder;
+	width: 95%;
+	height: 25px;
+	line-height: 25px;
+	padding-left: 12px;
+	background: url(/images/main.png);
+	background-repeat: no-repeat;
+	border-bottom: 1px solid #73c73a;
+	margin-bottom: 5px;
+	text-align: left;
+}
+.cittitle
+{
+	/*position: relative;*/
+	font-size: 14px;
+	font-family: 幼圆;
+	font-weight: bolder;
+	width: 95%;
+	height: 25px;
+	line-height: 25px;
+	padding-left: 12px;
+	background: url(/images/main.png);
+	background-repeat: no-repeat;
+	border-bottom: 1px solid #73c73a;
+	margin-bottom: 5px;
+	margin-top: 10px;
+	text-align: left;
+}
+
+
+.cibody
+{
+	/*position: relative; 	padding-top: 10px;*/
+	font-size: 14px;
+	font-family: 微软雅黑;
+	width: 100%;
+	overflow: auto;
+}
+.positionr
+{
+	position: relative;
+}
+.positiona
+{
+	position: absolute;
+}
+.cibodyborder
+{
+	border-top: 1px solid #bbbbbb;
+	border-right: 1px solid #bbbbbb;
+	border-left: 1px solid #bbbbbb;
+}
+.ciline
+{
+	font-family: 微软雅黑;
+	float: none;
+	width: 95%;
+	line-height: 25px;
+	padding-bottom: 3px;
+	height: auto;
+	overflow: auto;
+}
+
+.cilineheight
+{
+	width: 95%;
+	height: 10px;
+}
+.cilineforcalendar
+{
+	float: none;
+	width: 95%;
+	line-height: 25px;
+	padding-bottom: 3px;
+	height: auto;
+	overflow: auto;
+}
+.cilrforcalendar
+{
+	float: left;
+	line-height: 25px;
+	text-align: left;
+	padding-left: 0px;
+	padding-right: 2px;
+}
+.cilrforcalendar table
+{
+	border-collapse: collapse;
+	border-width: 0px;
+}
+.cilrforcalendar table th, .cilrforcalendar table td, .cilrforcalendar table tr
+{
+	border-width: 0px;
+}
+
+.cilineheightauto
+{
+	height: auto;
+}
+.cilinewithoutbottom
+{
+	width: 95%;
+	line-height: 25px;
+	height: 28px;
+	margin-top: -1px;
+}
+.p10
+{
+	padding: 10px 0;
+}
+.cill
+{
+	float: left;
+	width: 95px;
+	line-height: 25px;
+	text-align: right;
+	padding-right: 5px;
+	font-weight: bold;
+}
+
+.cilr
+{
+	float: left;
+	line-height: 25px;
+	text-align: left;
+	padding-left: 5px;
+	padding-right: 2px;
+}
+
+.citextalignright
+{
+	border: 0px;
+	border-bottom: 1px solid #bbbbbb;
+	height: 23px;
+	text-align: right;
+}
+.citextbox
+{
+	border: 0px;
+	padding-right: 1px;
+	border: 1px solid #bbbbbb;
+	height: 20px;
+	line-height: 20px;
+}
+
+.cgridviewcellpadding
+{
+	text-align: left;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.cilineforgridview
+{
+	float: none;
+	width: auto;
+	line-height: 25px;
+	padding-bottom: 3px;
+	height: auto;
+	overflow: auto;
+}
+.cilineforgridview table td a
+{
+	text-decoration: none;
+}
+.cilineforgridview table td a:hover
+{
+	text-decoration: none;
+}
+.cilineforgridview table td a:visited
+{
+	text-decoration: none;
+	color: Blue;
+}
+.cilineforgridview table
+{
+	border-collapse: collapse;
+	border-width: 1px 0 0 1px;
+	border-color: #C2D3ED;
+	border-style: solid; /*border: 1px solid #DDDDDD; #73c73a; #C2D3ED;*/
+}
+.cilineforgridview table th
+{
+	line-height: 28px;
+	height: 28px;
+	padding: 0px 2px;
+	border-width: 0 1px 1px 0;
+	border-color: #C2D3ED;
+	border-style: solid;
+}
+.cilineforgridview table td
+{
+	line-height: 28px;
+	height: 28px;
+	padding: 0px 2px;
+	border-width: 0 1px 1px 0;
+	border-color: #C2D3ED;
+	border-style: solid;
+}
+.cilineforgridview1
+{
+	float: none;
+	line-height: 25px;
+	padding-bottom: 3px;
+	height: auto;
+	overflow: auto;
+}
+.cilineforgridview1 table
+{
+	border-collapse: collapse;
+	border-width: 1px 0 0 1px;
+	border-color: #999999;
+	border-style: solid; /*border: 1px solid #DDDDDD; #73c73a; #C2D3ED;*/
+}
+.cilineforgridview1 table th
+{
+	line-height: 28px;
+	height: 28px;
+	padding: 0px 2px;
+	border-width: 0 1px 1px 0;
+	border-color: #999999;
+	border-style: solid;
+}
+.cilineforgridview1 table td
+{
+	line-height: 28px;
+	height: 28px;
+	padding: 0px 2px;
+	border-width: 0 1px 1px 0;
+	border-color: #999999;
+	border-style: solid;
+}
+
+.mainNav
+{
+	width: 95%;
+	background: url(/images/b8.gif) top left no-repeat; /*nanbg.gif*/
+	padding-left: 10px;
+	line-height: 25px;
+	margin-bottom: 5px;
+	height: 25px;
+}
+.mainNav ul
+{
+	list-style-type: none;
+	margin-left: 40px;
+}
+.mainNav ul li
+{
+	float: left;
+	font-size: 14px;
+	color: #fff;
+	line-height: 22px;
+}
+.mainNav ul li a
+{
+	text-decoration: none;
+	font-size: 14px;
+	color: #fff;
+	line-height: 30px;
+	padding: 4px 9px;
+	margin: 0 2px;
+}
+
+
+.clinerightdate
+{
+	float: left;
+	line-height: 21px;
+	margin-left: -22px;
+	padding-right: 3px;
+	padding-top: 3px;
+}
+
