@@ -43,7 +43,7 @@ namespace NameName.DAL
         {
 
             ShopInfo shopinfo = GetByShopID(shopid);
-            if (shopinfo.ShopUsers.Count > 0) return false;
+            if (shopinfo.ShopUsers.Where(x=>x.DeleteFlag==false).Count()> 0) return false;
             shopinfo.DeleteFlag = true;
             Save(shopinfo);
             return true;
