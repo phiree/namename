@@ -63,6 +63,14 @@
     </div>
     <div class="ciline">
         <div class="cill">
+            门店人员
+        </div>
+        <div class="cilr">
+            <asp:CheckBox runat="server" ID="cbIsShopUser" />
+        </div>
+    </div>
+    <div class="ciline">
+        <div class="cill">
             权限</div>
         <div class="cilr">
             <asp:CheckBoxList runat="server" ID="cbxRights" RepeatDirection="Horizontal">
@@ -74,14 +82,13 @@
             <a href="/Member/Default.aspx">返回</a>
         </div>
         <div class="cilr">
-            <asp:Button runat="server" ID="btnSave" Text="保存" onclick="btnSave_Click" />
+            <asp:Button runat="server" ID="btnSave" Text="保存" OnClick="btnSave_Click" />
         </div>
         <div class="cilr">
-            <asp:Button runat="server" ID="btnDelete" Text="删除" onclick="btnDelete_Click" />
+            <asp:Button runat="server" ID="btnDelete" Text="删除" OnClick="btnDelete_Click" />
         </div>
         <div class="cilr">
-            <asp:Button runat="server" ID="btnInitPwd" Text="初始化密码" 
-                onclick="btnInitPwd_Click" />
+            <asp:Button runat="server" ID="btnInitPwd" Text="初始化密码" OnClick="btnInitPwd_Click" />
         </div>
     </div>
 </asp:Content>

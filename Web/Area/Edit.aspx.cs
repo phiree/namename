@@ -48,7 +48,7 @@ public partial class Area_Edit : System.Web.UI.Page
         ddlarea.DataSource = ais;
         ddlarea.DataBind();
 
-         ai = dalArea.GetByAreaID(new Guid(areaid));
+        ai = dalArea.GetByAreaID(new Guid(areaid));
         tbOrderNo.Text = ai.OrderNO.ToString();
         tbAreaName.Text = ai.AreaName;
 
@@ -76,10 +76,8 @@ public partial class Area_Edit : System.Web.UI.Page
 
     protected void btnDelete_Click(object sender, EventArgs e)
     {
-        IList<ShopInfo> sis = ai.AreaShops;
-        if (sis.Count == 0)
+        if (dalArea.Delete(new Guid(areaid)))
         {
-            dalArea.Delete(new Guid(areaid));
             Session[WebHint.Web_Hint] = new WebHint("删除成功", "/Shop/Default.aspx", HintFlag.跳转);
         }
         else

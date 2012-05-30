@@ -48,7 +48,7 @@ public partial class Shop_Edit : System.Web.UI.Page
     DALArea da = new DALArea();
     private void BindArea()
     {
-      
+
         IList<AreaInfo> ais = da.GetAreas();
         ddlarea.DataTextField = "AreaName";
         ddlarea.DataValueField = "AreaID";
@@ -69,7 +69,7 @@ public partial class Shop_Edit : System.Web.UI.Page
         }
         si.ShopNo = tbShopNo.Text;
         si.ShopName = tbShopName.Text;
-        si.AreaInfo =da.GetByAreaID(  new Guid(ddlarea.SelectedValue));
+        si.AreaInfo = da.GetByAreaID(new Guid(ddlarea.SelectedValue));
         si.Address = tbAddress.Text;
         si.Tel = tbTel.Text;
         si.Fax = tbFax.Text;
@@ -86,8 +86,14 @@ public partial class Shop_Edit : System.Web.UI.Page
     {
         //判断门店下面是否有人
 
-        dsi.Delete(new Guid(shopid));
-        Session[WebHint.Web_Hint] = new WebHint("删除成功", "/Shop/Default.aspx", HintFlag.跳转);
+        if (dsi.Delete(new Guid(shopid)))
+        {
+            Session[WebHint.Web_Hint] = new WebHint("删除成功", "/Shop/Default.aspx", HintFlag.跳转);
+        }
+        else
+        {
+            Session[WebHint.Web_Hint] = new WebHint("在门店下还有人员存在，不能删除", "#", HintFlag.跳转);
+        }
         Response.Redirect(WebHint.HintURL);
     }
 }

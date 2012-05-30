@@ -60,10 +60,8 @@ public partial class Department_Edit : System.Web.UI.Page
 
     protected void btnDelete_Click(object sender, EventArgs e)
     {
-       IList<UserInfo> us= di.DepartUsers;
-        if (us.Count == 0)
+        if (dalDepart.Delete(new Guid(departid)))
         {
-            dalDepart.Delete(new Guid(departid));
             Session[WebHint.Web_Hint] = new WebHint("删除成功", "/Member/Default.aspx", HintFlag.跳转);
         }
         else

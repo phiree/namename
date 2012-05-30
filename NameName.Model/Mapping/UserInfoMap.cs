@@ -6,7 +6,7 @@ using FluentNHibernate.Mapping;
 using NameName.Model;
 namespace NameName.Model.Mapping
 {
-    public class UserInfoMap:ClassMap<UserInfo>
+    public class UserInfoMap : ClassMap<UserInfo>
     {
         public UserInfoMap()
         {
@@ -19,8 +19,10 @@ namespace NameName.Model.Mapping
             Map(x => x.RightSet);
             Map(x => x.TrueName);
             Map(x => x.Tel);
+            Map(x => x.IsShopUser);
+            Map(x => x.IsShopManager);
             References<ShopInfo>(x => x.Shop);
-            
+
         }
     }
 }
