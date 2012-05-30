@@ -6,3 +6,4 @@ obj
 TestResults
 #file don't want open to the public
 web.config
+*.suo
