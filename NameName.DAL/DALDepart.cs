@@ -39,11 +39,13 @@ namespace NameName.DAL
             //return Reposi.Single<DepartInfo>(departid);
         }
 
-        public void Delete(Guid departid)
+        public bool Delete(Guid departid)
         {
             DepartInfo depart = GetById(departid);
+            if (depart.DepartUsers.Count > 0) return false;
             depart.DeleteFlag = true;
             Save(depart);
+            return true;
         }
     }
 }

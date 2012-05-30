@@ -39,11 +39,14 @@ namespace NameName.DAL
             //return Reposi.Single<ShopInfo>(shopid);
         }
 
-        public void Delete(Guid shopid)
+        public bool Delete(Guid shopid)
         {
+
             ShopInfo shopinfo = GetByShopID(shopid);
+            if (shopinfo.ShopUsers.Count > 0) return false;
             shopinfo.DeleteFlag = true;
             Save(shopinfo);
+            return true;
         }
 
 

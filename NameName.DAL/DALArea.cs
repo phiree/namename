@@ -10,7 +10,7 @@ namespace NameName.DAL
     {
         public IList<AreaInfo> GetAreas()
         {
-            string sql = " select a from AreaInfo a where a.DeleteFlag=false OrderBy ORderNO ";
+            string sql = " select a from AreaInfo a where a.DeleteFlag=false order by ORderNO ";
             IQuery query = session.CreateQuery(sql);
             IList<AreaInfo> areas = query.Future<AreaInfo>().ToList();
            
@@ -37,11 +37,13 @@ namespace NameName.DAL
            // return Reposi.Single<AreaInfo>(areaid);
         }
 
-        public void Delete(Guid areaid)
+        public bool Delete(Guid areaid)
         {
             AreaInfo Area = GetByAreaID(areaid);
+            if (Area.AreaShops.Count > 0) return false;
             Area.DeleteFlag = true;
             Save(Area);
+            return true;
         }
     }
 }
