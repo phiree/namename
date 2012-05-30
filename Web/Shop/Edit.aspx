@@ -80,7 +80,11 @@
                         <asp:BoundField DataField="TrueName" HeaderText="姓名" />
                         <asp:BoundField DataField="Tel" HeaderText="电话" />
                         <asp:BoundField DataField="Fax" HeaderText="手机" />
-                        <asp:BoundField DataField="IsManage" HeaderText="店长" />
+                        <asp:TemplateField HeaderText="店长">
+                            <ItemTemplate>
+                                <%# GetManagerInfo(Eval("IsManager")) %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="删除">
                             <ItemTemplate>
                                 <a href="#" onclick='DeleteShopUser(<%# Eval("UserName") %>,this)'>删除</a>
@@ -116,5 +120,11 @@
                 btn.parentNode.parentNode.parentNode.deleteRow(currRowIndex);
             });
         }
+        function SetIsManage(shopid, username) {
+            $.get("/ajax/ShopUserSetManager.ashx?shopid=" + shopid + "&username=" + username, function () {
+                window.open(window.location.href);
+            });
+        }
+        
     </script>
 </asp:Content>
