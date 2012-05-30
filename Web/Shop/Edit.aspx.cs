@@ -34,7 +34,7 @@ public partial class Shop_Edit : System.Web.UI.Page
             ShopInfo si = dsi.GetByShopID(new Guid(shopid));
             tbShopNo.Text = si.ShopNo;
             tbShopName.Text = si.ShopName;
-            ddlarea.SelectedValue = si.AreaID.ToString();
+            ddlarea.SelectedValue = si.AreaInfo.AreaID.ToString();
             tbAddress.Text = si.Address;
             tbTel.Text = si.Tel;
             tbFax.Text = si.Fax;
@@ -45,10 +45,10 @@ public partial class Shop_Edit : System.Web.UI.Page
             btnDelete.Visible = divShopUser.Visible = false;
         }
     }
-
+    DALArea da = new DALArea();
     private void BindArea()
     {
-        DALArea da = new DALArea();
+      
         IList<AreaInfo> ais = da.GetAreas();
         ddlarea.DataTextField = "AreaName";
         ddlarea.DataValueField = "AreaID";
@@ -69,7 +69,7 @@ public partial class Shop_Edit : System.Web.UI.Page
         }
         si.ShopNo = tbShopNo.Text;
         si.ShopName = tbShopName.Text;
-        si.AreaID = new Guid(ddlarea.SelectedValue);
+        si.AreaInfo =da.GetByAreaID(  new Guid(ddlarea.SelectedValue));
         si.Address = tbAddress.Text;
         si.Tel = tbTel.Text;
         si.Fax = tbFax.Text;

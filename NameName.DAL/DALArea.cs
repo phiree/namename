@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NameName.Model;
-
+using NHibernate;
 namespace NameName.DAL
 {
     public class DALArea : DALBase
     {
         public IList<AreaInfo> GetAreas()
         {
-            IList<AreaInfo> areas = Reposi.Find<AreaInfo>(x => x.DeleteFlag == false).OrderBy(x => x.OrderNO).ToList();
-
+            string sql = " select a from AreaInfo a where a.DeleteFlag=false OrderBy ORderNO ";
+            IQuery query = session.CreateQuery(sql);
+            IList<AreaInfo> areas = query.Future<AreaInfo>().ToList();
+           
             return areas;
         }
 
@@ -20,16 +22,19 @@ namespace NameName.DAL
             if (areainfo.AreaID == null || areainfo.AreaID == Guid.Empty)
             {
                 areainfo.AreaID = Guid.NewGuid();
-                Reposi.Add(areainfo);
+                session.Save(areainfo);
+              // Reposi.Add(areainfo);
             }
             else
             {
-                Reposi.Update(areainfo);
+                session.Update(areainfo);
+               // Reposi.Update(areainfo);
             }
         }
         public AreaInfo GetByAreaID(Guid areaid)
         {
-            return Reposi.Single<AreaInfo>(areaid);
+           return session.Get<AreaInfo>(areaid);
+           // return Reposi.Single<AreaInfo>(areaid);
         }
 
         public void Delete(Guid areaid)

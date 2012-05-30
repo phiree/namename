@@ -20,7 +20,7 @@ public partial class Area_Edit : System.Web.UI.Page
     DALArea dalArea = new DALArea();
 
     string areaid;
-
+    AreaInfo ai;
     protected void Page_Load(object sender, EventArgs e)
     {
         areaid = Request["AreaID"];
@@ -48,7 +48,7 @@ public partial class Area_Edit : System.Web.UI.Page
         ddlarea.DataSource = ais;
         ddlarea.DataBind();
 
-        AreaInfo ai = dalArea.GetByAreaID(new Guid(areaid));
+         ai = dalArea.GetByAreaID(new Guid(areaid));
         tbOrderNo.Text = ai.OrderNO.ToString();
         tbAreaName.Text = ai.AreaName;
 
@@ -76,7 +76,7 @@ public partial class Area_Edit : System.Web.UI.Page
 
     protected void btnDelete_Click(object sender, EventArgs e)
     {
-        IList<ShopInfo> sis = new DALShopInfo().GetShopsByAreaID(new Guid(areaid));
+        IList<ShopInfo> sis = ai.AreaShops;
         if (sis.Count == 0)
         {
             dalArea.Delete(new Guid(areaid));

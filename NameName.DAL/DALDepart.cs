@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NameName.Model;
+using NHibernate;
 namespace NameName.DAL
 {
     public class DALDepart : DALBase
     {
         public IList<DepartInfo> GetDeparts()
         {
-            IList<DepartInfo> Departs = Reposi.Find<DepartInfo>(x => x.DeleteFlag == false).OrderBy(x => x.OrderNO).ToList();
 
-            return Departs;
+            string sql = " select d from DepartInfo d where d.DeleteFlag=false order by d.OrderNO";
+            IQuery query = session.CreateQuery(sql);
+            IList<DepartInfo> departs = query.Future<DepartInfo>().ToList();
+
+
+            return departs;
         }
 
         public void Save(DepartInfo depart)
@@ -19,16 +24,19 @@ namespace NameName.DAL
             if (depart.DepartID == null || depart.DepartID == Guid.Empty)
             {
                 depart.DepartID = Guid.NewGuid();
-                Reposi.Add(depart);
+                session.Save(depart);
+               // Reposi.Add(depart);
             }
             else
             {
-                Reposi.Update(depart);
+                session.Update(depart);
+            //    Reposi.Update(depart);
             }
         }
         public DepartInfo GetById(Guid departid)
         {
-            return Reposi.Single<DepartInfo>(departid);
+            return session.Get<DepartInfo>(departid);
+            //return Reposi.Single<DepartInfo>(departid);
         }
 
         public void Delete(Guid departid)

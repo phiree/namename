@@ -31,7 +31,7 @@ public partial class Member_Default : System.Web.UI.Page
             trd.Cells.Add(tcd);
             tbUser.Rows.Add(trd);
 
-            IList<UserInfo> users = dalUser.GetUserByDepartment(d.DepartID);
+            IList<UserInfo> users = d.DepartUsers;
             foreach (UserInfo u in users)
             {
                 TableRow tru = new TableRow();

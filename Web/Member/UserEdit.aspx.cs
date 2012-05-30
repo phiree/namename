@@ -23,10 +23,10 @@ public partial class Member_UserEdit : System.Web.UI.Page
 
         }
     }
-
+    DALDepart dalDepart = new DALDepart();
     private void BindDepart()
     {
-        DALDepart dalDepart = new DALDepart();
+      
 
         ddlDepart.DataSource = dalDepart.GetDeparts();
         ddlDepart.DataTextField = "DepartName";
@@ -41,14 +41,14 @@ public partial class Member_UserEdit : System.Web.UI.Page
         tbTrueName.Text = u.TrueName;
         tbMobile.Text = u.Mobile;
         tbTel.Text = u.Tel;
-        ddlDepart.SelectedValue = u.DepartID.ToString();
+        ddlDepart.SelectedValue = u.Depart.DepartID.ToString();
     }
 
     protected void btnSave_Click(object sender, EventArgs e)
     {
         UserInfo u = du.GetByUserName(uc.UserName);
         u.TrueName = tbTrueName.Text;
-        u.DepartID = new Guid(ddlDepart.SelectedValue);
+        u.Depart =dalDepart.GetById( new Guid(ddlDepart.SelectedValue));
         u.Tel = tbTel.Text;
         u.Mobile = tbMobile.Text;
         du.Save(u);

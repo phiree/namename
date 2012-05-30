@@ -12,7 +12,7 @@ public partial class Department_Edit : System.Web.UI.Page
     DALDepart dalDepart = new DALDepart();
 
     string departid;
-
+    DepartInfo di;
     protected void Page_Load(object sender, EventArgs e)
     {
         departid = Request["DepartID"];
@@ -32,7 +32,7 @@ public partial class Department_Edit : System.Web.UI.Page
 
     private void BindDepart()
     {
-        DepartInfo di = dalDepart.GetById(new Guid(departid));
+        di = dalDepart.GetById(new Guid(departid));
         tbOrderNo.Text = di.OrderNO.ToString();
         tbDepartName.Text = di.DepartName;
 
@@ -60,7 +60,7 @@ public partial class Department_Edit : System.Web.UI.Page
 
     protected void btnDelete_Click(object sender, EventArgs e)
     {
-        IList<UserInfo> us = new DALUser().GetUserByDepartment(new Guid(departid));
+       IList<UserInfo> us= di.DepartUsers;
         if (us.Count == 0)
         {
             dalDepart.Delete(new Guid(departid));

@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NameName.Model;
+using NHibernate;
 namespace NameName.DAL
 {
     public class DALUser : DALBase
     {
-        public IList<UserInfo> GetUserByDepartment(Guid departId)
-        {
-            IList<UserInfo> users = Reposi.Find<UserInfo>(x => x.DepartID == departId && x.DeleteFlag == false).OrderBy(x => x.OrderNO).ToList();
-            return users;
-        }
+        
 
         public IList<UserInfo> GetUsers()
         {
-            IList<UserInfo> users = Reposi.Find<UserInfo>(x => !x.DeleteFlag).OrderBy(x => x.OrderNO).ToList();
+           string sql = " select u from UserInfo u ";
+            IQuery query = session.CreateQuery(sql);
+            IList<UserInfo> users = query.Future<UserInfo>().ToList();
             return users;
         }
 
@@ -24,16 +23,19 @@ namespace NameName.DAL
             UserInfo u = GetByUserName(user.UserName);
             if (u == null)
             {
-                Reposi.Add(user);
+                session.Save(user);
+              //  Reposi.Add(user);
             }
             else
             {
-                Reposi.Update(user);
+                session.Update(user);
+               // Reposi.Update(user);
             }
         }
         public UserInfo GetByUserName(string username)
         {
-            return Reposi.Single<UserInfo>(x => x.UserName == username && x.DeleteFlag == false);
+            return session.Get<UserInfo>(username);
+          //  return Reposi.Single<UserInfo>(x => x.UserName == username && x.DeleteFlag == false);
         }
 
         public void Delete(string username)

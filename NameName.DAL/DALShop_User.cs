@@ -20,12 +20,13 @@ namespace NameName.DAL
             Shop_User su = new Shop_User();
             su.ShopID = shopid;
             su.UserName = username;
-            Reposi.Add(su);
+           // Reposi.Add(su);
         }
 
         public void Delete(int id)
         {
-            Reposi.Delete<Shop_User>(id);
+           
+           // Reposi.Delete<Shop_User>(id);
         }
     }
 }

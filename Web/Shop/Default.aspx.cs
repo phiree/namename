@@ -30,7 +30,7 @@ public partial class Shop_Default : System.Web.UI.Page
             tra.Cells.Add(tca);
             tbShop.Rows.Add(tra);
 
-            IList<ShopInfo> sis = ds.GetShopsByAreaID(area.AreaID);
+            IList<ShopInfo> sis = area.AreaShops;
             foreach (ShopInfo si in sis)
             {
                 TableRow trs = new TableRow();
