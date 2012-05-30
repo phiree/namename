@@ -40,7 +40,7 @@ namespace NameName.DAL
         public bool Delete(Guid areaid)
         {
             AreaInfo Area = GetByAreaID(areaid);
-            if (Area.AreaShops.Count > 0) return false;
+            if (Area.AreaShops.Where(x=>x.DeleteFlag==false).Count() > 0) return false;
             Area.DeleteFlag = true;
             Save(Area);
             return true;
