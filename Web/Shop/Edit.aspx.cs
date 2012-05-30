@@ -58,19 +58,25 @@ public partial class Shop_Edit : System.Web.UI.Page
 
     protected void btnSave_Click(object sender, EventArgs e)
     {
-        AreaInfo areainfo = new AreaInfo();
-        if (areaid == null)
+        ShopInfo si = new ShopInfo();
+        if (shopid == null)
         {
-            areainfo.AreaID = Guid.Empty;
+            si.ShopID = Guid.Empty;
         }
         else
         {
-            areainfo.AreaID = new Guid(areaid);
+            si.ShopID = new Guid(shopid);
         }
-        areainfo.OrderNO = Convert.ToInt32(tbOrderNo.Text);
-        areainfo.AreaName = tbAreaName.Text;
-        areainfo.DeleteFlag = false;
-        dalArea.Save(areainfo);
+        si.ShopNo = tbShopNo.Text;
+        si.ShopName = tbShopName.Text;
+        si.AreaID = new Guid(ddlarea.SelectedValue);
+        si.Address = tbAddress.Text;
+        si.Tel = tbTel.Text;
+        si.Fax = tbFax.Text;
+        si.IsCenter = cbIsCenter.Checked;
+
+        si.DeleteFlag = false;
+        dsi.Save(si);
 
         Session[WebHint.Web_Hint] = new WebHint("保存成功", "/Shop/Default.aspx", HintFlag.跳转);
         Response.Redirect(WebHint.HintURL);

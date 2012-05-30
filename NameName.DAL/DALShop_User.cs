@@ -8,9 +8,9 @@ namespace NameName.DAL
 {
     public class DALShop_User : DALBase
     {
-        public Shop_User GetUserByShopID(Guid shopid)
-        {   
-            IList<Shop_User> users = Reposi.Find<Shop_User>(x => x.ShopID == shopid);
+        public IList<Shop_User> GetUserByShopID(Guid shopid)
+        {
+            IList<Shop_User> users = Reposi.Find<Shop_User>(x => x.ShopID == shopid).ToList();
 
             return users;
         }
