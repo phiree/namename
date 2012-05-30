@@ -39,6 +39,13 @@ public partial class Shop_Edit : System.Web.UI.Page
             tbTel.Text = si.Tel;
             tbFax.Text = si.Fax;
             cbIsCenter.Checked = si.IsCenter;
+
+            //门店人员
+            IList<UserInfo> uis = si.ShopUsers;
+
+            GridView1.DataSource = uis;
+            GridView1.DataBind();
+
         }
         else
         {

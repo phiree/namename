@@ -63,11 +63,34 @@
             <asp:CheckBox runat="server" ID="cbIsCenter" />
         </div>
     </div>
-    <div class="ciline" runat=server id="divShopUser">
+    <div class="ciline" runat="server" id="divShopUser">
         <div class="cill">
             <a href="#">选择店员</a>
         </div>
         <div class="cilr">
+            <div class="cilineforgridview">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White"
+                    GridLines="Vertical" BorderColor="#C2D3ED" CellPadding="3" BorderStyle="Solid"
+                    BorderWidth="1px" HeaderStyle-Height="25" EmptyDataText="没有相关数据">
+                    <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
+                    <RowStyle Height="25px" BorderColor="#C2D3ED" BorderStyle="Solid" BorderWidth="1px"
+                        Wrap="False" />
+                    <Columns>
+                        <asp:BoundField DataField="UserName" HeaderText="工号" />
+                        <asp:BoundField DataField="TrueName" HeaderText="姓名" />
+                        <asp:BoundField DataField="Tel" HeaderText="电话" />
+                        <asp:BoundField DataField="Fax" HeaderText="手机" />
+                        <asp:BoundField DataField="Fax" HeaderText="店长" />
+                        <asp:BoundField DataField="UserName" HeaderText="删除" />
+                    </Columns>
+                    <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Center" CssClass="cigvp"
+                        Font-Size="15px" />
+                    <SelectedRowStyle BackColor="#008A8C" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle Height="25px" BackColor="#EDF4FC" Font-Bold="True" ForeColor="Black"
+                        HorizontalAlign="Center" Wrap="False"></HeaderStyle>
+                    <AlternatingRowStyle BackColor="#EDF4FC" />
+                </asp:GridView>
+            </div>
         </div>
     </div>
     <div class="ciline">
