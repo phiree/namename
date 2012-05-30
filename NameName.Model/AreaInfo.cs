@@ -5,52 +5,20 @@
  ***********************************************************************/
 
 using System;
-using SubSonic.SqlGeneration.Schema;
+using System.Collections.Generic;
 namespace NameName.Model
-{public class AreaInfo
 {
-   private Guid _AreaID;
-   private string _AreaName;
-   private bool _DeleteFlag;
+    public class AreaInfo
+    {
+        public AreaInfo()
+        {
+            AreaShops = new List<ShopInfo>();
+        }
+        public virtual Guid AreaID { get; set; }
+        public virtual string AreaName { get; set; }
+        public virtual int OrderNO { get; set; }
+        public virtual bool DeleteFlag { get; set; }
+        public virtual IList<ShopInfo> AreaShops { get; set; }
 
-   [SubSonicPrimaryKey]
-   public Guid AreaID
-   {
-      get
-      {
-         return _AreaID;
-      }
-      set
-      {
-         if (this._AreaID != value)
-            this._AreaID = value;
-      }
-   }
-
-   public string AreaName
-   {
-      get
-      {
-         return _AreaName;
-      }
-      set
-      {
-         if (this._AreaName != value)
-            this._AreaName = value;
-      }
-   }
-   
-   public bool DeleteFlag
-   {
-      get
-      {
-         return _DeleteFlag;
-      }
-      set
-      {
-         if (this._DeleteFlag != value)
-            this._DeleteFlag = value;
-      }
-   }
-
-} }
+    }
+}

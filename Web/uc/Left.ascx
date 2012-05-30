@@ -59,13 +59,15 @@
         </div>
         <div class="cleftTitText">
             <h3>
-                系统设置</h3>
+                系统管理</h3>
         </div>
     </div>
     <div id="b40">
         <ul>
             <li id="b4001" class="cli" onmouseover="LeftOnOver('b40','01');" onmouseout="LeftOnLeave('b40','01');">
-                <a href="ProType.aspx">产品类别</a> </li>
+                <a href="/Member/Default.aspx">人员管理</a> </li>
+            <li id="b4002" class="cli" onmouseover="LeftOnOver('b40','02');" onmouseout="LeftOnLeave('b40','02');">
+                <a href="/Shop/Default.aspx">门店管理</a> </li>
         </ul>
     </div>
 </div>
@@ -83,9 +85,9 @@
     <div id="b20">
         <ul>
             <li id="b2001" class="cli" onmouseover="LeftOnOver('b20','01');" onmouseout="LeftOnLeave('b20','01');">
-                <a href="UserInfo.aspx?type=0">个人信息</a> </li>
+                <a href="/Member/UserEdit.aspx">个人信息</a> </li>
             <li id="b2002" class="cli" onmouseover="LeftOnOver('b20','02');" onmouseout="LeftOnLeave('b20','02');">
-                <a href="password.aspx">修改密码</a> </li>
+                <a href="/Member/password.aspx">修改密码</a> </li>
         </ul>
     </div>
 </div>

@@ -5,51 +5,19 @@
  ***********************************************************************/
 
 using System;
+using System.Collections.Generic;
 namespace NameName.Model
-{public class DepartInfo
 {
-   private Guid _DepartID;
-   private string _DepartName;
-   private bool _DeleteFlag;
-
-    [SubSonic.SqlGeneration.Schema.SubSonicPrimaryKey]
-   public Guid DepartID
-   {
-      get
-      {
-         return _DepartID;
-      }
-      set
-      {
-         if (this._DepartID != value)
-            this._DepartID = value;
-      }
-   }
-   
-   public string DepartName
-   {
-      get
-      {
-         return _DepartName;
-      }
-      set
-      {
-         if (this._DepartName != value)
-            this._DepartName = value;
-      }
-   }
-   
-   public bool DeleteFlag
-   {
-      get
-      {
-         return _DeleteFlag;
-      }
-      set
-      {
-         if (this._DeleteFlag != value)
-            this._DeleteFlag = value;
-      }
-   }
-
-} }
+    public class DepartInfo
+    {
+        public DepartInfo()
+        {
+            DepartUsers = new List<UserInfo>();
+        }
+        public virtual  Guid DepartID{get;set;}
+        public virtual  int OrderNO{get;set;}
+        public virtual  string DepartName{get;set;}
+        public virtual  bool DeleteFlag{get;set;}
+        public virtual IList<UserInfo> DepartUsers { get; set; }
+    }
+}

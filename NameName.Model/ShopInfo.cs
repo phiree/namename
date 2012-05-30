@@ -5,134 +5,26 @@
  ***********************************************************************/
 
 using System;
+using System.Collections.Generic;
 namespace NameName.Model
-{ public class ShopInfo
 {
-   private Guid _ShopID;
-   private string _ShopNo;
-   private Guid _AreaID;
-   private string _StoreName;
-   private string _Address;
-   private string _Tel;
-   private string _Fax;
-   private bool _DeleteFlag;
-   private bool _IsCenter;
+    public class ShopInfo
+    {
+        public ShopInfo()
+        {
+            ShopUsers = new List<UserInfo>();
+        }
+        public virtual Guid ShopID { get; set; }
+        public virtual string ShopNo { get; set; }
+        public virtual AreaInfo AreaInfo { get; set; }
+        public virtual string ShopName { get; set; }
+        public virtual string Address { get; set; }
+        public virtual string Tel { get; set; }
+        public virtual string Fax { get; set; }
+        public virtual bool DeleteFlag { get; set; }
+        public virtual bool IsCenter { get; set; }
+        public virtual IList<UserInfo> ShopUsers { get; set; }
 
-   public Guid ShopID
-   {
-      get
-      {
-         return _ShopID;
-      }
-      set
-      {
-         if (this._ShopID != value)
-            this._ShopID = value;
-      }
-   }
-   
-   public string ShopNo
-   {
-      get
-      {
-         return _ShopNo;
-      }
-      set
-      {
-         if (this._ShopNo != value)
-            this._ShopNo = value;
-      }
-   }
-   
-   public Guid AreaID
-   {
-      get
-      {
-         return _AreaID;
-      }
-      set
-      {
-         if (this._AreaID != value)
-            this._AreaID = value;
-      }
-   }
-   
-   public string StoreName
-   {
-      get
-      {
-         return _StoreName;
-      }
-      set
-      {
-         if (this._StoreName != value)
-            this._StoreName = value;
-      }
-   }
-   
-   public string Address
-   {
-      get
-      {
-         return _Address;
-      }
-      set
-      {
-         if (this._Address != value)
-            this._Address = value;
-      }
-   }
-   
-   public string Tel
-   {
-      get
-      {
-         return _Tel;
-      }
-      set
-      {
-         if (this._Tel != value)
-            this._Tel = value;
-      }
-   }
-   
-   public string Fax
-   {
-      get
-      {
-         return _Fax;
-      }
-      set
-      {
-         if (this._Fax != value)
-            this._Fax = value;
-      }
-   }
-   
-   public bool IsCenter
-   {
-      get
-      {
-         return _IsCenter;
-      }
-      set
-      {
-         if (this._IsCenter != value)
-            this._IsCenter = value;
-      }
-   }
-   
-   public bool DeleteFlag
-   {
-      get
-      {
-         return _DeleteFlag;
-      }
-      set
-      {
-         if (this._DeleteFlag != value)
-            this._DeleteFlag = value;
-      }
-   }
 
-}}
+    }
+}

@@ -3,23 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NameName.Model;
-
+using NHibernate;
 namespace NameName.DAL
 {
     public class DALAccount : DALBase
     {
         public Account_Period GetCurrAccount()
         {
-         var query = from v in Reposi.All<Account_Period>()
-            where v.EndDate == null
-            select v;
-         var ps = query.ToList();
-         
-           if (ps.Count == 0) return null;
-           else
-           {
-               return ps[0];
-           }
+            string sql = " select d from Account_Period d where d.EndDate is null";
+            IQuery query = session.CreateQuery(sql);
+          Account_Period acc = query.FutureValue<Account_Period>().Value;
+
+
+
+            return acc;
             
         }
 
@@ -38,13 +35,19 @@ namespace NameName.DAL
             ap.AccountID = Guid.NewGuid();
             ap.BeginDate = DateTime.Now;
             ap.EndDate = null;
-            Reposi.Add(ap);
+            session.Save(ap);
+          //  Reposi.Add(ap);
         }
 
         public IList<Account_Period> GetAccounts()
         {
-            IList<Account_Period> Accounts = Reposi.All<Account_Period>().OrderByDescending(x => x.BeginDate).ToList();
-            return Accounts;
+            string sql = " select d from Account_Period  OrderBy BeginDate ";
+            IQuery query = session.CreateQuery(sql);
+            IList<Account_Period> acc = query.Future<Account_Period>().ToList();
+
+
+           
+            return acc;
         }
     }
 }

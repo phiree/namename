@@ -3,19 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NameName.Model;
+using NHibernate;
 namespace NameName.DAL
 {
     public class DALUser : DALBase
     {
-        public IList<UserInfo> GetUserByDepartment(Guid departId)
+        /// <summary>
+        /// 获得某个部门没有分配的人员
+        /// </summary>
+        /// <param name="departid"></param>
+        /// <returns></returns>
+        public IList<UserInfo> GetUsersByDepartAndNotAssign(Guid departid)
         {
-            IList<UserInfo> users = Reposi.Find<UserInfo>(x => x.DepartID == departId);
-            return users;
+            return null;
         }
 
         public IList<UserInfo> GetUsers()
         {
-            IList<UserInfo> users = Reposi.Find<UserInfo>(x => !x.DeleteFlag);
+            string sql = " select u from UserInfo u ";
+            IQuery query = session.CreateQuery(sql);
+            IList<UserInfo> users = query.Future<UserInfo>().ToList();
             return users;
         }
 
@@ -24,16 +31,25 @@ namespace NameName.DAL
             UserInfo u = GetByUserName(user.UserName);
             if (u == null)
             {
-                Reposi.Add(user);
+                session.Save(user);
+                //  Reposi.Add(user);
             }
             else
             {
-                Reposi.Update(user);
+                if (!user.IsShopUser)
+                {
+                    user.IsShopManager = false;
+                    user.Shop = null;
+                }
+                session.Update(user);
+                // Reposi.Update(user);
             }
+            session.Flush();
         }
         public UserInfo GetByUserName(string username)
         {
-            return Reposi.Single<UserInfo>(username);
+            return session.Get<UserInfo>(username);
+            //  return Reposi.Single<UserInfo>(x => x.UserName == username && x.DeleteFlag == false);
         }
 
         public UserInfo GetByUserName(string username,bool deleteflag)
@@ -45,6 +61,13 @@ namespace NameName.DAL
         {
             UserInfo user = GetByUserName(username);
             user.DeleteFlag = true;
+            Save(user);
+        }
+
+        public void InitPwd(string username)
+        {
+            UserInfo user = GetByUserName(username);
+            user.Pwd = "1111";
             Save(user);
         }
 
