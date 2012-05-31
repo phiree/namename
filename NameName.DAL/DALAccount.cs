@@ -12,12 +12,9 @@ namespace NameName.DAL
         {
             string sql = " select d from Account_Period d where d.EndDate is null";
             IQuery query = session.CreateQuery(sql);
-          Account_Period acc = query.FutureValue<Account_Period>().Value;
-
-
-
+            Account_Period acc = query.FutureValue<Account_Period>().Value;
             return acc;
-            
+
         }
 
         public void AccountInit()
@@ -36,7 +33,8 @@ namespace NameName.DAL
             ap.BeginDate = DateTime.Now;
             ap.EndDate = null;
             session.Save(ap);
-          //  Reposi.Add(ap);
+            session.Flush();
+            //  Reposi.Add(ap);
         }
 
         public IList<Account_Period> GetAccounts()
@@ -44,9 +42,6 @@ namespace NameName.DAL
             string sql = " select d from Account_Period  OrderBy BeginDate ";
             IQuery query = session.CreateQuery(sql);
             IList<Account_Period> acc = query.Future<Account_Period>().ToList();
-
-
-           
             return acc;
         }
     }

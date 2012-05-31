@@ -32,6 +32,7 @@ namespace NameName.DAL
             }
             session.Flush();
         }
+
         public AreaInfo GetByAreaID(Guid areaid)
         {
            return session.Get<AreaInfo>(areaid);
