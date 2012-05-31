@@ -32,7 +32,9 @@ namespace NameName.DAL
                 session.Update(shopinfo);
                 //Reposi.Update(shopinfo);
             }
+           
         }
+
         public ShopInfo GetByShopID(Guid shopid)
         {
             return session.Get<ShopInfo>(shopid);
@@ -59,7 +61,7 @@ namespace NameName.DAL
                 if (manager.UserName == userName)
                 {
                     manager.IsShopManager = !manager.IsShopManager;
-                    
+
                 }
                 else
                 {
@@ -67,11 +69,6 @@ namespace NameName.DAL
                 }
             }
             Save(shop);
-
-
-
         }
-
-
     }
 }

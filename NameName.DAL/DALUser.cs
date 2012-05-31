@@ -31,6 +31,7 @@ namespace NameName.DAL
             UserInfo u = GetByUserName(user.UserName);
             if (u == null)
             {
+                u.Pwd = "1111";
                 session.Save(user);
                 //  Reposi.Add(user);
             }
@@ -44,15 +45,14 @@ namespace NameName.DAL
                 session.Update(user);
                 // Reposi.Update(user);
             }
-            session.Flush();
+           
         }
+
         public UserInfo GetByUserName(string username)
         {
             return session.Get<UserInfo>(username);
             //  return Reposi.Single<UserInfo>(x => x.UserName == username && x.DeleteFlag == false);
         }
-
-       
 
         public void Delete(string username)
         {
@@ -67,6 +67,7 @@ namespace NameName.DAL
             user.Pwd = "1111";
             Save(user);
         }
+
         public void RemoveUserFromShop(string username)
         {
             UserInfo user = GetByUserName(username);

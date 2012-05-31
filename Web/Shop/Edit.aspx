@@ -79,10 +79,10 @@
                         <asp:BoundField DataField="UserName" HeaderText="工号" />
                         <asp:BoundField DataField="TrueName" HeaderText="姓名" />
                         <asp:BoundField DataField="Tel" HeaderText="电话" />
-                        <asp:BoundField DataField="Fax" HeaderText="手机" />
+                        <asp:BoundField DataField="Mobile" HeaderText="手机" />
                         <asp:TemplateField HeaderText="店长">
                             <ItemTemplate>
-                                <%# GetManagerInfo(Eval("IsManager"),Eval("UserName")) %>
+                                <%# GetManagerInfo(Eval("IsShopManager"),Eval("UserName")) %>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="删除">
