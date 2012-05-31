@@ -12,7 +12,7 @@ namespace NameName.Model.Mapping
         {
             Id(x => x.AreaID);
             Map(x => x.AreaName);
-            HasMany<ShopInfo>(x => x.AreaShops);
+            HasMany<ShopInfo>(x => x.AreaShops).Inverse();
             Map(x => x.DeleteFlag);
             Map(x => x.OrderNO);
            
