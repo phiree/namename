@@ -35,15 +35,15 @@ public partial class uc_UpLoadFile : System.Web.UI.UserControl
                 view.Visible = false;
                 FileView.NavigateUrl = "#";
                 divViewSmall.Visible = false;
-                LinkButton1.Visible = false;
+               // LinkButton1.Visible = false;
             }
             else
             {
                 view.Visible = true;
                 divViewSmall.Visible = true;
-                LinkButton1.Visible = true;
+              //  LinkButton1.Visible = true;
 
-                FileView.NavigateUrl = "/propic/imgsmall/" + HiddenField1.Value;
+                FileView.NavigateUrl = "/propic/imgbig/" + HiddenField1.Value;
                 divViewSmall.InnerHtml = "<img src='/propic/imgsmall/" + HiddenField1.Value + "' />";
             }
         }
@@ -75,8 +75,8 @@ public partial class uc_UpLoadFile : System.Web.UI.UserControl
                 divViewSmall.Visible = true;
                 divViewSmall.InnerHtml = "<img src='/propic/imgsmall/" + HiddenField1.Value + "' />";
 
-                LinkButton1.Visible = true;
-                fp.SaveAs(Server.MapPath("/propic/imgsmall/") + HiddenField1.Value);
+               // LinkButton1.Visible = true;
+                fp.SaveAs(Server.MapPath("/propic/imgbig/") + HiddenField1.Value);
                 FileView.NavigateUrl = "/propic/imgsmall/" + HiddenField1.Value;
                 lb.Text = "上传成功";
 

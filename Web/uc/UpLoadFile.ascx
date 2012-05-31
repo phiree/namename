@@ -13,7 +13,7 @@
     <div id="view" runat="server" visible="false" style="line-height: 35px; height: 35px;
         float: left">
         <asp:HyperLink ID="FileView" runat="server" Target="_blank">查看文件</asp:HyperLink>
-        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">删除文件</asp:LinkButton>
+        <asp:LinkButton ID="LinkButton1" Visible="false" runat="server" OnClick="LinkButton1_Click">删除文件</asp:LinkButton>
         <asp:HiddenField ID="HiddenField1" runat="server" />
     </div>
     <div style="float: left; line-height: 35px; height: 35px; margin-right: 3px; float: left">

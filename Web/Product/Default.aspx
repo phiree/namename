@@ -26,15 +26,10 @@
                     <RowStyle Height="25px" BorderColor="#C2D3ED" BorderStyle="Solid" BorderWidth="1px"
                         Wrap="False" />
                     <Columns>
-                        <asp:BoundField DataField="UserName" HeaderText="工号" />
-                        <asp:BoundField DataField="TrueName" HeaderText="姓名" />
-                        <asp:BoundField DataField="Tel" HeaderText="电话" />
-                        <asp:BoundField DataField="Mobile" HeaderText="手机" />
-                        <asp:TemplateField HeaderText="删除">
-                            <ItemTemplate>
-                                <a href="#" onclick='DeleteShopUser(<%# Eval("UserName") %>,this)'>删除</a>
-                            </ItemTemplate>
-                        </asp:TemplateField>
+                        <asp:BoundField DataField="ProCate" HeaderText="类别" />
+                        <asp:HyperLinkField DataNavigateUrlFormatString="/product/edit.aspx?proid={0}"  DataNavigateUrlFields="ProID" DataTextField="Name" HeaderText="名称" />
+                        <asp:BoundField DataField="Unit" HeaderText="单位" />
+                        <asp:BoundField DataField="Memo" HeaderText="备注" />
                     </Columns>
                     <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Center" CssClass="cigvp"
                         Font-Size="15px" />

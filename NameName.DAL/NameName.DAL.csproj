@@ -76,6 +76,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DALUser.cs" />
     <Compile Include="DALShop.cs" />
+    <Compile Include="DALProInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NameName.IDAL\NameName.IDAL.csproj">

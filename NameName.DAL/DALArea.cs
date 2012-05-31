@@ -10,7 +10,7 @@ namespace NameName.DAL
     {
         public IList<AreaInfo> GetAreas()
         {
-            string sql = " select a from AreaInfo a where a.DeleteFlag=false order by ORderNO ";
+            string sql = " select a from AreaInfo a where a.DeleteFlag=false order by OrderNO ";
             IQuery query = session.CreateQuery(sql);
             IList<AreaInfo> areas = query.Future<AreaInfo>().ToList();
            

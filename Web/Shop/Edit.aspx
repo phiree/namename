@@ -16,6 +16,7 @@
             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*"
                 ControlToValidate="tbShopNo"></asp:RequiredFieldValidator>
         </div>
+        
     </div>
     <div class="ciline">
         <div class="cill">

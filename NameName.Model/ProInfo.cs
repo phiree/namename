@@ -21,6 +21,7 @@ namespace NameName.Model
         public virtual string PicName { get; set; }
         public virtual string Memo { get; set; }
         public virtual bool DeleteFlag { get; set; }
-        public IList<ProPrice> ProPrices { get; set; }
+        public virtual DateTime LastUpDateTime { get; set; }
+        public virtual IList<ProPrice> ProPrices { get; set; }
     }
 }
