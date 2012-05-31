@@ -18,6 +18,8 @@ namespace NameName.Model
         public virtual  int RightSet{get;set;}
         public virtual  DepartInfo Depart{get;set;}
         public virtual ShopInfo Shop { get; set; }
+        public virtual bool IsShopUser { get; set; }
+        public virtual bool IsShopManager { get; set; }        
         public virtual  bool DeleteFlag{get;set;}
 
     }

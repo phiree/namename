@@ -16,6 +16,7 @@
             <a href="/Member/edit.aspx">增加用户</a>
         </div>
     </div>
+
     <div class="ciline">
         <div class="cill">
             &nbsp;
@@ -25,5 +26,6 @@
                 BorderStyle="Double" BorderWidth="1px" BorderColor="#AAAAAA" HorizontalAlign="Center">
             </asp:Table>
         </div>
+
     </div>
 </asp:Content>

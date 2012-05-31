@@ -42,6 +42,7 @@ public partial class Member_Edit : System.Web.UI.Page
         ddlDepart.SelectedValue = ui.Depart.DepartID.ToString();
         tbTel.Text = ui.Tel;
         tbMobile.Text = ui.Mobile;
+        cbIsShopUser.Checked = ui.IsShopUser;
         foreach (ListItem li in cbxRights.Items)
         {
             li.Selected = Common.IsRole(Convert.ToInt32(li.Value), ui.RightSet);
@@ -50,7 +51,7 @@ public partial class Member_Edit : System.Web.UI.Page
     DALDepart dalDepart = new DALDepart();
     private void BindDepart()
     {
-      
+
 
         ddlDepart.DataSource = dalDepart.GetDeparts();
         ddlDepart.DataTextField = "DepartName";
@@ -91,10 +92,10 @@ public partial class Member_Edit : System.Web.UI.Page
         }
         ui.TrueName = tbTrueName.Text;
         ui.OrderNO = Convert.ToInt32(tbOrderNo.Text);
-        ui.Depart = dalDepart.GetById( new Guid(ddlDepart.SelectedValue));
+        ui.Depart = dalDepart.GetById(new Guid(ddlDepart.SelectedValue));
         ui.Tel = tbTel.Text;
         ui.Mobile = tbMobile.Text;
-
+        ui.IsShopUser = cbIsShopUser.Checked;
         int right = 0;
         foreach (ListItem li in cbxRights.Items)
         {

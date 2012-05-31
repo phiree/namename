@@ -8,11 +8,19 @@ namespace NameName.DAL
 {
     public class DALUser : DALBase
     {
-        
+        /// <summary>
+        /// 获得某个部门没有分配的人员
+        /// </summary>
+        /// <param name="departid"></param>
+        /// <returns></returns>
+        public IList<UserInfo> GetUsersByDepartAndNotAssign(Guid departid)
+        {
+            return null;
+        }
 
         public IList<UserInfo> GetUsers()
         {
-           string sql = " select u from UserInfo u ";
+            string sql = " select u from UserInfo u ";
             IQuery query = session.CreateQuery(sql);
             IList<UserInfo> users = query.Future<UserInfo>().ToList();
             return users;
@@ -24,20 +32,27 @@ namespace NameName.DAL
             if (u == null)
             {
                 session.Save(user);
-              //  Reposi.Add(user);
+                //  Reposi.Add(user);
             }
             else
             {
+                if (!user.IsShopUser)
+                {
+                    user.IsShopManager = false;
+                    user.Shop = null;
+                }
                 session.Update(user);
-               // Reposi.Update(user);
+                // Reposi.Update(user);
             }
             session.Flush();
         }
         public UserInfo GetByUserName(string username)
         {
             return session.Get<UserInfo>(username);
-          //  return Reposi.Single<UserInfo>(x => x.UserName == username && x.DeleteFlag == false);
+            //  return Reposi.Single<UserInfo>(x => x.UserName == username && x.DeleteFlag == false);
         }
+
+       
 
         public void Delete(string username)
         {
@@ -52,6 +67,11 @@ namespace NameName.DAL
             user.Pwd = "1111";
             Save(user);
         }
-
+        public void RemoveUserFromShop(string username)
+        {
+            UserInfo user = GetByUserName(username);
+            user.Shop = null;
+            Save(user);
+        }
     }
 }
