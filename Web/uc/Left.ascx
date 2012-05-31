@@ -65,9 +65,11 @@
     <div id="b40">
         <ul>
             <li id="b4001" class="cli" onmouseover="LeftOnOver('b40','01');" onmouseout="LeftOnLeave('b40','01');">
-                <a href="/Member/Default.aspx">人员管理</a> </li>
+                <a href="/Member/Default.aspx">部门人员</a> </li>
             <li id="b4002" class="cli" onmouseover="LeftOnOver('b40','02');" onmouseout="LeftOnLeave('b40','02');">
-                <a href="/Shop/Default.aspx">门店管理</a> </li>
+                <a href="/Shop/Default.aspx">区域门店</a> </li>
+            <li id="b4003" class="cli" onmouseover="LeftOnOver('b40','03');" onmouseout="LeftOnLeave('b40','03');">
+                <a href="/Product/Default.aspx">产品</a> </li>
         </ul>
     </div>
 </div>

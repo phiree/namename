@@ -11,14 +11,11 @@ namespace NameName.Model.Mapping
         public DepartInfoMap()
         {
             Id(x => x.DepartID);
-            
             Map(x => x.DeleteFlag);
-          
             Map(x => x.OrderNO);
             Map(x => x.DepartName);
+            HasMany<UserInfo>(x => x.DepartUsers).Inverse();
 
-            HasMany<UserInfo>(x => x.DepartUsers);
-            
         }
     }
 }

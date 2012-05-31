@@ -15,9 +15,9 @@ namespace NameName.DAL
         /// <returns></returns>
         public IList<UserInfo> GetUsersByDepartAndNotAssign(Guid departid)
         {
-            string sql=@"select u 
+            string sql = @"select u 
                         from UserInfo u 
-                        where u.Depart.DepartId='"+departid.ToString()+"' and u.Shop=null";
+                        where u.DepartInfo.DepartID='" + departid.ToString() + "' and u.ShopInfo = null and u.IsShopUser = true";
 
             IQuery query = session.CreateQuery(sql);
             IList<UserInfo> users = query.Future<UserInfo>().ToList();
@@ -37,7 +37,7 @@ namespace NameName.DAL
             UserInfo u = GetByUserName(user.UserName);
             if (u == null)
             {
-                u.Pwd = "1111";
+                user.Pwd = "1111";
                 session.Save(user);
                 //  Reposi.Add(user);
             }
@@ -46,7 +46,7 @@ namespace NameName.DAL
                 if (!user.IsShopUser)
                 {
                     user.IsShopManager = false;
-                    user.Shop = null;
+                    user.ShopInfo = null;
                 }
                 session.Update(user);
                 // Reposi.Update(user);
@@ -77,7 +77,7 @@ namespace NameName.DAL
         public void RemoveUserFromShop(string username)
         {
             UserInfo user = GetByUserName(username);
-            user.Shop = null;
+            user.ShopInfo = null;
             Save(user);
         }
     }

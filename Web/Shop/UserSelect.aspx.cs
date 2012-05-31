@@ -91,7 +91,7 @@ public partial class Shop_UserSelect : System.Web.UI.Page
                         if (cb.Checked)
                         {
                             UserInfo u = du.GetByUserName(cb.Attributes["UserName"]);
-                            u.Shop = ds.GetByShopID(new Guid(shopid));
+                            u.ShopInfo = ds.GetByShopID(new Guid(shopid));
                             du.Save(u);
                         }
                     }

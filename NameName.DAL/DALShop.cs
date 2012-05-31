@@ -54,7 +54,7 @@ namespace NameName.DAL
         {
             DALUser dalUser = new DALUser();
             UserInfo user = dalUser.GetByUserName(userName);
-            ShopInfo shop = user.Shop;
+            ShopInfo shop = user.ShopInfo;
             IList<UserInfo> managers = shop.ShopUsers.Where(x => x.IsShopManager).ToList();
             foreach (UserInfo manager in managers)
             {

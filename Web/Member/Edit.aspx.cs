@@ -39,7 +39,7 @@ public partial class Member_Edit : System.Web.UI.Page
         tbUserName.Text = ui.UserName;
         tbTrueName.Text = ui.TrueName;
         tbOrderNo.Text = ui.OrderNO.ToString();
-        ddlDepart.SelectedValue = ui.Depart.DepartID.ToString();
+        ddlDepart.SelectedValue = ui.DepartInfo.DepartID.ToString();
         tbTel.Text = ui.Tel;
         tbMobile.Text = ui.Mobile;
         cbIsShopUser.Checked = ui.IsShopUser;
@@ -91,8 +91,8 @@ public partial class Member_Edit : System.Web.UI.Page
             ui = du.GetByUserName(UserName);
         }
         ui.TrueName = tbTrueName.Text;
-        ui.OrderNO = Convert.ToInt32(tbOrderNo.Text);
-        ui.Depart = dalDepart.GetById(new Guid(ddlDepart.SelectedValue));
+        ui.OrderNO = Convert.ToInt32(tbOrderNo.Text);        
+        ui.DepartInfo = dalDepart.GetById(new Guid(ddlDepart.SelectedValue));
         ui.Tel = tbTel.Text;
         ui.Mobile = tbMobile.Text;
         ui.IsShopUser = cbIsShopUser.Checked;

@@ -6,7 +6,7 @@ using NameName.Model;
 using NHibernate;
 namespace NameName.DAL
 {
-    public class DALDepart : DALBase<DALDepart>
+    public class DALDepart : DALBase
     {
         /// <summary>
         /// 获得没有分配的门店人员的部门

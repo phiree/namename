@@ -41,14 +41,14 @@ public partial class Member_UserEdit : System.Web.UI.Page
         tbTrueName.Text = u.TrueName;
         tbMobile.Text = u.Mobile;
         tbTel.Text = u.Tel;
-        ddlDepart.SelectedValue = u.Depart.DepartID.ToString();
+        ddlDepart.SelectedValue = u.DepartInfo.DepartID.ToString();
     }
 
     protected void btnSave_Click(object sender, EventArgs e)
     {
         UserInfo u = du.GetByUserName(uc.UserName);
         u.TrueName = tbTrueName.Text;
-        u.Depart =dalDepart.GetById( new Guid(ddlDepart.SelectedValue));
+        u.DepartInfo =dalDepart.GetById( new Guid(ddlDepart.SelectedValue));
         u.Tel = tbTel.Text;
         u.Mobile = tbMobile.Text;
         du.Save(u);

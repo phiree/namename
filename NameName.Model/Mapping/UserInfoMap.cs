@@ -11,7 +11,7 @@ namespace NameName.Model.Mapping
         public UserInfoMap()
         {
             Id(x => x.UserName);
-            References<DepartInfo>(x => x.Depart);
+            References<DepartInfo>(x => x.DepartInfo);
             Map(x => x.DeleteFlag);
             Map(x => x.Mobile);
             Map(x => x.OrderNO);
@@ -21,7 +21,7 @@ namespace NameName.Model.Mapping
             Map(x => x.Tel);
             Map(x => x.IsShopUser);
             Map(x => x.IsShopManager);
-            References<ShopInfo>(x => x.Shop);
+            References<ShopInfo>(x => x.ShopInfo);
 
         }
     }
