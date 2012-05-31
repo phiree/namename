@@ -45,7 +45,7 @@ namespace NameName.DAL
                 session.Update(user);
                 // Reposi.Update(user);
             }
-           
+            session.Flush();
         }
 
         public UserInfo GetByUserName(string username)

@@ -33,7 +33,7 @@ namespace NameName.DAL
             ap.BeginDate = DateTime.Now;
             ap.EndDate = null;
             session.Save(ap);
-          
+            session.Flush();
             //  Reposi.Add(ap);
         }
 

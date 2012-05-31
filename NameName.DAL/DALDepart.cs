@@ -42,7 +42,7 @@ namespace NameName.DAL
                 session.Update(depart);
                 //    Reposi.Update(depart);
             }
-            
+            session.Flush();
         }
 
         public DepartInfo GetById(Guid departid)
