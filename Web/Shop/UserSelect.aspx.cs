@@ -37,7 +37,7 @@ public partial class Shop_UserSelect : System.Web.UI.Page
         {
             TableRow trd = new TableRow();
             TableCell tcd = new TableCell();
-            tcd.ColumnSpan = 4;
+            tcd.ColumnSpan = 5;
             tcd.Text = "部门:" + d.DepartName;
             trd.Cells.Add(tcd);
             tbUserSelect.Rows.Add(trd);
@@ -57,8 +57,11 @@ public partial class Shop_UserSelect : System.Web.UI.Page
                 }
 
                 TableCell tc = new TableCell();
+                tc.Width = 120;
                 CheckBox cb = new CheckBox();
                 cb.ID = "cb_" + u.UserName;
+                cb.Attributes.Add("UserName", u.UserName);
+                cb.Text = u.TrueName;
                 tc.Controls.Add(cb);
                 tr.Cells.Add(tc);
                 i++;
@@ -69,7 +72,7 @@ public partial class Shop_UserSelect : System.Web.UI.Page
                 for (int j = i % 5; j < 5; j++)
                 {
                     TableCell tc = new TableCell();
-                    tc.Width = 180;
+                    tc.Width = 120;
                     tr.Cells.Add(tc);
                 }
             }
@@ -83,11 +86,11 @@ public partial class Shop_UserSelect : System.Web.UI.Page
         {
             foreach (TableCell tc in tr.Cells)
             {
-                if (tc.Controls.Count > 1)
+                if (tc.Controls.Count > 0)
                 {
-                    if (tc.Controls[1] is CheckBox)
+                    if (tc.Controls[0] is CheckBox)
                     {
-                        CheckBox cb = (CheckBox)tc.Controls[1];
+                        CheckBox cb = (CheckBox)tc.Controls[0];
                         if (cb.Checked)
                         {
                             UserInfo u = du.GetByUserName(cb.Attributes["UserName"]);
@@ -98,5 +101,6 @@ public partial class Shop_UserSelect : System.Web.UI.Page
                 }
             }
         }
+        Response.Redirect("/Shop/Edit.aspx?shopid=" + shopid);
     }
 }

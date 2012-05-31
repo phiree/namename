@@ -78,6 +78,7 @@ namespace NameName.DAL
         {
             UserInfo user = GetByUserName(username);
             user.ShopInfo = null;
+            user.IsShopManager = false;
             Save(user);
         }
     }

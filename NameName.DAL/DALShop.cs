@@ -17,8 +17,6 @@ namespace NameName.DAL
             return shops;
         }
 
-
-
         public void Save(ShopInfo shopinfo)
         {
             if (shopinfo.ShopID == Guid.Empty)
@@ -43,7 +41,6 @@ namespace NameName.DAL
 
         public bool Delete(Guid shopid)
         {
-
             ShopInfo shopinfo = GetByShopID(shopid);
             if (shopinfo.ShopUsers.Where(x => x.DeleteFlag == false).Count() > 0) return false;
             shopinfo.DeleteFlag = true;
@@ -54,21 +51,22 @@ namespace NameName.DAL
         {
             DALUser dalUser = new DALUser();
             UserInfo user = dalUser.GetByUserName(userName);
-            ShopInfo shop = user.ShopInfo;
-            IList<UserInfo> managers = shop.ShopUsers.Where(x => x.IsShopManager).ToList();
-            foreach (UserInfo manager in managers)
-            {
-                if (manager.UserName == userName)
-                {
-                    manager.IsShopManager = !manager.IsShopManager;
 
-                }
-                else
-                {
-                    manager.IsShopManager = false;
-                }
+            if (user.IsShopManager)
+            {
+                user.IsShopManager = false;
+                dalUser.Save(user);
             }
-            Save(shop);
+            else
+            {
+                string sql = @"update UserInfo u set u.IsShopManager = false
+                    where u.ShopInfo.ShopID='" + user.ShopInfo.ShopID + "'";
+                IQuery query = session.CreateQuery(sql);
+                query.ExecuteUpdate();
+
+                user.IsShopManager = true;
+                dalUser.Save(user);
+            }
         }
     }
 }

@@ -87,7 +87,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="删除">
                             <ItemTemplate>
-                                <a href="#" onclick='DeleteShopUser(<%# Eval("UserName") %>,this)'>删除</a>
+                                <a href="#" onclick='DeleteShopUser("<%# Eval("UserName")%>",this)'>删除</a>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -112,7 +112,7 @@
             <asp:Button runat="server" ID="btnDelete" Text="删除" OnClick="btnDelete_Click" />
         </div>
     </div>
-    <script language="javascript" type="text/javascript" src="/js/jquery-1.4.1.js" />
+    <script language="javascript" type="text/javascript" src="/js/jquery-1.4.1.js"></script>
     <script language="javascript" type="text/javascript">
         function DeleteShopUser(username, btn) {
             $.get("/ajax/ShopUserDelete.ashx?username=" + username, function () {
@@ -122,7 +122,7 @@
         }
         function SetIsManage(username) {
             $.get("/ajax/ShopUserSetManager.ashx?username=" + username, function () {
-                window.open(window.location.href);
+                window.location.href = window.location.href;
             });
         }
         

@@ -7,6 +7,7 @@
     </div>
     <div class="ciline">
         <div class="cill">
+            &nbsp;
         </div>
         <div class="cilr">
             <div class="cilineforgridview">
@@ -21,7 +22,7 @@
             <a href="/Shop/Edit.aspx?shopid=XX" runat="server" id="aBack">返回</a>
         </div>
         <div class="cilr">
-            <asp:Button runat="server" ID="btnSelect" Text="确定" onclick="btnSelect_Click" />
+            <asp:Button runat="server" ID="btnSelect" Text="确定" OnClick="btnSelect_Click" />
         </div>
     </div>
 </asp:Content>
