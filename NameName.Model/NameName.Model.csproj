@@ -144,6 +144,8 @@
     <Compile Include="EnumRight.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Mapping\ProInfoMap.cs" />
+    <Compile Include="Mapping\ProPriceMap.cs" />
     <Compile Include="Mapping\ShopInfoMap.cs" />
     <Compile Include="Mapping\UserInfoMap.cs" />
     <Compile Include="Mapping\DepartInfoMap.cs" />
