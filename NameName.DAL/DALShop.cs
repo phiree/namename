@@ -32,6 +32,7 @@ namespace NameName.DAL
                 session.Update(shopinfo);
                 //Reposi.Update(shopinfo);
             }
+            session.Flush();
         }
         public ShopInfo GetByShopID(Guid shopid)
         {

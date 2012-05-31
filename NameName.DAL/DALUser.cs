@@ -15,7 +15,13 @@ namespace NameName.DAL
         /// <returns></returns>
         public IList<UserInfo> GetUsersByDepartAndNotAssign(Guid departid)
         {
-            return null;
+            string sql=@"select u 
+                        from UserInfo u 
+                        where u.Depart.DepartId='"+departid.ToString()+"' and u.Shop=null";
+
+            IQuery query = session.CreateQuery(sql);
+            IList<UserInfo> users = query.Future<UserInfo>().ToList();
+            return users;
         }
 
         public IList<UserInfo> GetUsers()

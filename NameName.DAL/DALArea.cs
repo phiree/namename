@@ -30,6 +30,7 @@ namespace NameName.DAL
                 session.Update(areainfo);
                // Reposi.Update(areainfo);
             }
+            session.Flush();
         }
         public AreaInfo GetByAreaID(Guid areaid)
         {

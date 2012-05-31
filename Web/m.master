@@ -10,7 +10,7 @@
     <link href="/css/PageStyle.css" type="text/css" rel="Stylesheet" />
     <script type="text/javascript" src="/js/frameJS.js"> </script>
 </head>
-<body onresize="ResetSize();" onload="ResetSize();">
+<body >
     <form id="form1" runat="server">
     <div>
         <div class="cbanner">
