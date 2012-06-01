@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace ShopClient
 {
-    public partial class Form1 : Form
+    public partial class ShopSelect : Form
     {
-        public Form1()
+        public ShopSelect()
         {
             InitializeComponent();
         }

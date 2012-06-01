@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using NameName.Model;
 using NHibernate;
+
 namespace NameName.DAL
 {
     public class DALUser : DALBase
@@ -14,7 +15,7 @@ namespace NameName.DAL
         /// <param name="departid"></param>
         /// <returns></returns>
         public IList<UserInfo> GetUsersByDepartAndNotAssign(Guid departid)
-        {
+        {            
             string sql = @"select u 
                         from UserInfo u 
                         where u.DepartInfo.DepartID='" + departid.ToString() + "' and u.ShopInfo = null and u.IsShopUser = true";
@@ -76,7 +77,7 @@ namespace NameName.DAL
 
         public void RemoveUserFromShop(string username)
         {
-            UserInfo user = GetByUserName(username);
+            UserInfo user = GetByUserName(username);            
             user.ShopInfo = null;
             user.IsShopManager = false;
             Save(user);
