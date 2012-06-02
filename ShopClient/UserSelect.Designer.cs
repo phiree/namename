@@ -58,6 +58,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "UserSelect";
             this.Text = "UserSelect";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UserSelect_FormClosed);
             this.ResumeLayout(false);
 
         }

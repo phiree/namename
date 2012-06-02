@@ -13,6 +13,7 @@ namespace ShopClient
 
     public partial class UserSelect : Form
     {
+        bool ToExit = true;
         Guid ShopId = GlobalValue.ShopID;
         public UserSelect()
         {
@@ -56,8 +57,19 @@ namespace ShopClient
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            new ShopSelect().ShowDialog();
+            ToExit = false;
             this.Close();
+            new ShopSelect().Show();
+            
         }
+
+        private void UserSelect_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (ToExit)
+            {
+                Application.Exit();
+            }
+        }
+        
     }
 }

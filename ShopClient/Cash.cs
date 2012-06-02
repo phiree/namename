@@ -21,9 +21,21 @@ namespace ShopClient
 
         private void Cash_Load(object sender, EventArgs e)
         {
-
+            this.Hide();
         }
-
+        protected override void OnShown(EventArgs e)
+        {
+          
+        }
+        protected override void SetVisibleCore(bool value)
+        {
+            if (!IsHandleCreated && value)
+            {
+                base.CreateHandle();
+                value = false;
+            }
+            base.SetVisibleCore(value);
+        }
         private void ClientLogin()
         {
 
@@ -32,7 +44,7 @@ namespace ShopClient
 
             if (string.IsNullOrEmpty(strShopId))
             {
-                new ShopSelect().ShowDialog();
+                new ShopSelect().Show();
             }
             else
             {
@@ -43,17 +55,17 @@ namespace ShopClient
                     ShopInfo shop = new DALShopInfo().GetByShopID(shopId);
                     if (shop == null)
                     {
-                        new ShopSelect().ShowDialog();
+                        new ShopSelect().Show();
                     }
                     else
                     {
                         GlobalValue.ShopID = shop.ShopID;
-                        new UserSelect().ShowDialog();
+                        new UserSelect().Show();
                     }
                 }
                 else
                 {
-                    new ShopSelect().ShowDialog();
+                    new ShopSelect().Show();
                 }
             }
         }
