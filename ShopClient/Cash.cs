@@ -73,9 +73,15 @@ namespace ShopClient
         public void LoginSuccess()
         {
             this.Show();
-
+            this.Text = GlobalValue.GShop.AreaInfo.AreaName + "-" + GlobalValue.GShop.ShopName + "-" + GlobalValue.GUser.TrueName + " 正在使用 么么 门店系统";
             //创建界面了！！！
 
+
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
