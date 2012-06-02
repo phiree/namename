@@ -30,7 +30,7 @@ namespace ShopClient
         private void button4_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
-          
+
 
         }
 
@@ -40,11 +40,13 @@ namespace ShopClient
             if (isValidated)
             {
                 this.DialogResult = DialogResult.OK;
-              
+
             }
             else
             {
-                MessageBox.Show("密码错误");
+                GlobalFun.MessageBoxError("密码错误");
+
+                numInupt1.ClearInputValue();
             }
         }
     }

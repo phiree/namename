@@ -122,6 +122,7 @@
     <Compile Include="UserSelect.Designer.cs">
       <DependentUpon>UserSelect.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobalFun.cs" />
     <EmbeddedResource Include="Cash.resx">
       <DependentUpon>Cash.cs</DependentUpon>
     </EmbeddedResource>

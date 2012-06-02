@@ -29,6 +29,12 @@ namespace ShopClient.uc
             InitializeComponent();
         }
 
+        public void ClearInputValue()
+        {
+            tbxValue.Clear();
+        }
+
+
         private void btnBack_Click(object sender, EventArgs e)
         {
             if (tbxValue.TextLength > 0)

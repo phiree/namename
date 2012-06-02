@@ -65,18 +65,20 @@
             this.numInupt1.Location = new System.Drawing.Point(0, 0);
             this.numInupt1.Name = "numInupt1";
             this.numInupt1.PasswordChar = '*';
-            this.numInupt1.Size = new System.Drawing.Size(497, 463);
+            this.numInupt1.Size = new System.Drawing.Size(481, 463);
             this.numInupt1.TabIndex = 18;
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(497, 559);
+            this.ClientSize = new System.Drawing.Size(481, 559);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.numInupt1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Login";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "登录";
             this.Load += new System.EventHandler(this.Login_Load);
