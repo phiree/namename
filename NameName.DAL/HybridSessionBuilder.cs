@@ -67,6 +67,8 @@ namespace NameName.DAL
         }
         private ISession getExistingOrNewSession(ISessionFactory factory)
         {
+            
+
             if (HttpContext.Current != null)
             {
                 ISession session = GetExistingWebSession();
