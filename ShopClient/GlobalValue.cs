@@ -6,12 +6,8 @@ using NameName.Model;
 
 namespace ShopClient
 {
-  public  class GlobalValue
+    public class GlobalValue
     {
-      public static ShopInfo Shop
-      {
-          get;
-          set;
-      }
+        public static Guid ShopID = Guid.Empty;
     }
 }

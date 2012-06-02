@@ -27,19 +27,20 @@ namespace ShopClient
         private static void InitClient()
         {
             bool HasSelected = false;
-           string strShopId = Properties.Settings.Default.ShopId;
-
-           if (string.IsNullOrEmpty( strShopId))
+            string strShopId = Properties.Settings.Default.ShopId;
+            Application.Run(new ShopSelect());
+            return;
+            if (string.IsNullOrEmpty(strShopId))
             {
                 HasSelected = false;
-               
+
             }
             else
             {
-             
-                 Guid shopId;
+
+                Guid shopId;
                 Guid.TryParse(strShopId, out shopId);
-                if ( shopId!=Guid.Empty)
+                if (shopId != Guid.Empty)
                 {
                     ShopInfo shop = new DALShopInfo().GetByShopID(shopId);
                     if (shop == null)
@@ -53,14 +54,15 @@ namespace ShopClient
                         Application.Run(new Login());
                     }
                 }
-                else {
+                else
+                {
                     HasSelected = false;
                 }
             }
             if (!HasSelected)
             {
                 Application.Run(new ShopSelect());
-                
+
             }
 
         }
