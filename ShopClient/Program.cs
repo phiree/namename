@@ -17,55 +17,55 @@ namespace ShopClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           //InitClient();
-            Application.Run(new ShopSelect());
+           
+            Application.Run(new Cash());
         }
         /// <summary>
         /// 之前是否已经选择过.
         /// 是:读取配置信息 直接打开登录界面
         /// 否:打开选择页面
         /// </summary>
-        private static void InitClient()
-        {
-            bool HasSelected = false;
-            string strShopId = Properties.Settings.Default.ShopId;
-            Application.Run(new ShopSelect());
-            return;
-            if (string.IsNullOrEmpty(strShopId))
-            {
-                HasSelected = false;
+        //private static void InitClient()
+        //{
+        //    bool HasSelected = false;
+        //    string strShopId = Properties.Settings.Default.ShopId;
+        //    Application.Run(new ShopSelect());
+        //    return;
+        //    if (string.IsNullOrEmpty(strShopId))
+        //    {
+        //        HasSelected = false;
 
-            }
-            else
-            {
+        //    }
+        //    else
+        //    {
 
-                Guid shopId;
-                Guid.TryParse(strShopId, out shopId);
-                if (shopId != Guid.Empty)
-                {
-                    ShopInfo shop = new DALShopInfo().GetByShopID(shopId);
-                    if (shop == null)
-                    {
-                        HasSelected = false;
-                    }
-                    else
-                    {
-                        HasSelected = true;
-                        GlobalValue.ShopID = shop.ShopID;
-                        Application.Run(new Login());
-                    }
-                }
-                else
-                {
-                    HasSelected = false;
-                }
-            }
-            if (!HasSelected)
-            {
-                Application.Run(new ShopSelect());
+        //        Guid shopId;
+        //        Guid.TryParse(strShopId, out shopId);
+        //        if (shopId != Guid.Empty)
+        //        {
+        //            ShopInfo shop = new DALShopInfo().GetByShopID(shopId);
+        //            if (shop == null)
+        //            {
+        //                HasSelected = false;
+        //            }
+        //            else
+        //            {
+        //                HasSelected = true;
+        //                GlobalValue.ShopID = shop.ShopID;
+        //                Application.Run(new Login());
+        //            }
+        //        }
+        //        else
+        //        {
+        //            HasSelected = false;
+        //        }
+        //    }
+        //    if (!HasSelected)
+        //    {
+        //        Application.Run(new ShopSelect());
 
-            }
+        //    }
 
-        }
+        //}
     }
 }
