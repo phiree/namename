@@ -13,20 +13,17 @@ namespace ShopClient
 
     public partial class UserSelect : Form
     {
-        public Guid ShopId
-        {
-            get;
-            set;
-        }
+        Guid ShopId = GlobalValue.ShopID;
         public UserSelect()
         {
-
+            
             if (ShopId == null || ShopId == Guid.Empty)
             {
                 return;
             }
-
+          
             InitializeComponent();
+                       LoadUsers(); 
         }
         public void LoadUsers()
         {
@@ -40,9 +37,9 @@ namespace ShopClient
 
             GridBuilder<UserInfo> UserGrid = new GridBuilder<UserInfo>(SourceUsers,
                 new Size(100, 100), panel1, 4, 20, 20);
-            UserGrid.BuildButtons();
+         
             UserGrid.OnBindButtonClick += new GridBuilder<UserInfo>.BindButtonClick(UserGrid_OnBindButtonClick);
-
+            UserGrid.BuildButtons();
         }
 
         void UserGrid_OnBindButtonClick(Button b)
@@ -55,6 +52,12 @@ namespace ShopClient
             Button btn = sender as Button;
             login.UserName = btn.Text;
             login.ShowDialog();
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            new ShopSelect().ShowDialog();
+            this.Close();
         }
     }
 }
