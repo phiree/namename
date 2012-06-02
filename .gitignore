@@ -1,7 +1,7 @@
 # Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
 bin
 obj
-NameNameConfig
+Config.cs
 # mstest test results
 TestResults
 #file don't want open to the public
@@ -37,3 +37,4 @@ obj/
 _ReSharper*/
 [Tt]est[Rr]esult*
 
+NameNameConfig/Cofig.cs
