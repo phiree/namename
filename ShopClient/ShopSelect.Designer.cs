@@ -106,6 +106,7 @@
             this.Name = "ShopSelect";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ShopSelect_FormClosed);
             this.Load += new System.EventHandler(this.ShopSelect_Load);
             this.tabControl1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

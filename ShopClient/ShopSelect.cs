@@ -14,10 +14,12 @@ namespace ShopClient
 {
     public partial class ShopSelect : Form
     {
+        bool ToExit = true;
         public ShopSelect()
         {
+          
             InitializeComponent();
-
+            
         }
         private void LoadAreas()
         {
@@ -62,8 +64,10 @@ namespace ShopClient
             P.Settings.Default.Save();
 
             GlobalValue.ShopID = shop.ShopID;
+            ToExit = false;
             this.Close();
-            new UserSelect().ShowDialog();
+            
+            new UserSelect().Show();
         }
 
         private void ShopSelect_Load(object sender, EventArgs e)
@@ -71,14 +75,19 @@ namespace ShopClient
             LoadAreas();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-            LoadAreas();
-        }
+      
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
+        }
+
+        private void ShopSelect_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (ToExit)
+            {
+                Application.Exit();
+            }
         }
     }
 }

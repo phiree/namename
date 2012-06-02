@@ -13,36 +13,63 @@ namespace ShopClient
 
     public partial class UserSelect : Form
     {
-        public Guid ShopId
-        {
-            get;
-            set;
-        }
+        bool ToExit = true;
+        Guid ShopId = GlobalValue.ShopID;
         public UserSelect()
         {
-
+            
             if (ShopId == null || ShopId == Guid.Empty)
             {
                 return;
             }
-
+          
             InitializeComponent();
+                       LoadUsers(); 
         }
         public void LoadUsers()
         {
             ShopInfo shop = new DALShopInfo().GetByShopID(ShopId);
             IList<UserInfo> users = shop.ShopUsers;
-            int initIndex=0, initTop = 0, initLeft = 0, width = 40, height = 40, space = 30, cols = 4;
-            foreach (UserInfo user in users)
+            Dictionary<string,UserInfo> SourceUsers=new Dictionary<string,UserInfo>();
+            foreach(UserInfo user in users)
             {
-                int rowIndex = initIndex / cols;
-                int colIndex = initIndex % cols;
+             SourceUsers.Add(user.UserName,user);
+            }
 
-                int left =colIndex* (space + width);
-                Button btn = new Button();
+            GridBuilder<UserInfo> UserGrid = new GridBuilder<UserInfo>(SourceUsers,
+                new Size(100, 100), panel1, 4, 20, 20);
+         
+            UserGrid.OnBindButtonClick += new GridBuilder<UserInfo>.BindButtonClick(UserGrid_OnBindButtonClick);
+            UserGrid.BuildButtons();
+        }
 
-                initIndex++;
+        void UserGrid_OnBindButtonClick(Button b)
+        {
+            b.Click += new EventHandler(UserBtnclick);
+        }
+        void UserBtnclick(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            Button btn = sender as Button;
+            login.UserName = btn.Text;
+            login.ShowDialog();
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            ToExit = false;
+            this.Close();
+            new ShopSelect().Show();
+            
+        }
+
+        private void UserSelect_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (ToExit)
+            {
+                Application.Exit();
             }
         }
+        
     }
 }
