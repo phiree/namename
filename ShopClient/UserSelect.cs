@@ -14,11 +14,13 @@ namespace ShopClient
     public partial class UserSelect : Form
     {
         bool ToExit = true;
-        Guid ShopId = GlobalValue.ShopID;
+
+        //Guid ShopId = GlobalValue.GShop.ShopID;
+
         public UserSelect()
         {
 
-            if (ShopId == null || ShopId == Guid.Empty)
+            if (GlobalValue.GShop == null)
             {
                 return;
             }
@@ -30,11 +32,11 @@ namespace ShopClient
         public void LoadUsers()
         {
 
-            ShopInfo shop = new DALShopInfo().GetByShopID(ShopId);
 
-            lbshopinfo.Text = shop.AreaInfo.AreaName + " - " + shop.ShopName;
 
-            IList<UserInfo> users = shop.ShopUsers;
+            lbshopinfo.Text = GlobalValue.GShop.AreaInfo.AreaName + " - " + GlobalValue.GShop.ShopName;
+
+            IList<UserInfo> users = GlobalValue.GShop.ShopUsers;
             Dictionary<string, UserInfo> SourceUsers = new Dictionary<string, UserInfo>();
 
             foreach (UserInfo user in users)
@@ -57,10 +59,13 @@ namespace ShopClient
         {
             Login login = new Login();
             Button btn = sender as Button;
-            login.UserName = ((UserInfo)btn.Tag).UserName;
+            UserInfo u = (UserInfo)btn.Tag;
+            login.UserName = u.UserName;
+
             if (login.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                Program.cashFrm.Show();
+                GlobalValue.GUser = u;
+                Program.cashFrm.LoginSuccess();
                 ToExit = false;
                 this.Close();
             }

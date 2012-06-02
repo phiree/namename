@@ -17,9 +17,9 @@ namespace ShopClient
         bool ToExit = true;
         public ShopSelect()
         {
-          
+
             InitializeComponent();
-            
+
         }
         private void LoadAreas()
         {
@@ -59,14 +59,13 @@ namespace ShopClient
         void btn_Click(object sender, EventArgs e)
         {
             //将该选择放入设置
-            ShopInfo shop = (ShopInfo)((Button)sender).Tag;
-            P.Settings.Default.ShopId = shop.ShopID.ToString();
+            GlobalValue.GShop = (ShopInfo)((Button)sender).Tag;
+            P.Settings.Default.ShopId = GlobalValue.GShop.ShopID.ToString();
             P.Settings.Default.Save();
 
-            GlobalValue.ShopID = shop.ShopID;
             ToExit = false;
             this.Close();
-            
+
             new UserSelect().Show();
         }
 
@@ -75,7 +74,7 @@ namespace ShopClient
             LoadAreas();
         }
 
-      
+
 
         private void button1_Click(object sender, EventArgs e)
         {

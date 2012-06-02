@@ -21,12 +21,14 @@ namespace ShopClient
 
         private void Cash_Load(object sender, EventArgs e)
         {
-            this.Hide();
+
         }
+
         protected override void OnShown(EventArgs e)
         {
-          
+
         }
+
         protected override void SetVisibleCore(bool value)
         {
             if (!IsHandleCreated && value)
@@ -36,10 +38,9 @@ namespace ShopClient
             }
             base.SetVisibleCore(value);
         }
+
         private void ClientLogin()
         {
-
-
             string strShopId = Properties.Settings.Default.ShopId;
 
             if (string.IsNullOrEmpty(strShopId))
@@ -52,14 +53,13 @@ namespace ShopClient
                 Guid.TryParse(strShopId, out shopId);
                 if (shopId != Guid.Empty)
                 {
-                    ShopInfo shop = new DALShopInfo().GetByShopID(shopId);
-                    if (shop == null)
+                    GlobalValue.GShop = new DALShopInfo().GetByShopID(shopId);
+                    if (GlobalValue.GShop == null)
                     {
                         new ShopSelect().Show();
                     }
                     else
                     {
-                        GlobalValue.ShopID = shop.ShopID;
                         new UserSelect().Show();
                     }
                 }
@@ -68,6 +68,14 @@ namespace ShopClient
                     new ShopSelect().Show();
                 }
             }
+        }
+
+        public void LoginSuccess()
+        {
+            this.Show();
+
+            //创建界面了！！！
+
         }
     }
 }

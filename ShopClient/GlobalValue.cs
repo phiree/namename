@@ -8,6 +8,8 @@ namespace ShopClient
 {
     public class GlobalValue
     {
-        public static Guid ShopID = Guid.Empty;       
+        public static ShopInfo GShop = null;
+
+        public static UserInfo GUser = null;
     }
 }
