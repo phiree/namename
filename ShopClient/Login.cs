@@ -41,6 +41,7 @@ namespace ShopClient
         private void btnClear_Click(object sender, EventArgs e)
         {
             tbxPwd.Text = string.Empty;
+            
         }
 
         private void button4_Click(object sender, EventArgs e)

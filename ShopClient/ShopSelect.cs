@@ -46,7 +46,7 @@ namespace ShopClient
 
             GridBuilder<ShopInfo> g = new GridBuilder<ShopInfo>(d, new Size(100, 100), tp, 10, 20, 20);
             g.OnBindButtonClick += new GridBuilder<ShopInfo>.BindButtonClick(g_OnBindButtonClick);
-            g.BuildButtons();            
+            g.BuildButtons();
         }
 
         void g_OnBindButtonClick(Button b)
@@ -62,9 +62,8 @@ namespace ShopClient
             P.Settings.Default.Save();
 
             GlobalValue.ShopID = shop.ShopID;
-
+            this.Close();
             new UserSelect().ShowDialog();
-
         }
 
         private void ShopSelect_Load(object sender, EventArgs e)
@@ -79,7 +78,7 @@ namespace ShopClient
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
     }
 }

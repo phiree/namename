@@ -48,6 +48,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Cash";
             this.Text = "Cash";
+            this.Load += new System.EventHandler(this.Cash_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
