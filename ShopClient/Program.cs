@@ -17,7 +17,8 @@ namespace ShopClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            InitClient();
+           //InitClient();
+            Application.Run(new ShopSelect());
         }
         /// <summary>
         /// 之前是否已经选择过.
