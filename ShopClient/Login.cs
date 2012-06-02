@@ -16,7 +16,7 @@ namespace ShopClient
             InitializeComponent();
         }
 
-      
+
         private void button12_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
@@ -41,6 +41,11 @@ namespace ShopClient
         private void btnClear_Click(object sender, EventArgs e)
         {
             tbxPwd.Text = string.Empty;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

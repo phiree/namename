@@ -43,6 +43,7 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.tbxPwd = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -83,9 +84,9 @@
             this.btnLogin.BackColor = System.Drawing.Color.Cyan;
             this.btnLogin.Font = new System.Drawing.Font("宋体", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnLogin.ForeColor = System.Drawing.Color.CadetBlue;
-            this.btnLogin.Location = new System.Drawing.Point(45, 410);
+            this.btnLogin.Location = new System.Drawing.Point(223, 410);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(341, 75);
+            this.btnLogin.Size = new System.Drawing.Size(163, 75);
             this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "登录";
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -207,11 +208,25 @@
             this.tbxPwd.Size = new System.Drawing.Size(322, 41);
             this.tbxPwd.TabIndex = 16;
             // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.Cyan;
+            this.button4.Font = new System.Drawing.Font("宋体", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button4.ForeColor = System.Drawing.Color.CadetBlue;
+            this.button4.Location = new System.Drawing.Point(46, 410);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(163, 75);
+            this.button4.TabIndex = 17;
+            this.button4.Text = "返回";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(438, 496);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.tbxPwd);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnBack);
@@ -252,5 +267,6 @@
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.TextBox tbxPwd;
+        private System.Windows.Forms.Button button4;
     }
 }
