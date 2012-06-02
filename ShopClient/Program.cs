@@ -51,7 +51,7 @@ namespace ShopClient
                     else
                     {
                         HasSelected = true;
-                        GlobalValue.Shop = shop;
+                        GlobalValue.ShopID = shop.ShopID;
                         Application.Run(new Login());
                     }
                 }

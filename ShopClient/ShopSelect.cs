@@ -37,45 +37,32 @@ namespace ShopClient
         public void LoadShops(AreaInfo area, TabPage tp)
         {
             IList<ShopInfo> shops = area.AreaShops.Where(x => x.IsCenter == false).ToList();
-            int btnIndex = 0,
-                initTop = 20,
 
-                buttonwidth = 100, height = 100,
-                cols = 4;
-
-            int space = (tp.Width - 4 * buttonwidth) / 5;
-
+            Dictionary<string, ShopInfo> d = new Dictionary<string, ShopInfo>();
             foreach (ShopInfo shop in shops)
             {
-
-                int currentRow = btnIndex / cols;
-                int currentCol = btnIndex % cols;
-
-                int left = space + (buttonwidth + space) * currentCol;
-                int top = (initTop + height) * currentRow + initTop;
-
-                Button btn = new Button();
-                btn.Left = left;
-                btn.Top = top;
-                btn.Width = buttonwidth;
-                btn.Height = height;
-
-                btn.Text = shop.ShopName;
-                btn.Tag = shop.ShopID;
-                btn.Click += new EventHandler(btn_Click);
-                tp.Controls.Add(btn);
-
-                btnIndex++;
+                d.Add(shop.ShopName, shop);
             }
+
+            GridBuilder<ShopInfo> g = new GridBuilder<ShopInfo>(d, new Size(100, 100), tp, 10, 20, 20);
+            g.OnBindButtonClick += new GridBuilder<ShopInfo>.BindButtonClick(g_OnBindButtonClick);
+            g.BuildButtons();            
+        }
+
+        void g_OnBindButtonClick(Button b)
+        {
+            b.Click += new EventHandler(btn_Click);
         }
 
         void btn_Click(object sender, EventArgs e)
         {
             //将该选择放入设置
-            string shopId = ((Button)sender).Tag.ToString();
-            P.Settings.Default.ShopId = shopId;
-
+            ShopInfo shop = (ShopInfo)((Button)sender).Tag;
+            P.Settings.Default.ShopId = shop.ShopID.ToString();
             P.Settings.Default.Save();
+
+            GlobalValue.ShopID = shop.ShopID;
+
             new UserSelect().ShowDialog();
 
         }

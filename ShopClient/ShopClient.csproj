@@ -95,13 +95,13 @@
       <DependentUpon>Cash.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalValue.cs" />
+    <Compile Include="GridBuilder.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="ShopClientConfig.cs" />
     <Compile Include="ShopSelect.cs">
       <SubType>Form</SubType>
     </Compile>
