@@ -36,24 +36,26 @@ namespace ShopClient
 
             }
         }
+
         public void LoadShops(AreaInfo area, TabPage tp)
         {
             IList<ShopInfo> shops = area.AreaShops.Where(x => x.IsCenter == false).ToList();
-
-            Dictionary<string, ShopInfo> d = new Dictionary<string, ShopInfo>();
-            foreach (ShopInfo shop in shops)
-            {
-                d.Add(shop.ShopName, shop);
-            }
-
-            GridBuilder<ShopInfo> g = new GridBuilder<ShopInfo>(d, new Size(100, 100), tp, 10, 20, 20);
-            g.OnBindButtonClick += new GridBuilder<ShopInfo>.BindButtonClick(g_OnBindButtonClick);
+            GridBuilder<ShopInfo> g = new GridBuilder<ShopInfo>(shops, new Size(100, 100), tp, 10, 20, 20);
+            g.OnAddItem += new GridBuilder<ShopInfo>.AddItem(g_OnAddItem);
             g.BuildButtons();
         }
 
-        void g_OnBindButtonClick(Button b)
+        void g_OnAddItem(ShopInfo t, Rectangle position, Control gridcontainer)
         {
-            b.Click += new EventHandler(btn_Click);
+            Button btn = new Button();
+            btn.Left = position.Left;
+            btn.Top = position.Top; ;
+            btn.Size = position.Size;
+            btn.Text = t.ShopName;
+            btn.Tag = t;
+            btn.Click += new EventHandler(btn_Click);
+            gridcontainer.Controls.Add(btn);
+
         }
 
         void btn_Click(object sender, EventArgs e)

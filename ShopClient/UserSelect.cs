@@ -31,28 +31,23 @@ namespace ShopClient
 
         public void LoadUsers()
         {
-
-
-
             lbshopinfo.Text = GlobalValue.GShop.AreaInfo.AreaName + " - " + GlobalValue.GShop.ShopName;
-
             IList<UserInfo> users = GlobalValue.GShop.ShopUsers;
-            Dictionary<string, UserInfo> SourceUsers = new Dictionary<string, UserInfo>();
-
-            foreach (UserInfo user in users)
-            {
-                SourceUsers.Add(user.TrueName, user);
-            }
-
-            GridBuilder<UserInfo> UserGrid = new GridBuilder<UserInfo>(SourceUsers, new Size(120, 120), panel1, 3, 50, 50);
-
-            UserGrid.OnBindButtonClick += new GridBuilder<UserInfo>.BindButtonClick(UserGrid_OnBindButtonClick);
+            GridBuilder<UserInfo> UserGrid = new GridBuilder<UserInfo>(users, new Size(120, 120), panel1, 3, 50, 50);
+            UserGrid.OnAddItem += new GridBuilder<UserInfo>.AddItem(UserGrid_OnAddItem);
             UserGrid.BuildButtons();
         }
 
-        void UserGrid_OnBindButtonClick(Button b)
+        void UserGrid_OnAddItem(UserInfo t, Rectangle position, Control gridcontainer)
         {
-            b.Click += new EventHandler(UserBtnclick);
+            Button btn = new Button();
+            btn.Left = position.Left;
+            btn.Top = position.Top; ;
+            btn.Size = position.Size;
+            btn.Text = t.TrueName;
+            btn.Tag = t;
+            btn.Click += new EventHandler(UserBtnclick);
+            gridcontainer.Controls.Add(btn);
         }
 
         void UserBtnclick(object sender, EventArgs e)

@@ -12,10 +12,9 @@ namespace ShopClient
 
     public partial class GridBuilder<T>
     {
-        Dictionary<string, T> Source;
-
-        Size ButtonSize;
-
+        IList<T> Source;
+        Size ItemSize;
+        
         int ColAmount;
 
         int InitTop;
@@ -33,48 +32,37 @@ namespace ShopClient
         /// <param name="rowspace">行间距</param>
         /// <param name="inittop">初始化高度</param>
 
-        public GridBuilder(Dictionary<string, T> source, Size buttonsize, Control control, int colamount, int rowspace, int inittop)
+        public GridBuilder(IList<T> source, Size itemsize, Control control, int colamount, int rowspace, int inittop)
         {
             Source = source;
-            ButtonSize = buttonsize;
+            ItemSize = itemsize;
             GridContainer = control;
             ColAmount = colamount;
             RowSpace = rowspace;
             InitTop = inittop;
         }
 
-        public delegate void BindButtonClick(Button b);
-        public event BindButtonClick OnBindButtonClick;
+        public delegate void AddItem(T t, Rectangle position, Control gridcontainer);
+        public event AddItem OnAddItem;
 
         public void BuildButtons()
         {
 
             int btnIndex = 0;
-            int space = (GridContainer.Width - ColAmount * ButtonSize.Width) / (ColAmount + 1);
+            int space = (GridContainer.Width - ColAmount * ItemSize.Width) / (ColAmount + 1);
 
-            foreach (KeyValuePair<string, T> kv in Source)
+            foreach (T t in Source)
             {
-
-
                 int currentRow = btnIndex / ColAmount;
                 int currentCol = btnIndex % ColAmount;
+                int left = space + (ItemSize.Width + space) * currentCol;
+                int top = InitTop + (RowSpace + ItemSize.Height) * currentRow;              
 
-                int left = space + (ButtonSize.Width + space) * currentCol;
-                int top = InitTop + (RowSpace + ButtonSize.Height) * currentRow;
-
-                Button btn = new Button();
-                btn.Left = left;
-                btn.Top = top;
-                btn.Size = ButtonSize;
-
-                btn.Text = kv.Key;
-                btn.Tag = kv.Value;
-                if (OnBindButtonClick != null)
+                if (OnAddItem != null)
                 {
-                    OnBindButtonClick(btn);
+                    OnAddItem(t, new Rectangle(left, top, ItemSize.Width, ItemSize.Height), GridContainer);
                 }
-                GridContainer.Controls.Add(btn);
-
+                
                 btnIndex++;
 
             }
