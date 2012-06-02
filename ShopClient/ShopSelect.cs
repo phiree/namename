@@ -36,7 +36,7 @@ namespace ShopClient
         }
         public void LoadShops(AreaInfo area, TabPage tp)
         {
-            IList<ShopInfo> shops = area.AreaShops;
+            IList<ShopInfo> shops = area.AreaShops.Where(x => x.IsCenter == false).ToList();
             int btnIndex = 0,
                 initTop = 20,
 
@@ -47,27 +47,25 @@ namespace ShopClient
 
             foreach (ShopInfo shop in shops)
             {
-                if (shop.IsCenter == false)
-                {
-                    int currentRow = btnIndex / cols;
-                    int currentCol = btnIndex % cols;
 
-                    int left = space + (buttonwidth + space) * currentCol;
-                    int top = (initTop + height) * currentRow + initTop;
+                int currentRow = btnIndex / cols;
+                int currentCol = btnIndex % cols;
 
-                    Button btn = new Button();
-                    btn.Left = left;
-                    btn.Top = top;
-                    btn.Width = buttonwidth;
-                    btn.Height = height;
+                int left = space + (buttonwidth + space) * currentCol;
+                int top = (initTop + height) * currentRow + initTop;
 
-                    btn.Text = shop.ShopName;
-                    btn.Tag = shop.ShopID;
-                    btn.Click += new EventHandler(btn_Click);
-                    tp.Controls.Add(btn);
+                Button btn = new Button();
+                btn.Left = left;
+                btn.Top = top;
+                btn.Width = buttonwidth;
+                btn.Height = height;
 
-                    btnIndex++;
-                }
+                btn.Text = shop.ShopName;
+                btn.Tag = shop.ShopID;
+                btn.Click += new EventHandler(btn_Click);
+                tp.Controls.Add(btn);
+
+                btnIndex++;
             }
         }
 
