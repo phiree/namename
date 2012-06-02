@@ -32,17 +32,29 @@ namespace ShopClient
         {
             ShopInfo shop = new DALShopInfo().GetByShopID(ShopId);
             IList<UserInfo> users = shop.ShopUsers;
-            int initIndex=0, initTop = 0, initLeft = 0, width = 40, height = 40, space = 30, cols = 4;
-            foreach (UserInfo user in users)
+            Dictionary<string,UserInfo> SourceUsers=new Dictionary<string,UserInfo>();
+            foreach(UserInfo user in users)
             {
-                int rowIndex = initIndex / cols;
-                int colIndex = initIndex % cols;
-
-                int left =colIndex* (space + width);
-                Button btn = new Button();
-
-                initIndex++;
+             SourceUsers.Add(user.UserName,user);
             }
+
+            GridBuilder<UserInfo> UserGrid = new GridBuilder<UserInfo>(SourceUsers,
+                new Size(100, 100), panel1, 4, 20, 20);
+            UserGrid.BuildButtons();
+            UserGrid.OnBindButtonClick += new GridBuilder<UserInfo>.BindButtonClick(UserGrid_OnBindButtonClick);
+
+        }
+
+        void UserGrid_OnBindButtonClick(Button b)
+        {
+            b.Click += new EventHandler(UserBtnclick);
+        }
+        void UserBtnclick(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            Button btn = sender as Button;
+            login.UserName = btn.Text;
+            login.ShowDialog();
         }
     }
 }

@@ -11,6 +11,7 @@ namespace ShopClient
 {
     public partial class Login : Form
     {
+        public string UserName { get; set; }
         public Login()
         {
             InitializeComponent();
