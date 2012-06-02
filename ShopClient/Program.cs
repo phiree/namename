@@ -9,7 +9,7 @@ namespace ShopClient
 {
     static class Program
     {
-        static Cash cashFrm = null;
+       public static Cash cashFrm = null;
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>

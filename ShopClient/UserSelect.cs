@@ -39,7 +39,7 @@ namespace ShopClient
 
             foreach (UserInfo user in users)
             {
-                SourceUsers.Add(user.UserName, user);
+                SourceUsers.Add(user.TrueName, user);
             }
 
             GridBuilder<UserInfo> UserGrid = new GridBuilder<UserInfo>(SourceUsers, new Size(120, 120), panel1, 3, 50, 50);
@@ -57,8 +57,13 @@ namespace ShopClient
         {
             Login login = new Login();
             Button btn = sender as Button;
-            login.UserName = btn.Text;
-            login.ShowDialog();
+            login.UserName = ((UserInfo)btn.Tag).UserName;
+            if (login.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                Program.cashFrm.Show();
+                ToExit = false;
+                this.Close();
+            }
         }
 
         private void btnSelect_Click(object sender, EventArgs e)

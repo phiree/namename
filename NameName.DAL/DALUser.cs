@@ -82,5 +82,15 @@ namespace NameName.DAL
             user.IsShopManager = false;
             Save(user);
         }
+        public bool ValidateUser(string userName, string pwd)
+        {
+            IQuery qry = session.CreateQuery(string.Format( @"select u
+                from UserInfo u
+                where u.UserName='{0}' and Pwd='{1}'"
+                ,userName
+                ,pwd));
+            UserInfo user = qry.FutureValue<UserInfo>().Value;
+            return user != null;
+        }
     }
 }

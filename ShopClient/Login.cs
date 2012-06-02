@@ -6,7 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
+using NameName.Model;
+using NameName.DAL;
 namespace ShopClient
 {
     public partial class Login : Form
@@ -28,8 +29,23 @@ namespace ShopClient
 
         private void button4_Click(object sender, EventArgs e)
         {
-            this.Close();
-            new UserSelect().Show();
+            this.DialogResult = DialogResult.Cancel;
+          
+
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            bool isValidated = new DALUser().ValidateUser(UserName, numInupt1.InputValue);
+            if (isValidated)
+            {
+                this.DialogResult = DialogResult.OK;
+              
+            }
+            else
+            {
+                MessageBox.Show("密码错误");
+            }
         }
     }
 }
