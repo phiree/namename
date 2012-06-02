@@ -8,7 +8,7 @@ using FluentNHibernate.Automapping;
 using NHibernate.Tool.hbm2ddl;
 using NHibernate.Hql;
 using NHibernate.Criterion.Lambda;
-
+using NameNameConfig;
 namespace NameName.DAL
 {
     public class HybridSessionBuilder
@@ -41,14 +41,19 @@ namespace NameName.DAL
             {
                 //IAutomappingConfiguration cfg = new MyAutoMappingCfg();
 
+                
+
                 _sessionFactory = Fluently.Configure()
                 .Database(
                          MsSqlConfiguration
                         .MsSql2008
                         .ShowSql()
                         .ConnectionString(c => c
-                        .FromConnectionStringWithKey("conn"))
-                        )
+                        .Server(DbConfig.Server)
+                        .Database(DbConfig.DataBase)
+                        .Username(DbConfig.Uid)
+                        .Password(DbConfig.Pwd)
+                        ))
                 .Mappings(m =>
                     //  m.FluentMappings.Add(AssemblyOf<Model.Area>(cfg)))
                 m.FluentMappings.AddFromAssemblyOf<NameName.Model.Mapping.ShopInfoMap>())

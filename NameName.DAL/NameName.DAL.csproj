@@ -87,6 +87,10 @@
       <Project>{A84D74B0-8175-4F3D-B7C9-34BAF70396FE}</Project>
       <Name>NameName.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NameNameConfig\NameNameConfig.csproj">
+      <Project>{5A3BF82D-6904-4CC0-ACE8-F999586D0375}</Project>
+      <Name>NameNameConfig</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
