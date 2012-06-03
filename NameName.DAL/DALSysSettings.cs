@@ -3,19 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NameName.Model;
+
 namespace NameName.DAL
 {
-   public class DALSysSettings
+    public class DALSysSettings : DALBase<Sys_Settings>
     {
-       public void Save()
-       { 
-        
-       }
-       public string GetValue(string settingName)
-       {
-           string value = string.Empty;
+        public void Save(Sys_Settings syssettings)
+        {
+            if (session.Get<Sys_Settings>(syssettings.Name) == null)
+            {
+                session.Save(syssettings);
+            }
+            else
+            {
+                session.Update(syssettings);
+            }
 
-           return value;
-       }
+        }
+
+        public Sys_Settings GetValue(string settingName)
+        {
+            return session.Get<Sys_Settings>(settingName);
+        }
     }
 }

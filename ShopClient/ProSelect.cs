@@ -34,7 +34,8 @@ namespace ShopClient
                 tabControl1.TabPages.Add(tp);
             }
 
-            proinfos = dpi.GetPros();
+            //获得本区域的产品价格定义过的产品
+            proinfos = dpi.GetProsByAreaID(GlobalValue.GShop.AreaInfo.AreaID);
             //第一次需要加载第0页的第0页数据！
             ShowByCateAndPageNo(tabControl1.TabPages[0]);
         }
@@ -68,8 +69,9 @@ namespace ShopClient
             pi.Left = position.Left;
             pi.Top = position.Top;
             pi.Size = position.Size;
+            pi.ShowQty = false;
+            pi.ProInfo = t;
 
-            //pi.SetProInfo(t);
             pi.Click += new EventHandler(pi_Click);
             gridcontainer.Controls.Add(pi);
         }

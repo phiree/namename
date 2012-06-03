@@ -82,8 +82,31 @@ namespace ShopClient
             lbAmount.Text = lbPreAmount.Text = lbPreNo.Text = lbbillNo.Text = string.Empty;
         }
 
+        private void UpDateImage()
+        {
+            string ImgPath = Application.StartupPath + "ProImg\\";
+            if (!System.IO.Directory.Exists(ImgPath))
+            {
+                System.IO.Directory.CreateDirectory(ImgPath);
+            }
+            DALSysSettings dss = new DALSysSettings();
+            Sys_Settings ss = dss.GetValue(GlobalValue.GShop.ShopID.ToString() + "/ProUpDateTime");
+
+            IList<ProInfo> pis = new DALProInfo().GetProByLastUpDate((DateTime)ss.Value);
+            foreach (ProInfo pi in pis)
+            {
+                //通过HTTP取得服务器上的图片数据，保存到本地的ImaPath路径下
+
+            }
+            //取得服务器时间
+            dss.Save(ss);
+
+        }
+
         public void LoginSuccess()
         {
+            //更新图片数据
+            UpDateImage();
             //加载产品数据
             ProSelect proselect = new ProSelect();
             proselect.LoadProInfo();

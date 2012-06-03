@@ -60,7 +60,7 @@ namespace ShopClient
             if (login.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 GlobalValue.GUser = u;
-                Program.cashFrm.LoginSuccess();
+                Program.mainfrm.LoginSuccess();
                 ToExit = false;
                 this.Close();
             }

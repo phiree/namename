@@ -55,9 +55,18 @@ namespace NameName.DAL
             }
         }
 
+        public IList<ProInfo> GetProsByAreaID(DateTime? lastupdate)
+        {
+            return QueryFutureList(" select a from ProInfo a where a.DeleteFlag=false and a.LastUpDateTime > " + lastupdate);
+        }
+
+        public IList<ProInfo> GetProsByAreaID(Guid areaid)
+        {
+            return QueryFutureList(" select a from ProInfo a,ProPrice b where a.DeleteFlag=false and a.ProID = b.ProID And b.AreaInfo.AreaID='" + areaid.ToString() + "' order by a.LastUpDateTime desc ");
+        }
+
         public IList<ProInfo> GetPros()
         {
-
             return QueryFutureList(" select a from ProInfo a where a.DeleteFlag=false order by a.LastUpDateTime desc ");
         }
 

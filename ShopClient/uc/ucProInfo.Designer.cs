@@ -118,6 +118,7 @@
             this.Controls.Add(this.panel2);
             this.Name = "ucProInfo";
             this.Size = new System.Drawing.Size(195, 198);
+            this.Load += new System.EventHandler(this.ucProInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picpro)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
