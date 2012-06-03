@@ -140,6 +140,12 @@
     <Compile Include="uc\NumInupt.Designer.cs">
       <DependentUpon>NumInupt.cs</DependentUpon>
     </Compile>
+    <Compile Include="uc\ucProInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uc\ucProInfo.Designer.cs">
+      <DependentUpon>ucProInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserSelect.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="uc\NumInupt.resx">
       <DependentUpon>NumInupt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uc\ucProInfo.resx">
+      <DependentUpon>ucProInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserSelect.resx">
       <DependentUpon>UserSelect.cs</DependentUpon>
