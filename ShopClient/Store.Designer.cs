@@ -1,6 +1,6 @@
 ﻿namespace ShopClient
 {
-    partial class Cash
+    partial class Store
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // Cash
+            // Store
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(694, 475);
-            this.Name = "Cash";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "收银";
+            this.ClientSize = new System.Drawing.Size(292, 273);
+            this.Name = "Store";
+            this.Text = "库存信息";
             this.ResumeLayout(false);
 
         }

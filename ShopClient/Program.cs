@@ -9,7 +9,7 @@ namespace ShopClient
 {
     static class Program
     {
-       public static Cash cashFrm = null;
+       public static main cashFrm = null;
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
@@ -18,7 +18,7 @@ namespace ShopClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           cashFrm = new Cash();
+           cashFrm = new main();
             Application.Run(cashFrm);
         }
         /// <summary>

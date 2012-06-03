@@ -76,8 +76,11 @@
             this.Controls.Add(this.button4);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.numInupt1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "PwdChange";
-            this.Text = "PwdChange";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "修改密码";
+            this.Load += new System.EventHandler(this.PwdChange_Load);
             this.ResumeLayout(false);
 
         }

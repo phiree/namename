@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace ShopClient
 {
-    public partial class Cash : Form
+    public partial class AskProduct : Form
     {
-        public Cash()
+        public AskProduct()
         {
             InitializeComponent();
         }

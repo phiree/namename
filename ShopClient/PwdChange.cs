@@ -38,5 +38,10 @@ namespace ShopClient
                 this.Close();
             }
         }
+
+        private void PwdChange_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
