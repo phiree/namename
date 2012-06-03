@@ -17,7 +17,7 @@ namespace NameName.DAL
         public UserInfo GetDutyUser(ShopInfo shop)
         {
             IQuery qry = session.CreateQuery(
-               string.Format(@"select u from Shop_DutyInfo u where u.Shop.ShopId='{0}'"
+               string.Format(@"select u from Shop_DutyInfo u where u.Shop.ShopID='{0}'"
                , shop.ShopID)
                );
             Shop_DutyInfo duty = qry.FutureValue<Shop_DutyInfo>().Value;
@@ -82,7 +82,7 @@ namespace NameName.DAL
                     }
                     else
                     {
-                        if (!isDuty)
+                        if (isDuty)
                         {
                             Shop_DutyInfo dutynew = new Shop_DutyInfo();
                             dutynew.AccountPeriod = currentPeriod;

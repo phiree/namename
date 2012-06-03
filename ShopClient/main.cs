@@ -89,13 +89,15 @@ namespace ShopClient
             {
                 //正在当班
                 dutyinfo = sd;
-                //开始当班
+                
                 btnDutyBegin.Enabled = false;
                 btnDutyEnd.Enabled = true;
                 btnNew.Enabled = true;
                 btnBack.Enabled = true;
                 btnAsk.Enabled = false;
                 btnCheck.Enabled = false;
+                //判断是否有单据！有单据则下面的显示
+
             }
             else
             {
@@ -137,6 +139,8 @@ namespace ShopClient
                 btnBack.Enabled = true;
                 btnAsk.Enabled = false;
                 btnCheck.Enabled = false;
+
+                pnlselllist.Visible = pnlselldetail.Visible = false;
             }
             else
             {
