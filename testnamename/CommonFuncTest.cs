@@ -12,7 +12,9 @@ namespace testnamename
         [Test]
         public void GetUserTimeTest()
         {
+            
          DateTime dt=   new CommonFunctions().GetServerTime();
+         Console.Write(dt.ToString());
         }
     }
 }

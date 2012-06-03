@@ -9,7 +9,9 @@ namespace NameName.DAL
     {
        public DateTime GetServerTime()
        {
-           return QueryFutureValue("select getdate()");
+           DateTime dt = session.CreateSQLQuery("select getdate()").UniqueResult<DateTime>();
+
+         return dt;
        }
     }
 }
