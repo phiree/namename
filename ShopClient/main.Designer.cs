@@ -41,7 +41,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnDutyEnd = new System.Windows.Forms.Button();
             this.btnDutyBegin = new System.Windows.Forms.Button();
+            this.pnlselllist = new System.Windows.Forms.Panel();
+            this.pnlselldetail = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.billNo = new System.Windows.Forms.Label();
+            this.lbAmount = new System.Windows.Forms.Label();
+            this.btnCash = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lbPreAmount = new System.Windows.Forms.Label();
+            this.lbPreNo = new System.Windows.Forms.Label();
+            this.btnProSelect = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            this.pnlselllist.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -183,11 +194,123 @@
             this.btnDutyBegin.UseVisualStyleBackColor = true;
             this.btnDutyBegin.Click += new System.EventHandler(this.btnDutyBegin_Click);
             // 
+            // pnlselllist
+            // 
+            this.pnlselllist.Controls.Add(this.btnProSelect);
+            this.pnlselllist.Controls.Add(this.label3);
+            this.pnlselllist.Controls.Add(this.billNo);
+            this.pnlselllist.Controls.Add(this.lbAmount);
+            this.pnlselllist.Controls.Add(this.btnCash);
+            this.pnlselllist.Controls.Add(this.label4);
+            this.pnlselllist.Controls.Add(this.lbPreNo);
+            this.pnlselllist.Controls.Add(this.lbPreAmount);
+            this.pnlselllist.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlselllist.Location = new System.Drawing.Point(659, 76);
+            this.pnlselllist.Name = "pnlselllist";
+            this.pnlselllist.Size = new System.Drawing.Size(177, 435);
+            this.pnlselllist.TabIndex = 1;
+            // 
+            // pnlselldetail
+            // 
+            this.pnlselldetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlselldetail.Location = new System.Drawing.Point(0, 76);
+            this.pnlselldetail.Name = "pnlselldetail";
+            this.pnlselldetail.Size = new System.Drawing.Size(659, 435);
+            this.pnlselldetail.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label3.Font = new System.Drawing.Font("宋体", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(0, 181);
+            this.label3.Margin = new System.Windows.Forms.Padding(3, 30, 3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(177, 30);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "单据信息";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // billNo
+            // 
+            this.billNo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.billNo.Location = new System.Drawing.Point(0, 211);
+            this.billNo.Name = "billNo";
+            this.billNo.Size = new System.Drawing.Size(177, 34);
+            this.billNo.TabIndex = 1;
+            this.billNo.Text = "单据号：1206090010001";
+            this.billNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbAmount
+            // 
+            this.lbAmount.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lbAmount.Location = new System.Drawing.Point(0, 245);
+            this.lbAmount.Name = "lbAmount";
+            this.lbAmount.Size = new System.Drawing.Size(177, 34);
+            this.lbAmount.TabIndex = 2;
+            this.lbAmount.Text = "金额：200.00元";
+            this.lbAmount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnCash
+            // 
+            this.btnCash.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnCash.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnCash.Location = new System.Drawing.Point(0, 279);
+            this.btnCash.Name = "btnCash";
+            this.btnCash.Size = new System.Drawing.Size(177, 54);
+            this.btnCash.TabIndex = 3;
+            this.btnCash.Text = "收银";
+            this.btnCash.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label4.Font = new System.Drawing.Font("宋体", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(0, 333);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(177, 34);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "上单信息";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbPreAmount
+            // 
+            this.lbPreAmount.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lbPreAmount.Location = new System.Drawing.Point(0, 401);
+            this.lbPreAmount.Name = "lbPreAmount";
+            this.lbPreAmount.Size = new System.Drawing.Size(177, 34);
+            this.lbPreAmount.TabIndex = 6;
+            this.lbPreAmount.Text = "金额：200.00元";
+            this.lbPreAmount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbPreNo
+            // 
+            this.lbPreNo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lbPreNo.Location = new System.Drawing.Point(0, 367);
+            this.lbPreNo.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.lbPreNo.Name = "lbPreNo";
+            this.lbPreNo.Size = new System.Drawing.Size(177, 34);
+            this.lbPreNo.TabIndex = 5;
+            this.lbPreNo.Text = "单据号：1206090010001";
+            this.lbPreNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnProSelect
+            // 
+            this.btnProSelect.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnProSelect.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnProSelect.Location = new System.Drawing.Point(0, 127);
+            this.btnProSelect.Name = "btnProSelect";
+            this.btnProSelect.Size = new System.Drawing.Size(177, 54);
+            this.btnProSelect.TabIndex = 7;
+            this.btnProSelect.Text = "产品";
+            this.btnProSelect.UseVisualStyleBackColor = true;
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(836, 511);
+            this.Controls.Add(this.pnlselldetail);
+            this.Controls.Add(this.pnlselllist);
             this.Controls.Add(this.panel1);
             this.Name = "main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -195,6 +318,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Cash_Load);
             this.panel1.ResumeLayout(false);
+            this.pnlselllist.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -214,6 +338,16 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel pnlselllist;
+        private System.Windows.Forms.Panel pnlselldetail;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label billNo;
+        private System.Windows.Forms.Label lbAmount;
+        private System.Windows.Forms.Button btnCash;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbPreAmount;
+        private System.Windows.Forms.Label lbPreNo;
+        private System.Windows.Forms.Button btnProSelect;
 
     }
 }
