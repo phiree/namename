@@ -152,6 +152,7 @@
     <Compile Include="Mapping\Account_PeriodMap.cs" />
     <Compile Include="Mapping\AreaInfoMap.cs" />
     <Compile Include="Mapping\Shop_DutyInfoMap.cs" />
+    <Compile Include="Mapping\Shop_SellListMap.cs" />
     <Compile Include="ProInfo.cs">
       <SubType>Code</SubType>
     </Compile>

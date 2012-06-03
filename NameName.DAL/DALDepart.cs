@@ -6,7 +6,7 @@ using NameName.Model;
 using NHibernate;
 namespace NameName.DAL
 {
-    public class DALDepart : DALBase
+    public class DALDepart : DALBase<DepartInfo>
     {
         /// <summary>
         /// 获得没有分配的门店人员的部门
@@ -16,20 +16,16 @@ namespace NameName.DAL
         {
             // 没有删除的，没有分配的门店人员 的部门
 
-            string sql = " select d from DepartInfo d where d.DeleteFlag=false order by d.OrderNO";
-            IQuery query = session.CreateQuery(sql);
-            IList<DepartInfo> departs = query.Future<DepartInfo>().ToList();
-            return departs;
+           
+     return  QueryFutureList(" select d from DepartInfo d where d.DeleteFlag=false order by d.OrderNO");
+           
         }
 
         public IList<DepartInfo> GetDeparts()
         {
-            string sql = " select d from DepartInfo d where d.DeleteFlag=false order by d.OrderNO";
-            IQuery query = session.CreateQuery(sql);
-            IList<DepartInfo> departs = query.Future<DepartInfo>().ToList();
-
-
-            return departs;
+            return QueryFutureList(" select d from DepartInfo d where d.DeleteFlag=false order by d.OrderNO");
+          
+            
         }
 
 

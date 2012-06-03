@@ -6,15 +6,12 @@ using NameName.Model;
 using NHibernate;
 namespace NameName.DAL
 {
-    public class DALShopInfo : DALBase
+    public class DALShopInfo : DALBase<ShopInfo>
     {
         public IList<ShopInfo> GetShops()
         {
-            string sql = " select u from ShopInfo u where DeleteFlag=false";
-            IQuery query = session.CreateQuery(sql);
-            IList<ShopInfo> shops = query.Future<ShopInfo>().ToList();
-
-            return shops;
+           
+            return QueryFutureList(" select u from ShopInfo u where DeleteFlag=false");
         }
 
         public void Save(ShopInfo shopinfo)

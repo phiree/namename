@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,8 +45,18 @@
   <ItemGroup>
     <Compile Include="Area.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestSellList.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\NameName.DAL\NameName.DAL.csproj">
+      <Project>{BD5C08B3-FEB2-4BAF-BADD-FD1246128870}</Project>
+      <Name>NameName.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NameName.Model\NameName.Model.csproj">
+      <Project>{A84D74B0-8175-4F3D-B7C9-34BAF70396FE}</Project>
+      <Name>NameName.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

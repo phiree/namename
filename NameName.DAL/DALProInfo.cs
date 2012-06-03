@@ -6,7 +6,7 @@ using NameName.Model;
 using NHibernate;
 namespace NameName.DAL
 {
-    public class DALProInfo : DALBase
+    public class DALProInfo : DALBase<ProInfo>
     {
         public ProPrice GetPrice(Guid proid, Guid areaid)
         {
@@ -57,11 +57,8 @@ namespace NameName.DAL
 
         public IList<ProInfo> GetPros()
         {
-            string sql = " select a from ProInfo a where a.DeleteFlag=false order by a.LastUpDateTime desc ";
-            IQuery query = session.CreateQuery(sql);
-            IList<ProInfo> pros = query.Future<ProInfo>().ToList();
 
-            return pros;
+            return QueryFutureList(" select a from ProInfo a where a.DeleteFlag=false order by a.LastUpDateTime desc ");
         }
 
         public Guid Save(ProInfo proinfo)

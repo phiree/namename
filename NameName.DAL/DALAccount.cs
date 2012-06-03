@@ -6,13 +6,13 @@ using NameName.Model;
 using NHibernate;
 namespace NameName.DAL
 {
-    public class DALAccount : DALBase
+    public class DALAccount : DALBase<Account_Period>
     {
         public Account_Period GetCurrAccount()
         {
             string sql = " select d from Account_Period d where d.EndDate is null";
-            IQuery query = session.CreateQuery(sql);
-            Account_Period acc = query.FutureValue<Account_Period>().Value;
+          
+            Account_Period acc = QueryFutureValue(sql);
             return acc;
 
         }

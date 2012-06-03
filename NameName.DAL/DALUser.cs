@@ -7,7 +7,7 @@ using NHibernate;
 
 namespace NameName.DAL
 {
-    public class DALUser : DALBase
+    public class DALUser : DALBase<UserInfo>
     {
         /// <summary>
         /// 获得某个部门没有分配的人员
@@ -20,17 +20,15 @@ namespace NameName.DAL
                         from UserInfo u 
                         where u.DepartInfo.DepartID='" + departid.ToString() + "' and u.ShopInfo = null and u.IsShopUser = true";
 
-            IQuery query = session.CreateQuery(sql);
-            IList<UserInfo> users = query.Future<UserInfo>().ToList();
-            return users;
+       
+            return QueryFutureList(sql);
         }
 
         public IList<UserInfo> GetUsers()
         {
             string sql = " select u from UserInfo u ";
-            IQuery query = session.CreateQuery(sql);
-            IList<UserInfo> users = query.Future<UserInfo>().ToList();
-            return users;
+          
+            return QueryFutureList(sql);
         }
 
         public void Save(UserInfo user)
@@ -84,12 +82,12 @@ namespace NameName.DAL
         }
         public bool ValidateUser(string userName, string pwd)
         {
-            IQuery qry = session.CreateQuery(string.Format( @"select u
+           
+            UserInfo user = QueryFutureValue(string.Format(@"select u
                 from UserInfo u
                 where u.UserName='{0}' and Pwd='{1}'"
-                ,userName
-                ,pwd));
-            UserInfo user = qry.FutureValue<UserInfo>().Value;
+                , userName
+                , pwd));
             return user != null;
         }
     }

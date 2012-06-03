@@ -6,14 +6,12 @@ using NameName.Model;
 using NHibernate;
 namespace NameName.DAL
 {
-    public class DALArea : DALBase
+    public class DALArea : DALBase<AreaInfo>
     {
         public IList<AreaInfo> GetAreas()
         {
             string sql = " select a from AreaInfo a where a.DeleteFlag=false order by OrderNO ";
-            IQuery query = session.CreateQuery(sql);
-            IList<AreaInfo> areas = query.Future<AreaInfo>().ToList();
-           
+            IList<AreaInfo> areas = QueryFutureList(sql);
             return areas;
         }
 

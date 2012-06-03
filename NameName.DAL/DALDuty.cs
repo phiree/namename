@@ -7,7 +7,7 @@ using NameName.Model;
 using NHibernate;
 namespace NameName.DAL
 {
-    public class DALDuty : DALBase
+    public class DALDuty : DALBase<Shop_DutyInfo>
     {
         /// <summary>
         /// 商店的当班人员
@@ -16,11 +16,10 @@ namespace NameName.DAL
         /// <param name="shopId"></param>
         public UserInfo GetDutyUser(ShopInfo shop)
         {
-            IQuery qry = session.CreateQuery(
-               string.Format(@"select u from Shop_DutyInfo u where u.Shop.ShopId='{0}'"
-               , shop.ShopID)
-               );
-            Shop_DutyInfo duty = qry.FutureValue<Shop_DutyInfo>().Value;
+          
+            Shop_DutyInfo duty = QueryFutureValue(
+                string.Format(@"select u from Shop_DutyInfo u where u.Shop.ShopId='{0}'"
+               , shop.ShopID));
             if (duty == null) return null;
             UserInfo user = duty.User;
             if (user == null) return null;
@@ -34,11 +33,10 @@ namespace NameName.DAL
         /// <param name="username"></param>
         public ShopInfo GetDutyShop(UserInfo user)
         {
-            IQuery qry = session.CreateQuery(
-                  string.Format(@"select u from Shop_DutyInfo u where u.User.UserName='{0}'"
-                  , user.UserName)
-                  );
-            Shop_DutyInfo duty = qry.FutureValue<Shop_DutyInfo>().Value;
+            
+            Shop_DutyInfo  duty = QueryFutureValue(
+                string.Format(@"select u from Shop_DutyInfo u where u.User.UserName='{0}'"
+               , user.UserName));
             if (duty == null) return null;
             if (duty.Shop == null) return null;
             return duty.Shop;
@@ -54,13 +52,9 @@ namespace NameName.DAL
         {
             errMsg = string.Empty;
 
-
-            IQuery qry = session.CreateQuery(
-                 string.Format(@"select u from Shop_DutyInfo u where u.User.UserName='{0}'
+            Shop_DutyInfo duty = QueryFutureValue(string.Format(@"select u from Shop_DutyInfo u where u.User.UserName='{0}'
                                 and u.Shop.ShopID='{1}' and u.EndDate=null "
-                 , user.UserName, shop.ShopID)
-                 );
-            Shop_DutyInfo duty = qry.FutureValue<Shop_DutyInfo>().Value;
+                 , user.UserName, shop.ShopID));
 
             if (duty != null)
             {
