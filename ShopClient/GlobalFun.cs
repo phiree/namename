@@ -13,5 +13,10 @@ namespace ShopClient
         {
             MessageBox.Show(ErrorStr, "么么 门店系统", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        public static void MessageBoxHint(string HintStr)
+        {
+            MessageBox.Show(HintStr, "么么 门店系统", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
