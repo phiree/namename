@@ -45,26 +45,30 @@
             this.picpro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picpro.Location = new System.Drawing.Point(0, 0);
             this.picpro.Name = "picpro";
-            this.picpro.Size = new System.Drawing.Size(195, 140);
+            this.picpro.Size = new System.Drawing.Size(200, 142);
+            this.picpro.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picpro.TabIndex = 0;
             this.picpro.TabStop = false;
             // 
             // lbproname
             // 
+            this.lbproname.BackColor = System.Drawing.Color.AliceBlue;
             this.lbproname.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbproname.Location = new System.Drawing.Point(0, 0);
             this.lbproname.Name = "lbproname";
-            this.lbproname.Size = new System.Drawing.Size(154, 29);
+            this.lbproname.Size = new System.Drawing.Size(145, 29);
             this.lbproname.TabIndex = 1;
             this.lbproname.Text = "名称";
             this.lbproname.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbproname.Click += new System.EventHandler(this.lbproname_Click);
             // 
             // lbunit
             // 
+            this.lbunit.BackColor = System.Drawing.Color.AntiqueWhite;
             this.lbunit.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lbunit.Location = new System.Drawing.Point(154, 0);
+            this.lbunit.Location = new System.Drawing.Point(145, 0);
             this.lbunit.Name = "lbunit";
-            this.lbunit.Size = new System.Drawing.Size(41, 29);
+            this.lbunit.Size = new System.Drawing.Size(55, 29);
             this.lbunit.TabIndex = 2;
             this.lbunit.Text = "单位";
             this.lbunit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -74,9 +78,9 @@
             this.panel1.Controls.Add(this.lbproname);
             this.panel1.Controls.Add(this.lbunit);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 140);
+            this.panel1.Location = new System.Drawing.Point(0, 142);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(195, 29);
+            this.panel1.Size = new System.Drawing.Size(200, 29);
             this.panel1.TabIndex = 3;
             // 
             // panel2
@@ -84,25 +88,27 @@
             this.panel2.Controls.Add(this.lbprice);
             this.panel2.Controls.Add(this.lbqty);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 169);
+            this.panel2.Location = new System.Drawing.Point(0, 171);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(195, 29);
+            this.panel2.Size = new System.Drawing.Size(200, 29);
             this.panel2.TabIndex = 4;
             // 
             // lbprice
             // 
+            this.lbprice.BackColor = System.Drawing.Color.Azure;
             this.lbprice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbprice.Location = new System.Drawing.Point(0, 0);
             this.lbprice.Name = "lbprice";
-            this.lbprice.Size = new System.Drawing.Size(113, 29);
+            this.lbprice.Size = new System.Drawing.Size(118, 29);
             this.lbprice.TabIndex = 1;
             this.lbprice.Text = "单价：";
             this.lbprice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbqty
             // 
+            this.lbqty.BackColor = System.Drawing.Color.AliceBlue;
             this.lbqty.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lbqty.Location = new System.Drawing.Point(113, 0);
+            this.lbqty.Location = new System.Drawing.Point(118, 0);
             this.lbqty.Name = "lbqty";
             this.lbqty.Size = new System.Drawing.Size(82, 29);
             this.lbqty.TabIndex = 2;
@@ -111,13 +117,12 @@
             // 
             // ucProInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.picpro);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Name = "ucProInfo";
-            this.Size = new System.Drawing.Size(195, 198);
+            this.Size = new System.Drawing.Size(200, 200);
             this.Load += new System.EventHandler(this.ucProInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picpro)).EndInit();
             this.panel1.ResumeLayout(false);

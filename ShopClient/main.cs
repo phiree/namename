@@ -123,12 +123,15 @@ namespace ShopClient
             dss.Save(ss);
         }
 
+        ProSelect proselect = new ProSelect();
         public void LoginSuccess()
         {
             //更新图片数据
             UpDateImage();
             //加载产品数据
-            ProSelect proselect = new ProSelect();
+            proselect.Show();
+            proselect.Hide();
+
             proselect.LoadProInfo();
 
             this.Show();
@@ -158,7 +161,6 @@ namespace ShopClient
             }
             else
             {
-
                 if (string.IsNullOrEmpty(errorstr))
                 {
                     //允许当班
@@ -211,6 +213,7 @@ namespace ShopClient
         {
             //产生一个SellList
             selllist = new Shop_SellList();
+            pnlselllist.Visible = pnlselldetail.Visible = true;
             btnProSelect.Enabled = true;
             btnCash.Enabled = true;
 
@@ -224,7 +227,12 @@ namespace ShopClient
         private void btnProSelect_Click(object sender, EventArgs e)
         {
             //产品选择
+            proselect.Show();
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            proselect.LoadProInfo();
         }
     }
 }

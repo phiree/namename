@@ -51,6 +51,7 @@
             this.lbPreAmount = new System.Windows.Forms.Label();
             this.lbPreNo = new System.Windows.Forms.Label();
             this.btnProSelect = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnlselllist.SuspendLayout();
             this.SuspendLayout();
@@ -197,6 +198,7 @@
             // 
             // pnlselllist
             // 
+            this.pnlselllist.Controls.Add(this.button1);
             this.pnlselllist.Controls.Add(this.btnProSelect);
             this.pnlselllist.Controls.Add(this.label3);
             this.pnlselllist.Controls.Add(this.lbbillNo);
@@ -307,6 +309,18 @@
             this.btnProSelect.UseVisualStyleBackColor = true;
             this.btnProSelect.Click += new System.EventHandler(this.btnProSelect_Click);
             // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button1.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.Location = new System.Drawing.Point(0, 73);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(177, 54);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "LoadPro";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -351,6 +365,7 @@
         private System.Windows.Forms.Label lbPreAmount;
         private System.Windows.Forms.Label lbPreNo;
         private System.Windows.Forms.Button btnProSelect;
+        private System.Windows.Forms.Button button1;
 
     }
 }

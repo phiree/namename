@@ -27,10 +27,11 @@ namespace ShopClient
 
             DALProInfo dpi = new DALProInfo();
 
-            foreach (string s in dpi.GetProCates())
+            foreach (string s in dpi.GetProCatesByAreaID(GlobalValue.GShop.AreaInfo.AreaID))
             {
                 TabPage tp = new TabPage();
                 tp.Tag = 0;
+                tp.Text = s;
                 tabControl1.TabPages.Add(tp);
             }
 
@@ -42,11 +43,29 @@ namespace ShopClient
 
         private void ShowByCateAndPageNo(TabPage tp)
         {
+            DateTime t1 = DateTime.Now;
+
+            if (tp == null)
+                return;
             int currPage = (int)tp.Tag;
             //在页面上显示！
 
             IList<ProInfo> CatePros = proinfos.Where<ProInfo>(x => x.ProCate == tp.Text).ToList();
-            int pagecount = 20;
+            //当前页的产品数量！
+            if (currPage < 0)
+            {
+                currPage = 0;
+                tp.Tag = currPage;
+            }
+
+            if (currPage > CatePros.Count / 18)
+            {
+                currPage = CatePros.Count / 18;
+                tp.Tag = currPage;
+            }
+           
+
+            int pagecount = 18;
             //一页放20个
             IList<ProInfo> source = new List<ProInfo>();
             for (int i = currPage * pagecount; i < currPage * pagecount + pagecount; i++)
@@ -56,11 +75,18 @@ namespace ShopClient
                     source.Add(CatePros[i]);
                 }
             }
+            tp.Controls.Clear();
 
-            GridBuilder<ProInfo> g = new GridBuilder<ProInfo>(source, new Size(200, 200), tp, 10, 10, 10);
+            GridBuilder<ProInfo> g = new GridBuilder<ProInfo>(source, new Size(190, 190), tp, 6, 10, 10);
             g.OnAddItem += new GridBuilder<ProInfo>.AddItem(g_OnAddItem);
+            DateTime t2 = DateTime.Now;
             g.BuildButtons();
+            DateTime t3 = DateTime.Now;
 
+            TimeSpan ts1 = t2 - t1;
+            TimeSpan ts2 = t3 - t2;
+
+            this.Text = ts1.ToString() + "!" + ts2.ToString();
         }
 
         void g_OnAddItem(ProInfo t, Rectangle position, Control gridcontainer)
@@ -86,6 +112,27 @@ namespace ShopClient
             ShowByCateAndPageNo(e.TabPage);
         }
 
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
 
+        private void btnnext_Click(object sender, EventArgs e)
+        {
+            TabPage tg = tabControl1.SelectedTab;
+            int CurrPage = (int)tg.Tag;
+            CurrPage++;
+            tg.Tag = CurrPage;
+            ShowByCateAndPageNo(tg);
+        }
+
+        private void btnpre_Click(object sender, EventArgs e)
+        {
+            TabPage tg = tabControl1.SelectedTab;
+            int CurrPage = (int)tg.Tag;
+            CurrPage--;
+            tg.Tag = CurrPage;
+            ShowByCateAndPageNo(tg);
+        }
     }
 }

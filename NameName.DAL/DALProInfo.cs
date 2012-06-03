@@ -60,9 +60,18 @@ namespace NameName.DAL
             return QueryFutureList(" select a from ProInfo a where a.DeleteFlag=false and a.LastUpDateTime > '" + lastupdate + "'");
         }
 
+
+        public IList<string> GetProCatesByAreaID(Guid areaid)
+        {
+            string sql = "Select distinct a.ProCate from ProInfo a,ProPrice b where a.DeleteFlag=false and a.ProID = b.ProInfo.ProID And b.AreaInfo.AreaID='" + areaid.ToString() + "' order by a.ProCate ";
+            IQuery query = session.CreateQuery(sql);
+            IList<string> procates = query.Future<string>().ToList();
+            return procates;
+        }
+
         public IList<ProInfo> GetProsByAreaID(Guid areaid)
         {
-            return QueryFutureList(" select a from ProInfo a,ProPrice b where a.DeleteFlag=false and a.ProID = b.ProID And b.AreaInfo.AreaID='" + areaid.ToString() + "' order by a.LastUpDateTime desc ");
+            return QueryFutureList(" select a from ProInfo a,ProPrice b where a.DeleteFlag=false and a.ProID = b.ProInfo.ProID And b.AreaInfo.AreaID='" + areaid.ToString() + "' order by a.LastUpDateTime desc ");
         }
 
         public IList<ProInfo> GetPros()

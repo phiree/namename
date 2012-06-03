@@ -33,12 +33,17 @@ namespace ShopClient.uc
             lbunit.Text = ProInfo.Unit;
             lbprice.Text = ProInfo.ProPrices.Single<ProPrice>(x => x.AreaInfo.AreaID == GlobalValue.GShop.AreaInfo.AreaID).Price.ToString("0.00");
             //加载图片
-            
-            string filename = Application.StartupPath + "\\ProImg\\" + ProInfo.PicName;
-            if (File.Exists(filename))
-            {
-                picpro.Load(filename);
-            }
+
+            //string filename = Application.StartupPath + "\\ProImg\\" + ProInfo.PicName;
+            //if (File.Exists(filename))
+            //{
+            //    picpro.Load(filename);
+            //}
+        }
+
+        private void lbproname_Click(object sender, EventArgs e)
+        {
+            GlobalFun.MessageBoxHint(lbproname.Text);
         }
     }
 }
