@@ -11,6 +11,9 @@ namespace ShopClient.uc
 {
     public partial class ucProInfo : UserControl
     {
+        public decimal Qty { get; set; }
+        public bool ShowQty { get; set; }
+
         public ucProInfo()
         {
             InitializeComponent();

@@ -97,7 +97,7 @@
             this.lbprice.Size = new System.Drawing.Size(113, 29);
             this.lbprice.TabIndex = 1;
             this.lbprice.Text = "单价：";
-            this.lbprice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbprice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbqty
             // 

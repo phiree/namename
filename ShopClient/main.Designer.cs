@@ -261,6 +261,7 @@
             this.btnCash.TabIndex = 3;
             this.btnCash.Text = "收银";
             this.btnCash.UseVisualStyleBackColor = true;
+            this.btnCash.Click += new System.EventHandler(this.btnCash_Click);
             // 
             // label4
             // 
@@ -304,6 +305,7 @@
             this.btnProSelect.TabIndex = 7;
             this.btnProSelect.Text = "产品";
             this.btnProSelect.UseVisualStyleBackColor = true;
+            this.btnProSelect.Click += new System.EventHandler(this.btnProSelect_Click);
             // 
             // main
             // 
