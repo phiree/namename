@@ -23,5 +23,6 @@ namespace NameName.Model
         public virtual bool DeleteFlag { get; set; }
         public virtual DateTime LastUpDateTime { get; set; }
         public virtual IList<ProPrice> ProPrices { get; set; }
+       
     }
 }

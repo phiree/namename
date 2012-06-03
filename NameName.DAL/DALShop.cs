@@ -44,6 +44,9 @@ namespace NameName.DAL
             Save(shopinfo);
             return true;
         }
+
+       
+
         public void SetManager(string userName)
         {
             DALUser dalUser = new DALUser();
