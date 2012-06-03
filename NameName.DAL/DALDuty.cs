@@ -14,11 +14,11 @@ namespace NameName.DAL
        /// 没有则返回nulll
        /// </summary>
        /// <param name="shopId"></param>
-       public UserInfo GetDutyUser(Guid shopId)
+       public UserInfo GetDutyUser(ShopInfo shop)
        {
             IQuery qry = session.CreateQuery(
                string.Format(@"select u from Shop_DutyInfo u where u.Shop.ShopId='{0}'"
-               ,shopId)
+               ,shop.ShopID)
                );
             Shop_DutyInfo duty = qry.FutureValue<Shop_DutyInfo>().Value;
             if (duty == null) return null;
@@ -32,11 +32,11 @@ namespace NameName.DAL
        /// 没有则返回null
        /// </summary>
        /// <param name="username"></param>
-       public ShopInfo GetDutyShop(string username)
+       public ShopInfo GetDutyShop(UserInfo user)
        {
            IQuery qry = session.CreateQuery(
                  string.Format(@"select u from Shop_DutyInfo u where u.User.UserName='{0}'"
-                 , username)
+                 , user.UserName)
                  );
            Shop_DutyInfo duty = qry.FutureValue<Shop_DutyInfo>().Value;
            if (duty == null) return null;
@@ -50,12 +50,22 @@ namespace NameName.DAL
        /// <param name="userName"></param>
        /// <param name="shopId"></param>
        /// <returns></returns>
-       public bool OnDuty(UserInfo user,ShopInfo shop,Account_Period currentPeriod)
+       public Shop_DutyInfo OnDuty(UserInfo user,ShopInfo shop,Account_Period currentPeriod,out string errMsg)
        {
-           UserInfo currentDutyUser = GetDutyUser(shop.ShopID);
-           ShopInfo currentDutyShop = GetDutyShop(user.UserName);
-           if (currentDutyShop == null && currentDutyUser == null)
+           errMsg = string.Empty;
+           UserInfo currentDutyUser = GetDutyUser(shop);
+
+           ShopInfo currentDutyShop = GetDutyShop(user);
+           if (currentDutyShop != null)
            {
+               errMsg =string.Format( "当班失败:当前用户正在门店'{0}'当班",currentDutyShop.ShopName);
+               return null;
+           }
+           if(currentDutyUser!= null)
+           {
+               errMsg =string.Format( "当班失败:当前门店已有当班人员:'{0}'",currentDutyUser.TrueName);
+               return null;
+           }
                Shop_DutyInfo duty = new Shop_DutyInfo();
                duty.AccountPeriod = currentPeriod;
                duty.ActAmount = 0;
@@ -70,13 +80,9 @@ namespace NameName.DAL
 
                session.Save(duty);
                session.Flush();
-               return true;
+               return duty;
 
-           }
-           else
-           {
-               return false;
-           }
+          
        }
     }
 }
