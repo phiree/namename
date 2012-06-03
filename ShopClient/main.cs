@@ -84,6 +84,10 @@ namespace ShopClient
 
         public void LoginSuccess()
         {
+            //加载产品数据
+            ProSelect proselect = new ProSelect();
+            proselect.LoadProInfo();
+
             this.Show();
             this.Text = GlobalValue.GShop.AreaInfo.AreaName + "-" + GlobalValue.GShop.ShopName + "-" + GlobalValue.GUser.TrueName + " 正在使用 么么 门店系统";
             //不可能为null的！
@@ -166,6 +170,17 @@ namespace ShopClient
             selllist = new Shop_SellList();
             btnProSelect.Enabled = true;
             btnCash.Enabled = true;
+
+        }
+
+        private void btnCash_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnProSelect_Click(object sender, EventArgs e)
+        {
+            //产品选择
 
         }
     }
