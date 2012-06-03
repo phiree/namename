@@ -102,6 +102,12 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="PwdChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PwdChange.Designer.cs">
+      <DependentUpon>PwdChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShopSelect.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PwdChange.resx">
+      <DependentUpon>PwdChange.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShopSelect.resx">
       <DependentUpon>ShopSelect.cs</DependentUpon>
