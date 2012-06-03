@@ -16,6 +16,7 @@ namespace ShopClient
 
         DALDuty dalduty = new DALDuty();
         Shop_DutyInfo dutyinfo;
+        Shop_SellList selllist = null;
 
         public main()
         {
@@ -74,6 +75,13 @@ namespace ShopClient
             }
         }
 
+        private void SellBillInit()
+        {
+            pnlselllist.Visible = pnlselldetail.Visible = false;
+            btnProSelect.Enabled = btnCash.Enabled = false;
+            lbAmount.Text = lbPreAmount.Text = lbPreNo.Text = lbbillNo.Text = string.Empty;
+        }
+
         public void LoginSuccess()
         {
             this.Show();
@@ -81,6 +89,7 @@ namespace ShopClient
             //不可能为null的！
             GlobalValue.GAccount = new DALAccount().GetCurrAccount();
 
+            SellBillInit();
             //创建界面了！！！
             string errorstr;
             Shop_DutyInfo sd = dalduty.OnDuty(GlobalValue.GUser, GlobalValue.GShop, GlobalValue.GAccount, false, out errorstr);
@@ -89,18 +98,20 @@ namespace ShopClient
             {
                 //正在当班
                 dutyinfo = sd;
-                
+
                 btnDutyBegin.Enabled = false;
                 btnDutyEnd.Enabled = true;
                 btnNew.Enabled = true;
                 btnBack.Enabled = true;
                 btnAsk.Enabled = false;
                 btnCheck.Enabled = false;
-                //判断是否有单据！有单据则下面的显示
+                //判断是否有单据！有单据则下面的显示,新开一张单据后，数据都保存在内存中！所以不需要判断
+
 
             }
             else
             {
+
                 if (string.IsNullOrEmpty(errorstr))
                 {
                     //允许当班
@@ -140,12 +151,21 @@ namespace ShopClient
                 btnAsk.Enabled = false;
                 btnCheck.Enabled = false;
 
-                pnlselllist.Visible = pnlselldetail.Visible = false;
+                pnlselllist.Visible = pnlselldetail.Visible = true;
+
             }
             else
             {
                 GlobalFun.MessageBoxError(errorstr);
             }
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            //产生一个SellList
+            selllist = new Shop_SellList();
+            btnProSelect.Enabled = true;
+            btnCash.Enabled = true;
 
         }
     }

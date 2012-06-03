@@ -7,9 +7,9 @@ namespace NameNameConfig
 {
     public class DbConfig
     {
-        public const string Server = "127.0.0.1,7788";
-        public const string DataBase = "namename";
+        public const string Server = ".";
+        public const string DataBase = "zy_shop";
         public const string Uid = "sa";
-        public const string Pwd = "admin";
+        public const string Pwd = "";
     }
 }

@@ -44,7 +44,7 @@
             this.pnlselllist = new System.Windows.Forms.Panel();
             this.pnlselldetail = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.billNo = new System.Windows.Forms.Label();
+            this.lbbillNo = new System.Windows.Forms.Label();
             this.lbAmount = new System.Windows.Forms.Label();
             this.btnCash = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -164,6 +164,7 @@
             this.btnNew.TabIndex = 4;
             this.btnNew.Text = "新开单据";
             this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // label1
             // 
@@ -198,7 +199,7 @@
             // 
             this.pnlselllist.Controls.Add(this.btnProSelect);
             this.pnlselllist.Controls.Add(this.label3);
-            this.pnlselllist.Controls.Add(this.billNo);
+            this.pnlselllist.Controls.Add(this.lbbillNo);
             this.pnlselllist.Controls.Add(this.lbAmount);
             this.pnlselllist.Controls.Add(this.btnCash);
             this.pnlselllist.Controls.Add(this.label4);
@@ -230,15 +231,15 @@
             this.label3.Text = "单据信息";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // billNo
+            // lbbillNo
             // 
-            this.billNo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.billNo.Location = new System.Drawing.Point(0, 211);
-            this.billNo.Name = "billNo";
-            this.billNo.Size = new System.Drawing.Size(177, 34);
-            this.billNo.TabIndex = 1;
-            this.billNo.Text = "单据号：1206090010001";
-            this.billNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbbillNo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lbbillNo.Location = new System.Drawing.Point(0, 211);
+            this.lbbillNo.Name = "lbbillNo";
+            this.lbbillNo.Size = new System.Drawing.Size(177, 34);
+            this.lbbillNo.TabIndex = 1;
+            this.lbbillNo.Text = "单据号：1206090010001";
+            this.lbbillNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbAmount
             // 
@@ -341,7 +342,7 @@
         private System.Windows.Forms.Panel pnlselllist;
         private System.Windows.Forms.Panel pnlselldetail;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label billNo;
+        private System.Windows.Forms.Label lbbillNo;
         private System.Windows.Forms.Label lbAmount;
         private System.Windows.Forms.Button btnCash;
         private System.Windows.Forms.Label label4;
