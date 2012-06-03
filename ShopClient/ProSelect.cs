@@ -43,7 +43,7 @@ namespace ShopClient
 
         private void ShowByCateAndPageNo(TabPage tp)
         {
-            DateTime t1 = DateTime.Now;
+            //DateTime t1 = DateTime.Now;
 
             if (tp == null)
                 return;
@@ -63,7 +63,7 @@ namespace ShopClient
                 currPage = CatePros.Count / 18;
                 tp.Tag = currPage;
             }
-           
+
 
             int pagecount = 18;
             //一页放20个
@@ -79,14 +79,14 @@ namespace ShopClient
 
             GridBuilder<ProInfo> g = new GridBuilder<ProInfo>(source, new Size(190, 190), tp, 6, 10, 10);
             g.OnAddItem += new GridBuilder<ProInfo>.AddItem(g_OnAddItem);
-            DateTime t2 = DateTime.Now;
+            //DateTime t2 = DateTime.Now;
             g.BuildButtons();
-            DateTime t3 = DateTime.Now;
+            //DateTime t3 = DateTime.Now;
 
-            TimeSpan ts1 = t2 - t1;
-            TimeSpan ts2 = t3 - t2;
+            //TimeSpan ts1 = t2 - t1;
+            //TimeSpan ts2 = t3 - t2;
 
-            this.Text = ts1.ToString() + "!" + ts2.ToString();
+            // this.Text = ts1.ToString() + "!" + ts2.ToString();
         }
 
         void g_OnAddItem(ProInfo t, Rectangle position, Control gridcontainer)
