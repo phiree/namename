@@ -18,7 +18,7 @@ namespace NameName.DAL
             {
                 session.Update(syssettings);
             }
-
+            session.Flush();
         }
 
         public Sys_Settings GetValue(string settingName)

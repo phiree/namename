@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using NameName.DAL;
 using NameName.Model;
+using System.Net;
 
 namespace ShopClient
 {
@@ -82,25 +83,44 @@ namespace ShopClient
             lbAmount.Text = lbPreAmount.Text = lbPreNo.Text = lbbillNo.Text = string.Empty;
         }
 
+        /// <summary>
+        /// 更新本地图片
+        /// </summary>
         private void UpDateImage()
         {
-            string ImgPath = Application.StartupPath + "ProImg\\";
+            string ImgPath = Application.StartupPath + "\\ProImg\\";
             if (!System.IO.Directory.Exists(ImgPath))
             {
                 System.IO.Directory.CreateDirectory(ImgPath);
             }
             DALSysSettings dss = new DALSysSettings();
             Sys_Settings ss = dss.GetValue(GlobalValue.GShop.ShopID.ToString() + "/ProUpDateTime");
-
-            IList<ProInfo> pis = new DALProInfo().GetProByLastUpDate((DateTime)ss.Value);
+            DateTime dt = Convert.ToDateTime("2000-01-01");
+            if (ss != null)
+            {
+                DateTime.TryParse(ss.Value, out dt);
+            }
+            IList<ProInfo> pis = new DALProInfo().GetProsByLastUpDateTime(dt);
+            WebClient wc = new WebClient();
             foreach (ProInfo pi in pis)
             {
-                //通过HTTP取得服务器上的图片数据，保存到本地的ImaPath路径下
-
+                //通过HTTP取得服务器上的图片数据，保存到本地的ImaPath路径下               
+                try
+                {
+                    wc.DownloadFile("http://LocalHost/propic/imgsmall/" + pi.PicName, ImgPath + pi.PicName);
+                }
+                catch
+                {
+                }
             }
             //取得服务器时间
+            if (ss == null)
+            {
+                ss = new Sys_Settings();
+                ss.Name = GlobalValue.GShop.ShopID.ToString() + "/ProUpDateTime";
+            }
+            ss.Value = new CommonFunctions().GetServerTime().ToString();
             dss.Save(ss);
-
         }
 
         public void LoginSuccess()

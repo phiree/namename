@@ -55,9 +55,9 @@ namespace NameName.DAL
             }
         }
 
-        public IList<ProInfo> GetProsByAreaID(DateTime? lastupdate)
+        public IList<ProInfo> GetProsByLastUpDateTime(DateTime lastupdate)
         {
-            return QueryFutureList(" select a from ProInfo a where a.DeleteFlag=false and a.LastUpDateTime > " + lastupdate);
+            return QueryFutureList(" select a from ProInfo a where a.DeleteFlag=false and a.LastUpDateTime > '" + lastupdate + "'");
         }
 
         public IList<ProInfo> GetProsByAreaID(Guid areaid)

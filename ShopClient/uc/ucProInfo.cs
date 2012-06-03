@@ -34,7 +34,7 @@ namespace ShopClient.uc
             lbprice.Text = ProInfo.ProPrices.Single<ProPrice>(x => x.AreaInfo.AreaID == GlobalValue.GShop.AreaInfo.AreaID).Price.ToString("0.00");
             //加载图片
             
-            string filename = Application.StartupPath + "ProImg\\" + ProInfo.PicName;
+            string filename = Application.StartupPath + "\\ProImg\\" + ProInfo.PicName;
             if (File.Exists(filename))
             {
                 picpro.Load(filename);
