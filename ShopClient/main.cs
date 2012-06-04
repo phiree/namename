@@ -80,7 +80,7 @@ namespace ShopClient
         {
             pnlselllist.Visible = pnlselldetail.Visible = false;
             btnProSelect.Enabled = btnCash.Enabled = false;
-            lbAmount.Text = lbPreAmount.Text = lbPreNo.Text = lbbillNo.Text = string.Empty;
+            lbAmount.Text = lbPreAmount.Text = lbPreNo.Text = string.Empty;
         }
 
         /// <summary>
@@ -216,12 +216,21 @@ namespace ShopClient
             pnlselllist.Visible = pnlselldetail.Visible = true;
             btnProSelect.Enabled = true;
             btnCash.Enabled = true;
+            pnlselldetail.Tag = 0;
 
         }
 
         private void btnCash_Click(object sender, EventArgs e)
         {
+            Cash cash = new Cash();
 
+            string billno = cash.CashSellList(selllist);
+
+            //if (cash.sho == System.Windows.Forms.DialogResult.OK)
+            //{
+            //    //处理完成，初始化数据！
+
+            //}
         }
 
         private void btnProSelect_Click(object sender, EventArgs e)
@@ -230,9 +239,127 @@ namespace ShopClient
             proselect.Show();
         }
 
+        internal bool AddPro(ProInfo proinfo, decimal qty)
+        {
+            //判断这个产品是否已经存在
+            if (selllist.Details.Where(x => x.Pro.ProID == proinfo.ProID).ToList().Count != 0)
+            {
+                return false;
+            }
+
+            Shop_SellDetail ss = new Shop_SellDetail();
+            ss.Pro = proinfo;
+            ss.Price = proinfo.ProPrices.Single<ProPrice>(x => x.AreaInfo.AreaID == GlobalValue.GShop.AreaInfo.AreaID).Price;
+            ss.Amount = qty;
+            selllist.Details.Add(ss);
+            //增加了一个产品，需要重新计算金额！
+            lbAmount.Text = GetSumAmount();
+
+            //重画界面
+            ShowSellDetailByPageNo();
+            return true;
+        }
+
+        private string GetSumAmount()
+        {
+            return selllist.Details.Sum(x => x.Price * x.Amount).ToString("0.00");
+        }
+
+        private void ShowSellDetailByPageNo()
+        {
+            int currPage = (int)pnlselldetail.Tag;
+            //在页面上显示！
+
+            if (currPage < 0)
+            {
+                currPage = 0;
+                pnlselldetail.Tag = currPage;
+                return;
+            }
+
+            if (currPage > selllist.Details.Count / 18)
+            {
+                currPage = selllist.Details.Count / 18;
+                pnlselldetail.Tag = currPage;
+                return;
+            }
+
+
+            int pagecount = 18;
+            //一页放20个
+            IList<Shop_SellDetail> source = new List<Shop_SellDetail>();
+            for (int i = currPage * pagecount; i < currPage * pagecount + pagecount; i++)
+            {
+                if (i < selllist.Details.Count)
+                {
+                    source.Add(selllist.Details[i]);
+                }
+            }
+            pnlselldetail.Controls.Clear();
+
+            GridBuilder<Shop_SellDetail> g = new GridBuilder<Shop_SellDetail>(source, new Size(170, 170), pnlselldetail, 6, 10, 10);
+            g.OnAddItem += new GridBuilder<Shop_SellDetail>.AddItem(g_OnAddItem);
+            g.BuildButtons();
+        }
+
+        void g_OnAddItem(Shop_SellDetail t, Rectangle position, Control gridcontainer)
+        {
+            uc.ucProInfo pi = new uc.ucProInfo();
+            pi.Left = position.Left;
+            pi.Top = position.Top;
+            pi.Size = position.Size;
+            pi.ShowQty = true;
+            pi.Qty = t.Amount;
+            pi.ProInfo = t.Pro;
+            pi.Tag = t;
+            pi.OnSelectPro += new uc.ucProInfo.SelectPro(pi_OnSelectPro);
+
+            gridcontainer.Controls.Add(pi);
+        }
+
+        void pi_OnSelectPro(object sender, ProInfo proinfo)
+        {
+            //进行修改数量，与删除的操作
+            uc.ucProInfo pi = (uc.ucProInfo)((Control)sender).Parent;
+            Shop_SellDetail ssd = (Shop_SellDetail)(pi.Tag);
+            decimal qty = new ProQtyInput().GetQty(proinfo, ssd.Amount, true);
+            if (qty == 0)
+            {
+                return;
+            }
+            else if (qty == -1)
+            {
+                //删除操作
+                selllist.Details.Remove(ssd);
+                ShowSellDetailByPageNo();
+            }
+            else
+            {
+                ssd.Amount = qty;
+                pi.Qty = qty;
+                pi.LoadProInfo();
+            }
+            lbAmount.Text = GetSumAmount();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            proselect.LoadProInfo();
+
+            int CurrPage = (int)pnlselldetail.Tag;
+            CurrPage--;
+            pnlselldetail.Tag = CurrPage;
+            ShowSellDetailByPageNo();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            int CurrPage = (int)pnlselldetail.Tag;
+            CurrPage++;
+            pnlselldetail.Tag = CurrPage;
+            ShowSellDetailByPageNo();
+        }
+
+
     }
 }

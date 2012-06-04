@@ -15,7 +15,7 @@ namespace ShopClient.uc
     public partial class ucProInfo : UserControl
     {
 
-        public delegate void SelectPro(ProInfo proinfo);
+        public delegate void SelectPro(object sender, ProInfo proinfo);
         public event SelectPro OnSelectPro;
 
         public decimal Qty { get; set; }
@@ -30,9 +30,18 @@ namespace ShopClient.uc
             InitializeComponent();
         }
 
+        public void LoadProInfo()
+        {
+            ucProInfo_Load(null, null);
+        }
+
         private void ucProInfo_Load(object sender, EventArgs e)
         {
             lbqty.Visible = ShowQty;
+            lbqty.Text = Qty.ToString("0.00");
+            if (ProInfo == null)
+                return;
+
             lbproname.Text = ProInfo.Name;
             lbunit.Text = ProInfo.Unit;
             lbprice.Text = ProInfo.ProPrices.Single<ProPrice>(x => x.AreaInfo.AreaID == GlobalValue.GShop.AreaInfo.AreaID).Price.ToString("0.00");
@@ -54,7 +63,7 @@ namespace ShopClient.uc
         {
             if (OnSelectPro != null)
             {
-                OnSelectPro(ProInfo);
+                OnSelectPro(sender, ProInfo);
             }
         }
     }

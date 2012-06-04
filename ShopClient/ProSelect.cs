@@ -44,7 +44,7 @@ namespace ShopClient
         private void ShowByCateAndPageNo(TabPage tp)
         {
             //DateTime t1 = DateTime.Now;
-
+            lbErrorInfo.Text = "";
             if (tp == null)
                 return;
             int currPage = (int)tp.Tag;
@@ -99,19 +99,30 @@ namespace ShopClient
             pi.Size = position.Size;
             pi.ShowQty = false;
             pi.ProInfo = t;
-
             pi.OnSelectPro += new uc.ucProInfo.SelectPro(pi_OnSelectPro);
-           
             gridcontainer.Controls.Add(pi);
         }
 
-        void pi_OnSelectPro(ProInfo proinfo)
+        void pi_OnSelectPro(object sender, ProInfo proinfo)
         {
             //显示输入产品数量的窗口
-
+            lbErrorInfo.Text = "";
+            decimal qty = new ProQtyInput().GetQty(proinfo, 0, false);
+            if (qty == 0)
+            {
+                return;
+            }
+            else if (Program.mainfrm.AddPro(proinfo, qty))
+            {
+                this.Hide();
+            }
+            else
+            {
+                lbErrorInfo.Text = "产品已经选择，不能重复选择";
+            }
         }
 
-        
+
 
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
@@ -139,6 +150,13 @@ namespace ShopClient
             CurrPage--;
             tg.Tag = CurrPage;
             ShowByCateAndPageNo(tg);
+        }
+
+
+        private void ProSelect_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
         }
     }
 }
