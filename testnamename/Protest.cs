@@ -20,6 +20,14 @@ namespace testnamename
          IList<object> objects2 = dal.QueryFutureList(" select a from ProInfo a where a.DeleteFlag=false and a.LastUpDateTime > '" + DateTime.Now.AddDays(10) + "'");
          Console.WriteLine(objects2.Count);
          Assert.IsTrue(objects2.Count == 0);
+     
+            string qry=@" select a from ProInfo a,ProPrice b 
+where a.DeleteFlag=false and a.ProID = b.ProID And b.AreaInfo.AreaID='"
+                +Guid.NewGuid().ToString() +
+                "' order by a.LastUpDateTime desc ";
+            objects = dal.QueryFutureList(qry);
+            Assert.IsTrue(objects.Count == 0);
+       
       }
     }
 }
