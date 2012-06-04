@@ -38,7 +38,7 @@ public partial class Product_Default : System.Web.UI.Page
         }
 
         int pageSize = pager.PageSize;
-        IList<ProInfo> pros = dalPro.GetProsPaged(tbxProname.Text, cate, pageIndex, pageSize, out totalRecord);
+        IList<ProInfo> pros = dalPro.GetProsPaged(tbxProname.Text, cate, pageIndex-1, pageSize, out totalRecord);
         pager.RecordCount = totalRecord;
         GridView1.DataSource = pros;
         GridView1.DataBind();
