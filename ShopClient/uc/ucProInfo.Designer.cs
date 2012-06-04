@@ -49,6 +49,7 @@
             this.picpro.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picpro.TabIndex = 0;
             this.picpro.TabStop = false;
+            this.picpro.Click += new System.EventHandler(this.picpro_Click);
             // 
             // lbproname
             // 

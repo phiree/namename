@@ -16,7 +16,6 @@
             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*"
                 ControlToValidate="tbShopNo"></asp:RequiredFieldValidator>
         </div>
-        
     </div>
     <div class="ciline">
         <div class="cill">
@@ -64,6 +63,17 @@
             <asp:CheckBox runat="server" ID="cbIsCenter" />
         </div>
     </div>
+    <div class="ciline">
+        <div class="cill">
+            <a href="/Shop/Default.aspx">返回</a>
+        </div>
+        <div class="cilr">
+            <asp:Button runat="server" ID="btnSave" Text="保存" OnClick="btnSave_Click" />
+        </div>
+        <div class="cilr">
+            <asp:Button runat="server" ID="btnDelete" Text="删除" OnClick="btnDelete_Click" />
+        </div>
+    </div>
     <div class="ciline" runat="server" id="divShopUser">
         <div class="cill">
             <a href="/Shop/UserSelect.aspx?ShopID=XXX" runat="server" id="aSelect">选择店员</a>
@@ -100,17 +110,6 @@
                     <AlternatingRowStyle BackColor="#EDF4FC" />
                 </asp:GridView>
             </div>
-        </div>
-    </div>
-    <div class="ciline">
-        <div class="cill">
-            <a href="/Shop/Default.aspx">返回</a>
-        </div>
-        <div class="cilr">
-            <asp:Button runat="server" ID="btnSave" Text="保存" OnClick="btnSave_Click" />
-        </div>
-        <div class="cilr">
-            <asp:Button runat="server" ID="btnDelete" Text="删除" OnClick="btnDelete_Click" />
         </div>
     </div>
     <script language="javascript" type="text/javascript" src="/js/jquery-1.4.1.js"></script>
