@@ -1,6 +1,6 @@
 ﻿namespace ShopClient
 {
-    partial class Login
+    partial class InputQty
     {
         /// <summary>
         /// Required designer variable.
@@ -28,26 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnLogin = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnOK = new System.Windows.Forms.Button();
             this.numInupt1 = new ShopClient.uc.NumInupt();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnLogin
-            // 
-            this.btnLogin.BackColor = System.Drawing.SystemColors.Control;
-            this.btnLogin.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnLogin.Font = new System.Drawing.Font("宋体", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnLogin.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnLogin.Location = new System.Drawing.Point(255, 0);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(134, 100);
-            this.btnLogin.TabIndex = 5;
-            this.btnLogin.Text = "登录";
-            this.btnLogin.UseVisualStyleBackColor = false;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // button4
             // 
@@ -66,12 +52,26 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.btnLogin);
+            this.panel1.Controls.Add(this.btnOK);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(389, 100);
-            this.panel1.TabIndex = 19;
+            this.panel1.Size = new System.Drawing.Size(391, 100);
+            this.panel1.TabIndex = 21;
+            // 
+            // btnOK
+            // 
+            this.btnOK.BackColor = System.Drawing.SystemColors.Control;
+            this.btnOK.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnOK.Font = new System.Drawing.Font("宋体", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnOK.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnOK.Location = new System.Drawing.Point(257, 0);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(134, 100);
+            this.btnOK.TabIndex = 5;
+            this.btnOK.Text = "确定";
+            this.btnOK.UseVisualStyleBackColor = false;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // numInupt1
             // 
@@ -79,22 +79,18 @@
             this.numInupt1.Location = new System.Drawing.Point(0, 100);
             this.numInupt1.Name = "numInupt1";
             this.numInupt1.PasswordChar = '*';
-            this.numInupt1.Size = new System.Drawing.Size(389, 402);
-            this.numInupt1.TabIndex = 18;
+            this.numInupt1.Size = new System.Drawing.Size(391, 419);
+            this.numInupt1.TabIndex = 20;
             // 
-            // Login
+            // InputQty
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(389, 502);
+            this.ClientSize = new System.Drawing.Size(391, 519);
             this.Controls.Add(this.numInupt1);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Login";
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "登录";
-            this.Load += new System.EventHandler(this.Login_Load);
+            this.Name = "InputQty";
+            this.Text = "输入";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -102,9 +98,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button button4;
-        private uc.NumInupt numInupt1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnOK;
+        private uc.NumInupt numInupt1;
     }
 }
