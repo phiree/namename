@@ -20,7 +20,7 @@ namespace NameName.Model.Mapping
             Map(x => x.BillDate);
             References<Shop_DutyInfo>(x => x.Duty);
             Map(x => x.Memo);
-
+            Map(x => x.ActCustomAmount);
             HasMany<Shop_SellDetail>(x => x.Details);
 
         }
