@@ -78,6 +78,31 @@ namespace NameName.DAL
         {
             return QueryFutureList(" select a from ProInfo a where a.DeleteFlag=false order by a.LastUpDateTime desc ");
         }
+        public IList<ProInfo> GetProsPaged(string proName ,string cate, int pageIndex, int pageSize, out int totalRecord)
+        {
+            string strCondition = string.Empty;
+            if (!string.IsNullOrEmpty(cate))
+            {
+                strCondition += " and  s.ProCate='" + cate + "'";
+            }
+            if (!string.IsNullOrEmpty(proName))
+            {
+                strCondition += "  and  s.Name like '%" + proName + "%'";
+            }
+            string strQuery = "select s from ProInfo s where 1=1 ";
+            string strQueryCount = "select count(*) from ProInfo s where 1=1 ";
+
+            if (!string.IsNullOrWhiteSpace(strCondition))
+            {
+                strQuery += strCondition;
+                strQueryCount += strCondition;
+            }
+            IQuery qryTotal = session.CreateQuery(strQueryCount);
+            IQuery qry = session.CreateQuery(strQuery);
+            List<ProInfo> scenicList = qry.Future<ProInfo>().Skip(pageIndex * pageSize).Take(pageSize).ToList();
+            totalRecord =(int) qryTotal.FutureValue<long>().Value;
+            return scenicList;
+        }
 
         public Guid Save(ProInfo proinfo)
         {
