@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="Area.cs" />
     <Compile Include="CommonFuncTest.cs" />
+    <Compile Include="FormatSerialNoTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Protest.cs" />
     <Compile Include="TestSellList.cs" />

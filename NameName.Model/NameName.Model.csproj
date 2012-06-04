@@ -155,6 +155,7 @@
     <Compile Include="Mapping\Shop_SellListMap.cs" />
     <Compile Include="Mapping\Sys_SettingsMap.cs" />
     <Compile Include="Mapping\Shop_SellDetailMap.cs" />
+    <Compile Include="Mapping\Sys_FormatSerialNoMap.cs" />
     <Compile Include="ProInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -219,6 +220,7 @@
     <Compile Include="UserInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Sys_FormatSerialNo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

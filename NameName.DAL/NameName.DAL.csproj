@@ -74,6 +74,7 @@
     <Compile Include="DALBase.cs" />
     <Compile Include="DALDepart.cs" />
     <Compile Include="DALDuty.cs" />
+    <Compile Include="DALSys_FormatSerialNo.cs" />
     <Compile Include="HybridSessionBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DALUser.cs" />
