@@ -18,7 +18,7 @@ namespace NameName.DAL
         {
           
             Shop_DutyInfo duty = QueryFutureValue(
-                string.Format(@"select u from Shop_DutyInfo u where u.Shop.ShopId='{0}'"
+                string.Format(@"select u from Shop_DutyInfo u where u.Shop.ShopID='{0}'"
                , shop.ShopID));
             if (duty == null) return null;
             UserInfo user = duty.User;

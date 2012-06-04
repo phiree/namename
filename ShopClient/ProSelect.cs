@@ -56,12 +56,14 @@ namespace ShopClient
             {
                 currPage = 0;
                 tp.Tag = currPage;
+                return;
             }
 
             if (currPage > CatePros.Count / 18)
             {
                 currPage = CatePros.Count / 18;
                 tp.Tag = currPage;
+                return;
             }
 
 
@@ -98,14 +100,18 @@ namespace ShopClient
             pi.ShowQty = false;
             pi.ProInfo = t;
 
-            pi.Click += new EventHandler(pi_Click);
+            pi.OnSelectPro += new uc.ucProInfo.SelectPro(pi_OnSelectPro);
+           
             gridcontainer.Controls.Add(pi);
         }
 
-        void pi_Click(object sender, EventArgs e)
+        void pi_OnSelectPro(ProInfo proinfo)
         {
-            throw new NotImplementedException();
+            //显示输入产品数量的窗口
+
         }
+
+        
 
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {

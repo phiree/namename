@@ -14,6 +14,10 @@ namespace ShopClient.uc
 {
     public partial class ucProInfo : UserControl
     {
+
+        public delegate void SelectPro(ProInfo proinfo);
+        public event SelectPro OnSelectPro;
+
         public decimal Qty { get; set; }
 
         public bool ShowQty { get; set; }
@@ -34,16 +38,24 @@ namespace ShopClient.uc
             lbprice.Text = ProInfo.ProPrices.Single<ProPrice>(x => x.AreaInfo.AreaID == GlobalValue.GShop.AreaInfo.AreaID).Price.ToString("0.00");
             //加载图片
 
-            //string filename = Application.StartupPath + "\\ProImg\\" + ProInfo.PicName;
-            //if (File.Exists(filename))
-            //{
-            //    picpro.Load(filename);
-            //}
+            string filename = Application.StartupPath + "\\proimg\\" + ProInfo.PicName;
+            if (File.Exists(filename))
+            {
+                picpro.Load(filename);
+            }
         }
 
         private void lbproname_Click(object sender, EventArgs e)
         {
             GlobalFun.MessageBoxHint(lbproname.Text);
+        }
+
+        private void picpro_Click(object sender, EventArgs e)
+        {
+            if (OnSelectPro != null)
+            {
+                OnSelectPro(ProInfo);
+            }
         }
     }
 }
