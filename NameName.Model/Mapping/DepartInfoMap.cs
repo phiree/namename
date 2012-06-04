@@ -14,7 +14,7 @@ namespace NameName.Model.Mapping
             Map(x => x.DeleteFlag);
             Map(x => x.OrderNO);
             Map(x => x.DepartName);
-            HasMany<UserInfo>(x => x.DepartUsers);
+            HasMany<UserInfo>(x => x.DepartUsers).Cascade.All().Inverse() ;
 
         }
     }
