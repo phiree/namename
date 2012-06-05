@@ -80,7 +80,7 @@ namespace ShopClient
         {
             pnlselllist.Visible = pnlselldetail.Visible = false;
             btnProSelect.Enabled = btnCash.Enabled = false;
-            lbAmount.Text = lbPreAmount.Text = lbPreNo.Text = string.Empty;
+            lbAmount.Text = lbPreAmount.Text = lbPreNo.Text = lbactamount.Text = lbCAmount.Text = lbbackamount.Text = string.Empty;
         }
 
         /// <summary>
@@ -262,7 +262,8 @@ namespace ShopClient
 
         private string GetSumAmount()
         {
-            return selllist.Details.Sum(x => x.Price * x.Amount).ToString("0.00");
+            string a = selllist.Details.Sum(x => x.Price * x.Amount).ToString("0.00");
+            return "金额:" + a;
         }
 
         private void ShowSellDetailByPageNo()

@@ -26,6 +26,7 @@ namespace ShopClient
 
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.DataSource = ssl.Details;
+
             lbbillamount.Text = selllist.Details.Sum(x => x.Price * x.Amount).ToString("0.00");
             lbactamount.Text = lbbillamount.Text;
             lbbackamount.Text = GetBackAmount();
@@ -42,8 +43,6 @@ namespace ShopClient
         {
             this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
-
-
 
         private void lbactamount_Click(object sender, EventArgs e)
         {
@@ -67,11 +66,6 @@ namespace ShopClient
                 lbbillamount.Text = ssl.Details.Sum(x => x.Price * x.Amount).ToString("0.00");
                 lbbackamount.Text = GetBackAmount();
             }
-
         }
-
-
-
-
     }
 }
