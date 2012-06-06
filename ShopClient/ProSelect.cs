@@ -22,6 +22,7 @@ namespace ShopClient
             for (int i = 0; i < 18; i++)
             {
                 pis[i] = new uc.ucProInfo();
+                pnlPro.Controls.Add(pis[i]);
             }
         }
 
@@ -82,33 +83,30 @@ namespace ShopClient
                 }
             }
 
-            tp.Controls.Clear();
-
             for (int i = 0; i < 18; i++)
             {
                 if (i < source.Count)
                 {
                     pis[i].ProInfo = source[i];
+                    pis[i].LoadProInfo();
                 }
                 else
                 {
                     pis[i].ProInfo = null;
                 }
-                tp.Controls.Add(pis[i]);
             }
+
             //tp.Controls.Clear();
-
-
             //GridBuilder<ProInfo> g = new GridBuilder<ProInfo>(source, new Size(190, 190), tp, 6, 10, 10);
             //g.OnAddItem += new GridBuilder<ProInfo>.AddItem(g_OnAddItem);
             ////DateTime t2 = DateTime.Now;
             //g.BuildButtons();
-            //DateTime t3 = DateTime.Now;
+            ////DateTime t3 = DateTime.Now;
 
-            //TimeSpan ts1 = t2 - t1;
-            //TimeSpan ts2 = t3 - t2;
+            ////TimeSpan ts1 = t2 - t1;
+            ////TimeSpan ts2 = t3 - t2;
 
-            // this.Text = ts1.ToString() + "!" + ts2.ToString();
+            //// this.Text = ts1.ToString() + "!" + ts2.ToString();
         }
 
         void g_OnAddItem(ProInfo t, Rectangle position, Control gridcontainer)
@@ -179,9 +177,6 @@ namespace ShopClient
             this.Hide();
         }
 
-        //创建18个
-        
-
         private void ProSelect_Load(object sender, EventArgs e)
         {
             Size ItemSize = new Size(190, 190);
@@ -190,7 +185,6 @@ namespace ShopClient
 
             int btnIndex = 0;
             int space = (this.Width - ColAmount * ItemSize.Width) / (ColAmount + 1);
-            
 
             foreach (uc.ucProInfo pi in pis)
             {

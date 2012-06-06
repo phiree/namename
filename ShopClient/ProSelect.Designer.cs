@@ -35,6 +35,7 @@
             this.lbErrorInfo = new System.Windows.Forms.Label();
             this.btnpre = new System.Windows.Forms.Button();
             this.btnnext = new System.Windows.Forms.Button();
+            this.pnlPro = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -44,7 +45,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(8);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(826, 366);
+            this.tabPage1.Size = new System.Drawing.Size(826, 0);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -52,13 +53,13 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabControl1.Location = new System.Drawing.Point(0, 85);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(8);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(834, 395);
+            this.tabControl1.Size = new System.Drawing.Size(834, 25);
             this.tabControl1.TabIndex = 4;
             this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
@@ -121,11 +122,20 @@
             this.btnnext.UseVisualStyleBackColor = true;
             this.btnnext.Click += new System.EventHandler(this.btnnext_Click);
             // 
+            // pnlPro
+            // 
+            this.pnlPro.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlPro.Location = new System.Drawing.Point(0, 110);
+            this.pnlPro.Name = "pnlPro";
+            this.pnlPro.Size = new System.Drawing.Size(834, 370);
+            this.pnlPro.TabIndex = 6;
+            // 
             // ProSelect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 480);
+            this.Controls.Add(this.pnlPro);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("宋体", 12F);
@@ -153,5 +163,6 @@
         private System.Windows.Forms.Button btnnext;
         private System.Windows.Forms.Button btnpre;
         private System.Windows.Forms.Label lbErrorInfo;
+        private System.Windows.Forms.Panel pnlPro;
     }
 }

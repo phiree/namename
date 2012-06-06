@@ -106,6 +106,12 @@
     <Compile Include="InputQty.Designer.cs">
       <DependentUpon>InputQty.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoadWait.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoadWait.Designer.cs">
+      <DependentUpon>LoadWait.cs</DependentUpon>
+    </Compile>
     <Compile Include="main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InputQty.resx">
       <DependentUpon>InputQty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadWait.resx">
+      <DependentUpon>LoadWait.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="main.resx">
       <DependentUpon>main.cs</DependentUpon>

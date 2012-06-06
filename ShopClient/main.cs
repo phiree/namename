@@ -129,10 +129,8 @@ namespace ShopClient
             //更新图片数据
             UpDateImage();
             //加载产品数据
-            proselect.Show();
-            proselect.Hide();
-
-            proselect.LoadProInfo();
+            //显示正在加载数据的窗口!!!            
+            new LoadWait().LoadData(proselect);            
 
             this.Show();
             this.Text = GlobalValue.GShop.AreaInfo.AreaName + "-" + GlobalValue.GShop.ShopName + "-" + GlobalValue.GUser.TrueName + " 正在使用 么么 门店系统";
@@ -235,8 +233,9 @@ namespace ShopClient
 
         private void btnProSelect_Click(object sender, EventArgs e)
         {
-            //产品选择
+            //产品选择            
             proselect.Show();
+
         }
 
         internal bool AddPro(ProInfo proinfo, decimal qty)
