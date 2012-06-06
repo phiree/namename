@@ -47,7 +47,7 @@ namespace ShopClient.uc
 
             lbproname.Text = ProInfo.Name;
             lbunit.Text = ProInfo.Unit;
-            lbprice.Text = ProInfo.ProPrices.Single<ProPrice>(x => x.AreaInfo.AreaID == GlobalValue.GShop.AreaInfo.AreaID).Price.ToString("0.00");
+            lbprice.Text = new DALProInfo().GetPrice(ProInfo.ProID, GlobalValue.GShop.AreaInfo.AreaID).Price.ToString("0.00");
             //加载图片
 
             string filename = Application.StartupPath + "\\proimg\\" + ProInfo.PicName;

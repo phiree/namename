@@ -10,7 +10,9 @@ namespace NameName.DAL
     {
         public void SaveList(Shop_SellList currentList )
         {
+            currentList.BillDate = new CommonFunctions().GetServerTime();
             session.Save(currentList);
+            session.Flush();
         }
 
     }

@@ -12,7 +12,7 @@ namespace NameName.Model
         public virtual int ID{get;set;}
         public virtual string BillNO{get;set;}
         public virtual ProInfo Pro{get;set;}
-        public virtual string Unit{get;set;}
+  
         public virtual decimal Amount{get;set;}
         public virtual decimal Price{get;set;}
         public virtual string ProName {

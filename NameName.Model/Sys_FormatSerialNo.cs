@@ -16,7 +16,7 @@ namespace NameName.Model
         public virtual string Value { get; set; }
         public  override string ToString()
         {
-            return Flag + Year + Month + Day + Value;
+            return Year + Month + Day + Flag + Value;
         }
     }
 }

@@ -78,7 +78,7 @@
             this.numInupt1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numInupt1.Location = new System.Drawing.Point(0, 100);
             this.numInupt1.Name = "numInupt1";
-            this.numInupt1.PasswordChar = '*';
+            this.numInupt1.PasswordChar = '\0';
             this.numInupt1.Size = new System.Drawing.Size(391, 419);
             this.numInupt1.TabIndex = 20;
             // 
@@ -90,6 +90,7 @@
             this.Controls.Add(this.numInupt1);
             this.Controls.Add(this.panel1);
             this.Name = "InputQty";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "输入";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -130,8 +130,9 @@ namespace ShopClient
             UpDateImage();
             //加载产品数据
             //显示正在加载数据的窗口!!!            
-            new LoadWait().LoadData(proselect);            
-
+            proselect.Show();
+            proselect.LoadProInfo();
+            proselect.Hide();
             this.Show();
             this.Text = GlobalValue.GShop.AreaInfo.AreaName + "-" + GlobalValue.GShop.ShopName + "-" + GlobalValue.GUser.TrueName + " 正在使用 么么 门店系统";
             //不可能为null的！
@@ -211,6 +212,8 @@ namespace ShopClient
         {
             //产生一个SellList
             selllist = new Shop_SellList();
+            selllist.Duty = dutyinfo;
+
             pnlselllist.Visible = pnlselldetail.Visible = true;
             btnProSelect.Enabled = true;
             btnCash.Enabled = true;

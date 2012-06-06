@@ -60,6 +60,8 @@ namespace NameName.DAL
             return QueryFutureList(" select a from ProInfo a where a.DeleteFlag=false and a.LastUpDateTime > '" + lastupdate + "'");
         }
 
+        
+
 
         public IList<string> GetProCatesByAreaID(Guid areaid)
         {

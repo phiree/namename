@@ -89,10 +89,12 @@ namespace ShopClient
                 {
                     pis[i].ProInfo = source[i];
                     pis[i].LoadProInfo();
+                    pis[i].Visible = true;
                 }
                 else
                 {
                     pis[i].ProInfo = null;
+                    pis[i].Visible = false;
                 }
             }
 
