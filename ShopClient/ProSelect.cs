@@ -15,10 +15,14 @@ namespace ShopClient
     {
 
         IList<ProInfo> proinfos;
-
+        uc.ucProInfo[] pis = new uc.ucProInfo[18];
         public ProSelect()
         {
             InitializeComponent();
+            for (int i = 0; i < 18; i++)
+            {
+                pis[i] = new uc.ucProInfo();
+            }
         }
 
         public void LoadProInfo()
@@ -77,12 +81,28 @@ namespace ShopClient
                     source.Add(CatePros[i]);
                 }
             }
+
             tp.Controls.Clear();
 
-            GridBuilder<ProInfo> g = new GridBuilder<ProInfo>(source, new Size(190, 190), tp, 6, 10, 10);
-            g.OnAddItem += new GridBuilder<ProInfo>.AddItem(g_OnAddItem);
-            //DateTime t2 = DateTime.Now;
-            g.BuildButtons();
+            for (int i = 0; i < 18; i++)
+            {
+                if (i < source.Count)
+                {
+                    pis[i].ProInfo = source[i];
+                }
+                else
+                {
+                    pis[i].ProInfo = null;
+                }
+                tp.Controls.Add(pis[i]);
+            }
+            //tp.Controls.Clear();
+
+
+            //GridBuilder<ProInfo> g = new GridBuilder<ProInfo>(source, new Size(190, 190), tp, 6, 10, 10);
+            //g.OnAddItem += new GridBuilder<ProInfo>.AddItem(g_OnAddItem);
+            ////DateTime t2 = DateTime.Now;
+            //g.BuildButtons();
             //DateTime t3 = DateTime.Now;
 
             //TimeSpan ts1 = t2 - t1;
@@ -157,6 +177,36 @@ namespace ShopClient
         {
             e.Cancel = true;
             this.Hide();
+        }
+
+        //创建18个
+        
+
+        private void ProSelect_Load(object sender, EventArgs e)
+        {
+            Size ItemSize = new Size(190, 190);
+            int ColAmount = 6;
+            int InitTop = 10, RowSpace = 10;
+
+            int btnIndex = 0;
+            int space = (this.Width - ColAmount * ItemSize.Width) / (ColAmount + 1);
+            
+
+            foreach (uc.ucProInfo pi in pis)
+            {
+                int currentRow = btnIndex / ColAmount;
+                int currentCol = btnIndex % ColAmount;
+                int left = space + (ItemSize.Width + space) * currentCol;
+                int top = InitTop + (RowSpace + ItemSize.Height) * currentRow;
+
+                pi.Left = left;
+                pi.Top = top;
+                pi.Size = ItemSize;
+                pi.ShowQty = false;
+                pi.ProInfo = null;
+                pi.OnSelectPro += new uc.ucProInfo.SelectPro(pi_OnSelectPro);
+                btnIndex++;
+            }
         }
     }
 }

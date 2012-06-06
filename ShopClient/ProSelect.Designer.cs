@@ -32,19 +32,19 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.btnExit = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbErrorInfo = new System.Windows.Forms.Label();
             this.btnpre = new System.Windows.Forms.Button();
             this.btnnext = new System.Windows.Forms.Button();
-            this.lbErrorInfo = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage1
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 26);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(8);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(826, 365);
+            this.tabPage1.Size = new System.Drawing.Size(826, 366);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -88,6 +88,17 @@
             this.panel1.Size = new System.Drawing.Size(834, 85);
             this.panel1.TabIndex = 5;
             // 
+            // lbErrorInfo
+            // 
+            this.lbErrorInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbErrorInfo.Font = new System.Drawing.Font("宋体", 18F);
+            this.lbErrorInfo.Location = new System.Drawing.Point(100, 0);
+            this.lbErrorInfo.Name = "lbErrorInfo";
+            this.lbErrorInfo.Size = new System.Drawing.Size(562, 85);
+            this.lbErrorInfo.TabIndex = 6;
+            this.lbErrorInfo.Text = "产品已经存在";
+            this.lbErrorInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // btnpre
             // 
             this.btnpre.Dock = System.Windows.Forms.DockStyle.Right;
@@ -110,17 +121,6 @@
             this.btnnext.UseVisualStyleBackColor = true;
             this.btnnext.Click += new System.EventHandler(this.btnnext_Click);
             // 
-            // lbErrorInfo
-            // 
-            this.lbErrorInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbErrorInfo.Font = new System.Drawing.Font("宋体", 18F);
-            this.lbErrorInfo.Location = new System.Drawing.Point(100, 0);
-            this.lbErrorInfo.Name = "lbErrorInfo";
-            this.lbErrorInfo.Size = new System.Drawing.Size(562, 85);
-            this.lbErrorInfo.TabIndex = 6;
-            this.lbErrorInfo.Text = "产品已经存在";
-            this.lbErrorInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // ProSelect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -137,6 +137,7 @@
             this.Text = "产品选择";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProSelect_FormClosing);
+            this.Load += new System.EventHandler(this.ProSelect_Load);
             this.tabControl1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

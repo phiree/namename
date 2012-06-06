@@ -232,7 +232,7 @@
             // Column5
             // 
             this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column5.DataPropertyName = "Pro.Unit";
+            this.Column5.DataPropertyName = "ProUnit";
             this.Column5.HeaderText = "单位";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
