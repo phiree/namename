@@ -222,7 +222,7 @@
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.DataPropertyName = "Pro.Name";
+            this.Column1.DataPropertyName = "ProName";
             this.Column1.HeaderText = "产品";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
@@ -232,7 +232,7 @@
             // Column5
             // 
             this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column5.DataPropertyName = "Pro.Unit";
+            this.Column5.DataPropertyName = "ProUnit";
             this.Column5.HeaderText = "单位";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
@@ -262,7 +262,7 @@
             // Column4
             // 
             this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column4.DataPropertyName = "Price*Amount";
+            this.Column4.DataPropertyName = "DetailAmount";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle2.Format = "N2";
             dataGridViewCellStyle2.NullValue = null;

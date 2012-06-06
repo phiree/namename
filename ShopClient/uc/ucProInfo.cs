@@ -40,7 +40,10 @@ namespace ShopClient.uc
             lbqty.Visible = ShowQty;
             lbqty.Text = Qty.ToString("0.00");
             if (ProInfo == null)
+            {
+                this.Visible = false;
                 return;
+            }
 
             lbproname.Text = ProInfo.Name;
             lbunit.Text = ProInfo.Unit;

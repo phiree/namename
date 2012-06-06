@@ -25,7 +25,8 @@ namespace ShopClient
             ssl = selllist;
 
             dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.DataSource = ssl.Details;
+         
+            dataGridView1.DataSource =  ssl.Details;
 
             lbbillamount.Text = selllist.Details.Sum(x => x.Price * x.Amount).ToString("0.00");
             lbactamount.Text = lbbillamount.Text;
@@ -33,7 +34,7 @@ namespace ShopClient
             this.ShowDialog();
             return "";
         }
-
+        
         private string GetBackAmount()
         {
             return (Convert.ToDecimal(lbactamount.Text) - Convert.ToDecimal(lbbillamount.Text)).ToString();
