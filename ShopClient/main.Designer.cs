@@ -56,6 +56,7 @@
             this.lbCAmount = new System.Windows.Forms.Label();
             this.lbbackamount = new System.Windows.Forms.Label();
             this.pnlselldetail = new System.Windows.Forms.Panel();
+            this.btncancel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnlselllist.SuspendLayout();
             this.SuspendLayout();
@@ -78,13 +79,13 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(883, 76);
+            this.panel1.Size = new System.Drawing.Size(1001, 76);
             this.panel1.TabIndex = 0;
             // 
             // btnpwd
             // 
             this.btnpwd.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnpwd.Location = new System.Drawing.Point(808, 0);
+            this.btnpwd.Location = new System.Drawing.Point(926, 0);
             this.btnpwd.Name = "btnpwd";
             this.btnpwd.Size = new System.Drawing.Size(75, 76);
             this.btnpwd.TabIndex = 1;
@@ -211,6 +212,7 @@
             // 
             // pnlselllist
             // 
+            this.pnlselllist.Controls.Add(this.btncancel);
             this.pnlselllist.Controls.Add(this.btnnext);
             this.pnlselllist.Controls.Add(this.btnPre);
             this.pnlselllist.Controls.Add(this.btnProSelect);
@@ -224,9 +226,9 @@
             this.pnlselllist.Controls.Add(this.lbCAmount);
             this.pnlselllist.Controls.Add(this.lbbackamount);
             this.pnlselllist.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlselllist.Location = new System.Drawing.Point(706, 76);
+            this.pnlselllist.Location = new System.Drawing.Point(824, 76);
             this.pnlselllist.Name = "pnlselllist";
-            this.pnlselllist.Size = new System.Drawing.Size(177, 421);
+            this.pnlselllist.Size = new System.Drawing.Size(177, 545);
             this.pnlselllist.TabIndex = 1;
             // 
             // btnnext
@@ -257,7 +259,7 @@
             // 
             this.btnProSelect.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnProSelect.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnProSelect.Location = new System.Drawing.Point(0, 57);
+            this.btnProSelect.Location = new System.Drawing.Point(0, 181);
             this.btnProSelect.Name = "btnProSelect";
             this.btnProSelect.Size = new System.Drawing.Size(177, 54);
             this.btnProSelect.TabIndex = 7;
@@ -269,7 +271,7 @@
             // 
             this.label3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label3.Font = new System.Drawing.Font("宋体", 9F);
-            this.label3.Location = new System.Drawing.Point(0, 111);
+            this.label3.Location = new System.Drawing.Point(0, 235);
             this.label3.Margin = new System.Windows.Forms.Padding(3, 30, 3, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(177, 24);
@@ -281,7 +283,7 @@
             // 
             this.lbAmount.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lbAmount.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.lbAmount.Location = new System.Drawing.Point(0, 135);
+            this.lbAmount.Location = new System.Drawing.Point(0, 259);
             this.lbAmount.Name = "lbAmount";
             this.lbAmount.Size = new System.Drawing.Size(177, 34);
             this.lbAmount.TabIndex = 2;
@@ -292,7 +294,7 @@
             // 
             this.btnCash.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnCash.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCash.Location = new System.Drawing.Point(0, 169);
+            this.btnCash.Location = new System.Drawing.Point(0, 293);
             this.btnCash.Name = "btnCash";
             this.btnCash.Size = new System.Drawing.Size(177, 54);
             this.btnCash.TabIndex = 3;
@@ -304,7 +306,7 @@
             // 
             this.label4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label4.Font = new System.Drawing.Font("宋体", 9F);
-            this.label4.Location = new System.Drawing.Point(0, 223);
+            this.label4.Location = new System.Drawing.Point(0, 347);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(177, 28);
             this.label4.TabIndex = 4;
@@ -314,7 +316,7 @@
             // lbPreNo
             // 
             this.lbPreNo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lbPreNo.Location = new System.Drawing.Point(0, 251);
+            this.lbPreNo.Location = new System.Drawing.Point(0, 375);
             this.lbPreNo.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.lbPreNo.Name = "lbPreNo";
             this.lbPreNo.Size = new System.Drawing.Size(177, 34);
@@ -326,7 +328,7 @@
             // 
             this.lbPreAmount.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lbPreAmount.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.lbPreAmount.Location = new System.Drawing.Point(0, 285);
+            this.lbPreAmount.Location = new System.Drawing.Point(0, 409);
             this.lbPreAmount.Name = "lbPreAmount";
             this.lbPreAmount.Size = new System.Drawing.Size(177, 34);
             this.lbPreAmount.TabIndex = 6;
@@ -337,7 +339,7 @@
             // 
             this.lbactamount.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lbactamount.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.lbactamount.Location = new System.Drawing.Point(0, 319);
+            this.lbactamount.Location = new System.Drawing.Point(0, 443);
             this.lbactamount.Name = "lbactamount";
             this.lbactamount.Size = new System.Drawing.Size(177, 34);
             this.lbactamount.TabIndex = 10;
@@ -348,7 +350,7 @@
             // 
             this.lbCAmount.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lbCAmount.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.lbCAmount.Location = new System.Drawing.Point(0, 353);
+            this.lbCAmount.Location = new System.Drawing.Point(0, 477);
             this.lbCAmount.Name = "lbCAmount";
             this.lbCAmount.Size = new System.Drawing.Size(177, 34);
             this.lbCAmount.TabIndex = 11;
@@ -359,7 +361,7 @@
             // 
             this.lbbackamount.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lbbackamount.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.lbbackamount.Location = new System.Drawing.Point(0, 387);
+            this.lbbackamount.Location = new System.Drawing.Point(0, 511);
             this.lbbackamount.Name = "lbbackamount";
             this.lbbackamount.Size = new System.Drawing.Size(177, 34);
             this.lbbackamount.TabIndex = 12;
@@ -371,13 +373,25 @@
             this.pnlselldetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlselldetail.Location = new System.Drawing.Point(0, 76);
             this.pnlselldetail.Name = "pnlselldetail";
-            this.pnlselldetail.Size = new System.Drawing.Size(706, 421);
+            this.pnlselldetail.Size = new System.Drawing.Size(824, 545);
             this.pnlselldetail.TabIndex = 2;
+            // 
+            // btncancel
+            // 
+            this.btncancel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btncancel.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btncancel.Location = new System.Drawing.Point(0, 127);
+            this.btncancel.Name = "btncancel";
+            this.btncancel.Size = new System.Drawing.Size(177, 54);
+            this.btncancel.TabIndex = 13;
+            this.btncancel.Text = "取消单据";
+            this.btncancel.UseVisualStyleBackColor = true;
+            this.btncancel.Click += new System.EventHandler(this.btncancel_Click);
             // 
             // main
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(883, 497);
+            this.ClientSize = new System.Drawing.Size(1001, 621);
             this.Controls.Add(this.pnlselldetail);
             this.Controls.Add(this.pnlselllist);
             this.Controls.Add(this.panel1);
@@ -422,6 +436,7 @@
         private System.Windows.Forms.Label lbactamount;
         private System.Windows.Forms.Label lbCAmount;
         private System.Windows.Forms.Label lbbackamount;
+        private System.Windows.Forms.Button btncancel;
 
     }
 }

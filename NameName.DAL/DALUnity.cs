@@ -13,7 +13,7 @@ namespace NameName.DAL
 
         public void ExcuteStoredProcedure(string procedureName)
         {
-            ExcuteStoredProcedure(procedureName, new string[]{ });
+            ExcuteStoredProcedure(procedureName, new string[] { });
         }
         public void ExcuteStoredProcedure(string procedureName, string[] paramValues)
         {
@@ -22,7 +22,7 @@ namespace NameName.DAL
 
             foreach (string value in paramValues)
             {
-                sql += " " + value + ",";
+                sql += " '" + value + "',";
             }
             sql = sql.TrimEnd(',');
 
