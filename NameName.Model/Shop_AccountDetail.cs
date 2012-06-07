@@ -6,7 +6,7 @@
 
 using System;
 namespace NameName.Model
-{public class Store_AccountDetail
+{public class Shop_AccountDetail
 {
    private int _Id;
    private Guid _AccountID;

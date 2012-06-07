@@ -156,6 +156,7 @@
     <Compile Include="Mapping\Sys_SettingsMap.cs" />
     <Compile Include="Mapping\Shop_SellDetailMap.cs" />
     <Compile Include="Mapping\Sys_FormatSerialNoMap.cs" />
+    <Compile Include="Mapping\Shop_Store.cs" />
     <Compile Include="ProInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -213,7 +214,7 @@
     <Compile Include="Shop_User.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Store_AccountDetail.cs">
+    <Compile Include="Shop_AccountDetail.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Sys_Settings.cs" />

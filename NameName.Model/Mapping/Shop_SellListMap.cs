@@ -21,7 +21,7 @@ namespace NameName.Model.Mapping
             References<Shop_DutyInfo>(x => x.Duty);
             Map(x => x.Memo);
             Map(x => x.ActCustomAmount);
-            HasMany<Shop_SellDetail>(x => x.Details).Cascade.All(). Inverse() ;
+            HasMany<Shop_SellDetail>(x => x.Details).KeyColumn("BillNO").Cascade.All(). Inverse();
 
         }
     }
