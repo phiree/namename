@@ -25,14 +25,16 @@ namespace ShopClient
             ssl = selllist;
 
             dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.DataSource = ssl.Details;
+         
+            dataGridView1.DataSource =  ssl.Details;
+
             lbbillamount.Text = selllist.Details.Sum(x => x.Price * x.Amount).ToString("0.00");
             lbactamount.Text = lbbillamount.Text;
             lbbackamount.Text = GetBackAmount();
             this.ShowDialog();
             return "";
         }
-
+        
         private string GetBackAmount()
         {
             return (Convert.ToDecimal(lbactamount.Text) - Convert.ToDecimal(lbbillamount.Text)).ToString();
@@ -42,8 +44,6 @@ namespace ShopClient
         {
             this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
-
-
 
         private void lbactamount_Click(object sender, EventArgs e)
         {
@@ -67,11 +67,63 @@ namespace ShopClient
                 lbbillamount.Text = ssl.Details.Sum(x => x.Price * x.Amount).ToString("0.00");
                 lbbackamount.Text = GetBackAmount();
             }
+        }
+
+        private void btnRemoveZero_Click(object sender, EventArgs e)
+        {
+           
+            decimal price = decimal.Parse( lbbillamount.Text);
+            string[] prices = lbbillamount.Text.Split('.');
+            decimal xiaoshu = decimal.Parse(prices[1]);
+            if (xiaoshu < 50)
+            {
+                xiaoshu = 0;
+            }
+            else
+            {
+                xiaoshu = 0.5M;
+            }
+
+            price = decimal.Parse(prices[0]) + xiaoshu;
+
+            if (lbbillamount.Text == lbactamount.Text)
+            {
+                lbbillamount.Text = price.ToString("0.00");
+                lbactamount.Text = lbbillamount.Text;
+            }   
+            else
+            {
+                lbbillamount.Text = price.ToString("0.00");
+            }
+           
+
+            lbbackamount.Text = GetBackAmount();
+        }
+
+        private void btnCash_Click(object sender, EventArgs e)
+        {
+            //产生billno 写数据库  库存 要货单 打印 
+            string billNo = new DALSys_FormatSerialNo().GetSerialNo(GlobalValue.GShop.ShopNo);
+            ssl.BillNO = billNo;
+            ssl.BillAmount = ssl.Details.Sum(x => x.Price * x.Amount);
+            ssl.ActAmount = decimal.Parse(lbbillamount.Text);
+            ssl.ActCustomAmount = decimal.Parse(lbactamount.Text);
+            ssl.BackFlag = false;
+        
+            foreach (Shop_SellDetail detail in ssl.Details)
+            {
+                detail.BillNO = billNo;
+
+            }
+            new DAShopSellList().SaveList(ssl);
+
+            new CashPrint(ssl);
 
         }
 
-
-
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new CashPrint(ssl);
+        }
     }
 }

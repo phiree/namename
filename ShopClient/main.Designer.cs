@@ -52,10 +52,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lbPreNo = new System.Windows.Forms.Label();
             this.lbPreAmount = new System.Windows.Forms.Label();
-            this.pnlselldetail = new System.Windows.Forms.Panel();
             this.lbactamount = new System.Windows.Forms.Label();
             this.lbCAmount = new System.Windows.Forms.Label();
             this.lbbackamount = new System.Windows.Forms.Label();
+            this.pnlselldetail = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.pnlselllist.SuspendLayout();
             this.SuspendLayout();
@@ -257,7 +257,7 @@
             // 
             this.btnProSelect.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnProSelect.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnProSelect.Location = new System.Drawing.Point(0, 45);
+            this.btnProSelect.Location = new System.Drawing.Point(0, 57);
             this.btnProSelect.Name = "btnProSelect";
             this.btnProSelect.Size = new System.Drawing.Size(177, 54);
             this.btnProSelect.TabIndex = 7;
@@ -269,10 +269,10 @@
             // 
             this.label3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label3.Font = new System.Drawing.Font("宋体", 9F);
-            this.label3.Location = new System.Drawing.Point(0, 99);
+            this.label3.Location = new System.Drawing.Point(0, 111);
             this.label3.Margin = new System.Windows.Forms.Padding(3, 30, 3, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(177, 30);
+            this.label3.Size = new System.Drawing.Size(177, 24);
             this.label3.TabIndex = 0;
             this.label3.Text = "单据信息";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -281,7 +281,7 @@
             // 
             this.lbAmount.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lbAmount.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.lbAmount.Location = new System.Drawing.Point(0, 129);
+            this.lbAmount.Location = new System.Drawing.Point(0, 135);
             this.lbAmount.Name = "lbAmount";
             this.lbAmount.Size = new System.Drawing.Size(177, 34);
             this.lbAmount.TabIndex = 2;
@@ -292,7 +292,7 @@
             // 
             this.btnCash.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnCash.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCash.Location = new System.Drawing.Point(0, 163);
+            this.btnCash.Location = new System.Drawing.Point(0, 169);
             this.btnCash.Name = "btnCash";
             this.btnCash.Size = new System.Drawing.Size(177, 54);
             this.btnCash.TabIndex = 3;
@@ -304,9 +304,9 @@
             // 
             this.label4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label4.Font = new System.Drawing.Font("宋体", 9F);
-            this.label4.Location = new System.Drawing.Point(0, 217);
+            this.label4.Location = new System.Drawing.Point(0, 223);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(177, 34);
+            this.label4.Size = new System.Drawing.Size(177, 28);
             this.label4.TabIndex = 4;
             this.label4.Text = "上单信息";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -332,14 +332,6 @@
             this.lbPreAmount.TabIndex = 6;
             this.lbPreAmount.Text = "金额：200.00元";
             this.lbPreAmount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pnlselldetail
-            // 
-            this.pnlselldetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlselldetail.Location = new System.Drawing.Point(0, 76);
-            this.pnlselldetail.Name = "pnlselldetail";
-            this.pnlselldetail.Size = new System.Drawing.Size(706, 421);
-            this.pnlselldetail.TabIndex = 2;
             // 
             // lbactamount
             // 
@@ -373,6 +365,14 @@
             this.lbbackamount.TabIndex = 12;
             this.lbbackamount.Text = "金额：200.00元";
             this.lbbackamount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pnlselldetail
+            // 
+            this.pnlselldetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlselldetail.Location = new System.Drawing.Point(0, 76);
+            this.pnlselldetail.Name = "pnlselldetail";
+            this.pnlselldetail.Size = new System.Drawing.Size(706, 421);
+            this.pnlselldetail.TabIndex = 2;
             // 
             // main
             // 

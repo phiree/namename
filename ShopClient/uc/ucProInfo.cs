@@ -40,11 +40,14 @@ namespace ShopClient.uc
             lbqty.Visible = ShowQty;
             lbqty.Text = Qty.ToString("0.00");
             if (ProInfo == null)
+            {
+                this.Visible = false;
                 return;
+            }
 
             lbproname.Text = ProInfo.Name;
             lbunit.Text = ProInfo.Unit;
-            lbprice.Text = ProInfo.ProPrices.Single<ProPrice>(x => x.AreaInfo.AreaID == GlobalValue.GShop.AreaInfo.AreaID).Price.ToString("0.00");
+            lbprice.Text = new DALProInfo().GetPrice(ProInfo.ProID, GlobalValue.GShop.AreaInfo.AreaID).Price.ToString("0.00");
             //加载图片
 
             string filename = Application.StartupPath + "\\proimg\\" + ProInfo.PicName;

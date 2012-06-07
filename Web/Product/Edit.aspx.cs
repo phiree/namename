@@ -36,7 +36,6 @@ public partial class Product_Edit : System.Web.UI.Page
             tbUnit.Text = pi.Unit;
             UpLoadFile1.FileName = pi.PicName;
 
-
             //产品价格
             BindArea();
         }

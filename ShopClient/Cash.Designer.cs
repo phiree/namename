@@ -41,7 +41,7 @@
             this.btnRemoveZero = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnCash = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lbactamount = new System.Windows.Forms.Label();
             this.lbbackamount = new System.Windows.Forms.Label();
@@ -49,6 +49,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lbbillamount = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -94,6 +95,7 @@
             // Column5
             // 
             this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column5.DataPropertyName = "ProUnit";
             this.Column5.HeaderText = "单位";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
@@ -102,8 +104,8 @@
             // Column2
             // 
             this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column2.DataPropertyName = "ProPrice";
-            dataGridViewCellStyle1.Format = "C2";
+            this.Column2.DataPropertyName = "Price";
+            dataGridViewCellStyle1.Format = "N2";
             dataGridViewCellStyle1.NullValue = null;
             this.Column2.DefaultCellStyle = dataGridViewCellStyle1;
             this.Column2.HeaderText = "单价";
@@ -123,9 +125,9 @@
             // Column4
             // 
             this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column4.DataPropertyName = "Money";
+            this.Column4.DataPropertyName = "DetailAmount";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.Format = "N2";
             dataGridViewCellStyle2.NullValue = null;
             this.Column4.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column4.HeaderText = "金额";
@@ -163,11 +165,12 @@
             this.btnRemoveZero.TabIndex = 9;
             this.btnRemoveZero.Text = "抹零";
             this.btnRemoveZero.UseVisualStyleBackColor = true;
+            this.btnRemoveZero.Click += new System.EventHandler(this.btnRemoveZero_Click);
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.btnExit);
-            this.panel2.Controls.Add(this.button5);
+            this.panel2.Controls.Add(this.btnCash);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(576, 399);
             this.panel2.Name = "panel2";
@@ -185,15 +188,16 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // button5
+            // btnCash
             // 
-            this.button5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button5.Location = new System.Drawing.Point(0, 0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(127, 100);
-            this.button5.TabIndex = 9;
-            this.button5.Text = "收银";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnCash.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnCash.Location = new System.Drawing.Point(0, 0);
+            this.btnCash.Name = "btnCash";
+            this.btnCash.Size = new System.Drawing.Size(127, 100);
+            this.btnCash.TabIndex = 9;
+            this.btnCash.Text = "收银";
+            this.btnCash.UseVisualStyleBackColor = true;
+            this.btnCash.Click += new System.EventHandler(this.btnCash_Click);
             // 
             // panel3
             // 
@@ -271,11 +275,22 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "总金额：";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(335, 282);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Cash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(835, 499);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -297,17 +312,12 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnRemoveZero;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnCash;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lbactamount;
         private System.Windows.Forms.Label lbbackamount;
@@ -315,6 +325,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbbillamount;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.Button button1;
 
     }
 }

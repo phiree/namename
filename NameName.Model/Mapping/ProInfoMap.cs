@@ -16,7 +16,7 @@ namespace NameName.Model.Mapping
             Map(x => x.ProCate);
             Map(x => x.Unit);
             Map(x => x.LastUpDateTime);
-            HasMany<ProPrice>(x => x.ProPrices).Inverse().Not.LazyLoad();
+            HasMany<ProPrice>(x => x.ProPrices);//.Inverse().Not.LazyLoad();
 
 
         }

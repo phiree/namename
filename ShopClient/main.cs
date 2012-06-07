@@ -80,7 +80,7 @@ namespace ShopClient
         {
             pnlselllist.Visible = pnlselldetail.Visible = false;
             btnProSelect.Enabled = btnCash.Enabled = false;
-            lbAmount.Text = lbPreAmount.Text = lbPreNo.Text = string.Empty;
+            lbAmount.Text = lbPreAmount.Text = lbPreNo.Text = lbactamount.Text = lbCAmount.Text = lbbackamount.Text = string.Empty;
         }
 
         /// <summary>
@@ -129,11 +129,10 @@ namespace ShopClient
             //更新图片数据
             UpDateImage();
             //加载产品数据
+            //显示正在加载数据的窗口!!!            
             proselect.Show();
-            proselect.Hide();
-
             proselect.LoadProInfo();
-
+            proselect.Hide();
             this.Show();
             this.Text = GlobalValue.GShop.AreaInfo.AreaName + "-" + GlobalValue.GShop.ShopName + "-" + GlobalValue.GUser.TrueName + " 正在使用 么么 门店系统";
             //不可能为null的！
@@ -213,6 +212,8 @@ namespace ShopClient
         {
             //产生一个SellList
             selllist = new Shop_SellList();
+            selllist.Duty = dutyinfo;
+
             pnlselllist.Visible = pnlselldetail.Visible = true;
             btnProSelect.Enabled = true;
             btnCash.Enabled = true;
@@ -235,8 +236,9 @@ namespace ShopClient
 
         private void btnProSelect_Click(object sender, EventArgs e)
         {
-            //产品选择
+            //产品选择            
             proselect.Show();
+
         }
 
         internal bool AddPro(ProInfo proinfo, decimal qty)
@@ -262,7 +264,8 @@ namespace ShopClient
 
         private string GetSumAmount()
         {
-            return selllist.Details.Sum(x => x.Price * x.Amount).ToString("0.00");
+            string a = selllist.Details.Sum(x => x.Price * x.Amount).ToString("0.00");
+            return "金额:" + a;
         }
 
         private void ShowSellDetailByPageNo()

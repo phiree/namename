@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NameName.IDAL", "NameName.I
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopClient", "ShopClient\ShopClient.csproj", "{BAF5C7EF-092D-44FB-9146-A3D8B392E2D4}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web", "Web", "{4ECABA69-74B3-4FB4-9868-4766B4F9379E}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web", "Web\", "{4ECABA69-74B3-4FB4-9868-4766B4F9379E}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		ProjectReferences = "{BD5C08B3-FEB2-4BAF-BADD-FD1246128870}|NameName.DAL.dll;{F3D24AB7-DED8-427B-8F97-EE12D9F67351}|NameName.IDAL.dll;{A84D74B0-8175-4F3D-B7C9-34BAF70396FE}|NameName.Model.dll;{5A3BF82D-6904-4CC0-ACE8-F999586D0375}|NameNameConfig.dll;"
@@ -37,38 +37,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{416EC36C-60B
 	ProjectSection(SolutionItems) = preProject
 		lib\Antlr3.Runtime.dll = lib\Antlr3.Runtime.dll
 		lib\AspNetPager.dll = lib\AspNetPager.dll
-		lib\AspNetPager.xml = lib\AspNetPager.xml
 		lib\Castle.Core.dll = lib\Castle.Core.dll
-		lib\Castle.Core.xml = lib\Castle.Core.xml
 		lib\FluentNHibernate.dll = lib\FluentNHibernate.dll
-		lib\FluentNHibernate.XML = lib\FluentNHibernate.XML
 		lib\HibernatingRhinos.Profiler.Appender.v4.0.dll = lib\HibernatingRhinos.Profiler.Appender.v4.0.dll
 		lib\Iesi.Collections.dll = lib\Iesi.Collections.dll
-		lib\Iesi.Collections.xml = lib\Iesi.Collections.xml
 		lib\Intelligencia.UrlRewriter.dll = lib\Intelligencia.UrlRewriter.dll
 		lib\log4net.dll = lib\log4net.dll
-		lib\log4net.xml = lib\log4net.xml
 		lib\Newtonsoft.Json.dll = lib\Newtonsoft.Json.dll
 		lib\NHibernate.ByteCode.Castle.dll = lib\NHibernate.ByteCode.Castle.dll
-		lib\NHibernate.ByteCode.Castle.xml = lib\NHibernate.ByteCode.Castle.xml
 		lib\NHibernate.dll = lib\NHibernate.dll
-		lib\NHibernate.xml = lib\NHibernate.xml
 		lib\nunit.framework.dll = lib\nunit.framework.dll
 		lib\nunit.mocks.dll = lib\nunit.mocks.dll
-		lib\QConnectSDK.dll = lib\QConnectSDK.dll
-		lib\QWeiboSDK.dll = lib\QWeiboSDK.dll
 		lib\Remotion.Data.Linq.dll = lib\Remotion.Data.Linq.dll
 		lib\RestSharp.dll = lib\RestSharp.dll
 		lib\Rhino.Mocks.dll = lib\Rhino.Mocks.dll
-		lib\SubSonic.Core.dll = lib\SubSonic.Core.dll
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testnamename", "testnamename\testnamename.csproj", "{0AF4CA3B-A80C-4ECB-B688-ED1CAADE3865}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{67343DDB-3A04-432F-9D66-7BFDBE281F5B}"
-	ProjectSection(SolutionItems) = preProject
-		InitScript.sql = InitScript.sql
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NameNameConfig", "NameNameConfig\NameNameConfig.csproj", "{5A3BF82D-6904-4CC0-ACE8-F999586D0375}"
 EndProject
