@@ -8,7 +8,7 @@ using NameName.Model;
 namespace testnamename
 {
     [TestFixture]
-  public  class Protest
+  public  class ProInfotest
     {
         [Test]
       public void TestGetProsByAreaID()

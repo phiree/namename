@@ -74,6 +74,7 @@
     <Compile Include="DALBase.cs" />
     <Compile Include="DALDepart.cs" />
     <Compile Include="DALDuty.cs" />
+    <Compile Include="DALSession.cs" />
     <Compile Include="DALSys_FormatSerialNo.cs" />
     <Compile Include="HybridSessionBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="DALProInfo.cs" />
     <Compile Include="DAShopSellList.cs" />
     <Compile Include="DALSysSettings.cs" />
+    <Compile Include="DALUnity.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NameName.IDAL\NameName.IDAL.csproj">

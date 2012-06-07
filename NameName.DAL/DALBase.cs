@@ -6,9 +6,9 @@ using SubSonic.Repository;
 using NHibernate;
 namespace NameName.DAL
 {
-    public class DALBase<T>
+    public class DALBase<T>:DALSession
     {
-        protected ISession session = new HybridSessionBuilder().GetSession();
+      
 
         // public IRepository Reposi = new SimpleRepository("conn", SimpleRepositoryOptions.RunMigrations);
 
