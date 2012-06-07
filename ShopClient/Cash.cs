@@ -13,28 +13,23 @@ namespace ShopClient
 {
     public partial class Cash : Form
     {
-        public Cash()
-        {
-            InitializeComponent();
-        }
-
         Shop_SellList ssl;
 
-        public string CashSellList(Shop_SellList selllist)
+        public Cash(Shop_SellList selllist)
         {
+            InitializeComponent();
+
             ssl = selllist;
 
             dataGridView1.AutoGenerateColumns = false;
-         
-            dataGridView1.DataSource =  ssl.Details;
+
+            dataGridView1.DataSource = ssl.Details;
 
             lbbillamount.Text = selllist.Details.Sum(x => x.Price * x.Amount).ToString("0.00");
             lbactamount.Text = lbbillamount.Text;
             lbbackamount.Text = GetBackAmount();
-            this.ShowDialog();
-            return "";
         }
-        
+
         private string GetBackAmount()
         {
             return (Convert.ToDecimal(lbactamount.Text) - Convert.ToDecimal(lbbillamount.Text)).ToString();
@@ -71,8 +66,8 @@ namespace ShopClient
 
         private void btnRemoveZero_Click(object sender, EventArgs e)
         {
-           
-            decimal price = decimal.Parse( lbbillamount.Text);
+
+            decimal price = decimal.Parse(lbbillamount.Text);
             string[] prices = lbbillamount.Text.Split('.');
             decimal xiaoshu = decimal.Parse(prices[1]);
             if (xiaoshu < 50)
@@ -90,12 +85,12 @@ namespace ShopClient
             {
                 lbbillamount.Text = price.ToString("0.00");
                 lbactamount.Text = lbbillamount.Text;
-            }   
+            }
             else
             {
                 lbbillamount.Text = price.ToString("0.00");
             }
-           
+
 
             lbbackamount.Text = GetBackAmount();
         }
@@ -109,16 +104,18 @@ namespace ShopClient
             ssl.ActAmount = decimal.Parse(lbbillamount.Text);
             ssl.ActCustomAmount = decimal.Parse(lbactamount.Text);
             ssl.BackFlag = false;
-        
+
             foreach (Shop_SellDetail detail in ssl.Details)
             {
                 detail.BillNO = billNo;
-
             }
+
             new DAShopSellList().SaveList(ssl);
 
             new CashPrint(ssl);
-
+            //执行存储过程，进行库存处理
+            new DALUnity().ExcuteStoredProcedure("usp_Shop_Sell_Cash", new string[] { ssl.BillNO });
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -78,8 +78,7 @@ namespace ShopClient
 
         private void SellBillInit()
         {
-            pnlselllist.Visible = pnlselldetail.Visible = false;
-            btnProSelect.Enabled = btnCash.Enabled = false;
+            NewBill(false);
             lbAmount.Text = lbPreAmount.Text = lbPreNo.Text = lbactamount.Text = lbCAmount.Text = lbbackamount.Text = string.Empty;
         }
 
@@ -147,16 +146,9 @@ namespace ShopClient
             {
                 //正在当班
                 dutyinfo = sd;
-
                 btnDutyBegin.Enabled = false;
                 btnDutyEnd.Enabled = true;
-                btnNew.Enabled = true;
-                btnBack.Enabled = true;
-                btnAsk.Enabled = false;
-                btnCheck.Enabled = false;
                 //判断是否有单据！有单据则下面的显示,新开一张单据后，数据都保存在内存中！所以不需要判断
-
-
             }
             else
             {
@@ -164,10 +156,8 @@ namespace ShopClient
                 {
                     //允许当班
                     btnDutyBegin.Enabled = true;
-
                     btnDutyEnd.Enabled = false;
-                    btnNew.Enabled = false;
-                    btnBack.Enabled = false;
+
                     btnAsk.Enabled = true;
                     btnCheck.Enabled = true;
                 }
@@ -184,6 +174,12 @@ namespace ShopClient
             new PwdChange().ShowDialog();
         }
 
+        private void NewBill(bool IsNew)
+        {
+            btnNew.Enabled = btnBack.Enabled = !IsNew;
+            btnPre.Enabled = btnnext.Enabled = btnProSelect.Enabled = btnCash.Enabled = IsNew;
+        }
+
         private void btnDutyBegin_Click(object sender, EventArgs e)
         {
             string errorstr;
@@ -198,9 +194,6 @@ namespace ShopClient
                 btnBack.Enabled = true;
                 btnAsk.Enabled = false;
                 btnCheck.Enabled = false;
-
-                pnlselllist.Visible = pnlselldetail.Visible = true;
-
             }
             else
             {
@@ -213,25 +206,26 @@ namespace ShopClient
             //产生一个SellList
             selllist = new Shop_SellList();
             selllist.Duty = dutyinfo;
-
-            pnlselllist.Visible = pnlselldetail.Visible = true;
-            btnProSelect.Enabled = true;
-            btnCash.Enabled = true;
+            NewBill(true);
             pnlselldetail.Tag = 0;
 
         }
 
         private void btnCash_Click(object sender, EventArgs e)
         {
-            Cash cash = new Cash();
+            if (new Cash(selllist).ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                //处理完成，初始化数据！
+                lbAmount.Text = "";
+                lbPreNo.Text = "单据号：" + selllist.BillNO;
+                lbPreAmount.Text = "应收:" + selllist.BillAmount.ToString("0.00");
+                lbCAmount.Text = "实付：" + selllist.ActCustomAmount.ToString("0.00");
+                lbactamount.Text = "实收：" + selllist.ActAmount.ToString("0.00");
+                lbbackamount.Text = "找零：" + (selllist.ActCustomAmount - selllist.ActAmount).ToString("0.00");
+                NewBill(false);
+                pnlselldetail.Controls.Clear();
 
-            string billno = cash.CashSellList(selllist);
-
-            //if (cash.sho == System.Windows.Forms.DialogResult.OK)
-            //{
-            //    //处理完成，初始化数据！
-
-            //}
+            }
         }
 
         private void btnProSelect_Click(object sender, EventArgs e)
@@ -363,6 +357,10 @@ namespace ShopClient
             ShowSellDetailByPageNo();
         }
 
-
+        private void btncancel_Click(object sender, EventArgs e)
+        {
+            NewBill(false);
+            lbAmount.Text = "";
+        }
     }
 }

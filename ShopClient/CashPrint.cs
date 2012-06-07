@@ -54,8 +54,8 @@ namespace ShopClient
             newRect = new RectangleF(0, headerHeight, ps.Width, titleFont.Height + 10);
             newGraphic.DrawString("收银单", titleFont, Brushes.Black, newRect, SF);
             headerHeight += titleFont.Height + 10;
-            newRect = new RectangleF(0, headerHeight, ps.Width, newFont.Height + 10);
-            newGraphic.DrawString("单据号:XXXXXXXXXXXXX" + ssl.BillNO + " 时间:" + ssl.BillDate.ToString("HH:mm:ss"), newFont, Brushes.Black, newRect);
+            newRect = new RectangleF(0, headerHeight, ps.Width, newFont.Height);
+            newGraphic.DrawString("单据号:" + ssl.BillNO + " 时间:" + ssl.BillDate.ToString("HH:mm:ss"), newFont, Brushes.Black, newRect);
             headerHeight += newFont.Height;
             newRect = new RectangleF(0, headerHeight, ps.Width, newFont.Height + 10);
             newGraphic.DrawString("地址:" + GlobalValue.GShop.Address, newFont, Brushes.Black, newRect);
@@ -119,7 +119,7 @@ namespace ShopClient
             printdialog.AllowPrintToFile = printdialog.AllowSelection = printdialog.AllowSomePages = true;
             printPreviewDialog.Document = printDocument;
             printDocument.DefaultPageSettings.Landscape = false;
-            printPreviewDialog.PrintPreviewControl.Zoom = 2;
+
             printPreviewDialog.WindowState = FormWindowState.Maximized;
             printPreviewDialog.ShowDialog();
         }
