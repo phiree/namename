@@ -8,7 +8,7 @@ namespace NameName.DAL
 {
     public class DAShopSellList : DALBase<Shop_SellList>
     {
-        public void SaveList(Shop_SellList currentList )
+        public void SaveList(Shop_SellList currentList)
         {
             currentList.BillDate = new CommonFunctions().GetServerTime();
             session.Save(currentList);

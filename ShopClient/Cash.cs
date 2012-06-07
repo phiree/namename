@@ -117,8 +117,13 @@ namespace ShopClient
             }
             new DAShopSellList().SaveList(ssl);
 
+            new CashPrint(ssl);
 
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new CashPrint(ssl);
         }
     }
 }
