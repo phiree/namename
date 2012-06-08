@@ -15,9 +15,12 @@ namespace ShopClient
     public partial class main : Form
     {
 
-        DALDuty dalduty = new DALDuty();
-        Shop_DutyInfo dutyinfo;
+        public DALDuty dalduty = new DALDuty();
+        public Shop_DutyInfo dutyinfo;
+
         Shop_SellList selllist = null;
+
+        public List<Shop_SellDetail> ReMoveDetails = new List<Shop_SellDetail>();
 
         public main()
         {
@@ -178,6 +181,11 @@ namespace ShopClient
         {
             btnNew.Enabled = btnBack.Enabled = !IsNew;
             btnPre.Enabled = btnnext.Enabled = btnProSelect.Enabled = btnCash.Enabled = btncancel.Enabled = IsNew;
+            if (!IsNew)
+            {
+                pnlselldetail.Controls.Clear();
+                selllist = null;
+            }
         }
 
         private void btnDutyBegin_Click(object sender, EventArgs e)
@@ -201,14 +209,19 @@ namespace ShopClient
             }
         }
 
-        private void btnNew_Click(object sender, EventArgs e)
+        private void CreateBill()
         {
             //产生一个SellList
             selllist = new Shop_SellList();
             selllist.Duty = dutyinfo;
             NewBill(true);
             pnlselldetail.Tag = 0;
+            ReMoveDetails.Clear();
+        }
 
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            CreateBill();
         }
 
         private void btnCash_Click(object sender, EventArgs e)
@@ -223,7 +236,6 @@ namespace ShopClient
                 lbactamount.Text = "实收：" + selllist.ActAmount.ToString("0.00");
                 lbbackamount.Text = "找零：" + (selllist.ActCustomAmount - selllist.ActAmount).ToString("0.00");
                 NewBill(false);
-                pnlselldetail.Controls.Clear();
 
             }
         }
@@ -319,7 +331,8 @@ namespace ShopClient
             //进行修改数量，与删除的操作
             uc.ucProInfo pi = (uc.ucProInfo)((Control)sender).Parent;
             Shop_SellDetail ssd = (Shop_SellDetail)(pi.Tag);
-            decimal qty = new ProQtyInput().GetQty(proinfo, ssd.Amount, true);
+
+            decimal qty = new ProQtyInput().GetQty(proinfo, ssd.Amount, true, string.IsNullOrEmpty(selllist.BackBillNo));
             if (qty == 0)
             {
                 return;
@@ -327,6 +340,10 @@ namespace ShopClient
             else if (qty == -1)
             {
                 //删除操作
+                if (!string.IsNullOrEmpty(selllist.BackBillNo))
+                {
+                    ReMoveDetails.Add(ssd);
+                }
                 selllist.Details.Remove(ssd);
                 ShowSellDetailByPageNo();
             }
@@ -359,8 +376,86 @@ namespace ShopClient
 
         private void btncancel_Click(object sender, EventArgs e)
         {
+
             NewBill(false);
             lbAmount.Text = "";
+        }
+
+        private void btnDutyEnd_Click(object sender, EventArgs e)
+        {
+            if (selllist != null)
+            {
+                GlobalFun.MessageBoxError("还有单据未处理，不能交班");
+                return;
+            }
+            dalduty.DutyEnd(dutyinfo);
+            dutyinfo = null;
+            //允许当班
+            btnDutyBegin.Enabled = true;
+            btnDutyEnd.Enabled = false;
+
+            btnAsk.Enabled = true;
+            btnCheck.Enabled = true;
+
+
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            //退货，输入单据号
+            if (selllist != null)
+            {
+                GlobalFun.MessageBoxError("还有单据未处理，不能进行退货操作");
+                return;
+            }
+
+            InputQty iq = new InputQty();
+            iq.Text = "请输入单据号";
+            string billno = iq.GetInputValue().ToString();
+            if (!string.IsNullOrEmpty(billno))
+            {
+                DALShopSellList dalshopselllist = new DALShopSellList();
+                //查询这张单据！
+                Shop_SellList ssl = dalshopselllist.GetByBillNO(billno);
+                if (ssl == null)
+                {
+                    GlobalFun.MessageBoxError("找不到这张单据");
+                    return;
+                }
+                if (ssl.BackFlag)
+                {
+                    GlobalFun.MessageBoxError("退货单，不能退货！");
+                    return;
+                }
+                if (dalshopselllist.GetBackBillByNo(ssl.BillNO) != null)
+                {
+                    GlobalFun.MessageBoxError("已经退货的单据，不能重复退货");
+                    return;
+                }
+                if (ssl.Duty.Shop.ShopID != GlobalValue.GShop.ShopID)
+                {
+                    GlobalFun.MessageBoxError("不是本门店的单据，不能退货");
+                    return;
+                }
+
+
+                CreateBill();
+                selllist.BackBillNo = ssl.BillNO;
+                foreach (Shop_SellDetail ssd in ssl.Details)
+                {
+                    Shop_SellDetail sdnew = new Shop_SellDetail();
+
+                    sdnew.Amount = -ssd.Amount;
+                    sdnew.Price = ssd.Price;
+                    sdnew.Pro = ssd.Pro;
+                    selllist.Details.Add(sdnew);
+                }
+
+                ShowSellDetailByPageNo();
+                //不允许增加产品！不允许修改数量！！！
+                btnProSelect.Enabled = false;
+
+            }
         }
     }
 }

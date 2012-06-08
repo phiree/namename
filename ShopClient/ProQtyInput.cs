@@ -20,6 +20,12 @@ namespace ShopClient
 
         public decimal GetQty(ProInfo proinfo, decimal qty, bool CanDelete)
         {
+            return GetQty(proinfo, qty, CanDelete, true);
+
+        }
+
+        public decimal GetQty(ProInfo proinfo, decimal qty, bool CanDelete, bool CanEditQty)
+        {
             ucProInfo1.ProInfo = proinfo;
             if (qty != 0)
             {
@@ -29,7 +35,7 @@ namespace ShopClient
             //ucProInfo1.LoadProInfo();
 
             this.btnDelete.Visible = CanDelete;
-
+            ucProInfo1.Enabled = btnGet.Enabled = btnOK.Enabled = CanEditQty;
             decimal q = 0;
 
             switch (ShowDialog())
@@ -71,6 +77,6 @@ namespace ShopClient
             this.DialogResult = System.Windows.Forms.DialogResult.Ignore;
         }
 
-       
+
     }
 }
