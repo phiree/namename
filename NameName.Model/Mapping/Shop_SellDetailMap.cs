@@ -16,10 +16,6 @@ namespace NameName.Model.Mapping
             Map(x => x.BillNO);
             Map(x => x.Price);
             References<ProInfo>(x => x.Pro).Column("ProInfo_Id");
-           
-
-          
-
         }
     }
 }

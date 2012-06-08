@@ -177,7 +177,7 @@ namespace ShopClient
         private void NewBill(bool IsNew)
         {
             btnNew.Enabled = btnBack.Enabled = !IsNew;
-            btnPre.Enabled = btnnext.Enabled = btnProSelect.Enabled = btnCash.Enabled = IsNew;
+            btnPre.Enabled = btnnext.Enabled = btnProSelect.Enabled = btnCash.Enabled = btncancel.Enabled = IsNew;
         }
 
         private void btnDutyBegin_Click(object sender, EventArgs e)

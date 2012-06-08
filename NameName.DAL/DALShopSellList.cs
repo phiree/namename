@@ -6,7 +6,7 @@ using NameName.Model;
 using NHibernate;
 namespace NameName.DAL
 {
-    public class DAShopSellList : DALBase<Shop_SellList>
+    public class DALShopSellList : DALBase<Shop_SellList>
     {
         public void SaveList(Shop_SellList currentList)
         {

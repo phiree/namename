@@ -110,11 +110,27 @@ namespace ShopClient
                 detail.BillNO = billNo;
             }
 
-            new DAShopSellList().SaveList(ssl);
+            new DALShopSellList().SaveList(ssl);
 
             new CashPrint(ssl);
+            //获得当前的号码
+
+            //Shop_AskList sl = new DALShopAskList().GetListWithNotConfirm(GlobalValue.GShop);
+            //if (sl == null)
+            //{
+            //    sl = new Shop_AskList();
+            //    sl.CrtDate = new CommonFunctions().GetServerTime();
+            //    sl.AskBillNo = new DALSys_FormatSerialNo().GetSerialNo("AB" + GlobalValue.GShop.ShopNo, false);
+            //    sl.ShopInfo = GlobalValue.GShop;
+            //    sl.State = 0;
+            //    sl.UserInfo = GlobalValue.GUser;
+            //    new DALShopAskList().SaveList(sl);
+            //}
             //执行存储过程，进行库存处理
-            new DALUnity().ExcuteStoredProcedure("usp_Shop_Sell_Cash", new string[] { ssl.BillNO });
+            new DALUnity().ExcuteStoredProcedure("usp_Shop_Sell_Cash",
+                new string[] { GlobalValue.GAccount.AccountID.ToString(),
+                    GlobalValue.GShop.ShopID.ToString(),
+                    ssl.BillNO});
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 

@@ -81,9 +81,10 @@
     <Compile Include="DALUser.cs" />
     <Compile Include="DALShop.cs" />
     <Compile Include="DALProInfo.cs" />
-    <Compile Include="DAShopSellList.cs" />
+    <Compile Include="DALShopSellList.cs" />
     <Compile Include="DALSysSettings.cs" />
     <Compile Include="DALUnity.cs" />
+    <Compile Include="DALShopAskList.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NameName.IDAL\NameName.IDAL.csproj">

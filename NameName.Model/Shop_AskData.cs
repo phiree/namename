@@ -6,63 +6,14 @@
 
 using System;
 namespace NameName.Model
-{public class Shop_AskData
 {
-   private int _ID;
-   private Guid _ShopID;
-   private Guid _ProID;
-   private decimal _Qty;
+    public class Shop_AskData
+    {
 
-   public int ID
-   {
-      get
-      {
-         return _ID;
-      }
-      set
-      {
-         if (this._ID != value)
-            this._ID = value;
-      }
-   }
-   
-   public Guid ShopID
-   {
-      get
-      {
-         return _ShopID;
-      }
-      set
-      {
-         if (this._ShopID != value)
-            this._ShopID = value;
-      }
-   }
-   
-   public Guid ProID
-   {
-      get
-      {
-         return _ProID;
-      }
-      set
-      {
-         if (this._ProID != value)
-            this._ProID = value;
-      }
-   }
-   
-   public decimal Qty
-   {
-      get
-      {
-         return _Qty;
-      }
-      set
-      {
-         if (this._Qty != value)
-            this._Qty = value;
-      }
-   }
+        public virtual int ID { get; set; }
+        public virtual decimal Qty { get; set; }
+        public virtual ProInfo ProInfo { get; set; }
+        public virtual ShopInfo ShopInfo { get; set; }
 
-} }
+    }
+}

@@ -20,9 +20,6 @@ namespace NameName.Model.Mapping
             Map(x => x.ExpQty);
             Map(x => x.ImpQty);
             Map(x => x.PreQty);
-            HasMany<Shop_AccountDetail>(x => x.ShopAccountDetails).KeyColumn("BillNO").Cascade.All().Inverse();
-           
-
         }
     }
 }

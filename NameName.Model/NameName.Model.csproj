@@ -161,6 +161,7 @@
     <Compile Include="Mapping\Shop_AskListMap.cs" />
     <Compile Include="Mapping\Shop_AccountSumMap.cs" />
     <Compile Include="Mapping\Shop_AccountDetailMap.cs" />
+    <Compile Include="Mapping\Shop_AskDataMap.cs" />
     <Compile Include="ProInfo.cs">
       <SubType>Code</SubType>
     </Compile>
