@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 using System;
+using System.Collections.Generic;
 namespace NameName.Model
 {
     public class Shop_Store
@@ -18,6 +19,7 @@ namespace NameName.Model
         public virtual decimal ExpQty{get;set;}
         public virtual decimal ChkQty{get;set;}
         public virtual decimal CurrQty{get;set;}
+        public virtual IList<Shop_AccountDetail> ShopAccountDetails { get; set; }
 
     }
 }

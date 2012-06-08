@@ -157,6 +157,10 @@
     <Compile Include="Mapping\Shop_SellDetailMap.cs" />
     <Compile Include="Mapping\Sys_FormatSerialNoMap.cs" />
     <Compile Include="Mapping\Shop_Store.cs" />
+    <Compile Include="Mapping\Shop_AskDetailMap.cs" />
+    <Compile Include="Mapping\Shop_AskListMap.cs" />
+    <Compile Include="Mapping\Shop_AccountSumMap.cs" />
+    <Compile Include="Mapping\Shop_AccountDetailMap.cs" />
     <Compile Include="ProInfo.cs">
       <SubType>Code</SubType>
     </Compile>

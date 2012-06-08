@@ -78,6 +78,7 @@
     <Compile Include="ProInfotest.cs" />
     <Compile Include="TestSellList.cs" />
     <Compile Include="DALUnityTest.cs" />
+    <Compile Include="AccountSumtest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NameName.DAL\NameName.DAL.csproj">

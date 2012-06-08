@@ -10,8 +10,8 @@ namespace NameName.Model
     public class Shop_AskDetail
     {
         public virtual int ID{get;set;}
-        public virtual string AsklBillNo{get;set;}
-        public virtual Guid ProID{get;set;}
+      
+        public virtual ProInfo ProInfo{get;set;}
         public virtual decimal Qty{get;set;}
     }
 }
