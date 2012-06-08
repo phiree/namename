@@ -97,46 +97,98 @@ namespace ShopClient
 
         private void btnCash_Click(object sender, EventArgs e)
         {
-            //产生billno 写数据库  库存 要货单 打印 
-            string billNo = new DALSys_FormatSerialNo().GetSerialNo(GlobalValue.GShop.ShopNo);
-            ssl.BillNO = billNo;
-            ssl.BillAmount = ssl.Details.Sum(x => x.Price * x.Amount);
-            ssl.ActAmount = decimal.Parse(lbbillamount.Text);
-            ssl.ActCustomAmount = decimal.Parse(lbactamount.Text);
-            ssl.BackFlag = false;
+            Shop_SellList sslback = null;
 
-            foreach (Shop_SellDetail detail in ssl.Details)
+            //产生billno 写数据库  库存 要货单 打印
+            if (!string.IsNullOrEmpty(ssl.BackBillNo))
             {
-                detail.BillNO = billNo;
-            }
+                sslback = new Shop_SellList();
+                sslback.BackBillNo = ssl.BackBillNo;
+                sslback.Duty = ssl.Duty;
 
-            new DALShopSellList().SaveList(ssl);
+                //产生一张完全的退货单
+                DALShopSellList dalshopselllist = new DALShopSellList();
 
-            new CashPrint(ssl);
-            //获得当前的号码
+                Shop_SellList selllistback = dalshopselllist.GetByBillNO(ssl.BackBillNo);
 
-            //Shop_AskList sl = new DALShopAskList().GetListWithNotConfirm(GlobalValue.GShop);
-            //if (sl == null)
-            //{
-            //    sl = new Shop_AskList();
-            //    sl.CrtDate = new CommonFunctions().GetServerTime();
-            //    sl.AskBillNo = new DALSys_FormatSerialNo().GetSerialNo("AB" + GlobalValue.GShop.ShopNo, false);
-            //    sl.ShopInfo = GlobalValue.GShop;
-            //    sl.State = 0;
-            //    sl.UserInfo = GlobalValue.GUser;
-            //    new DALShopAskList().SaveList(sl);
-            //}
-            //执行存储过程，进行库存处理
-            new DALUnity().ExcuteStoredProcedure("usp_Shop_Sell_Cash",
+                sslback.BillNO = new DALSys_FormatSerialNo().GetSerialNo(GlobalValue.GShop.ShopNo); ;
+                sslback.Details.Clear();
+                foreach (Shop_SellDetail ssd in selllistback.Details)
+                {
+                    Shop_SellDetail sdnew = new Shop_SellDetail();
+                    sdnew.Amount = -ssd.Amount;
+                    sdnew.Price = ssd.Price;
+                    sdnew.Pro = ssd.Pro;
+                    sdnew.BillNO = sslback.BillNO;
+                    sslback.Details.Add(sdnew);
+                }
+
+                sslback.BillAmount = -selllistback.BillAmount;
+                sslback.ActAmount = -selllistback.ActAmount;
+                sslback.ActCustomAmount = -selllistback.ActCustomAmount;
+                sslback.BackFlag = true;
+
+                new DALShopSellList().SaveList(sslback);
+
+                new DALUnity().ExcuteStoredProcedure("usp_Shop_Sell_Cash",
                 new string[] { GlobalValue.GAccount.AccountID.ToString(),
                     GlobalValue.GShop.ShopID.ToString(),
+                    sslback.BillNO});
+
+                Program.mainfrm.dutyinfo.BackCount++;
+                Program.mainfrm.dutyinfo.BackAmount += sslback.ActAmount;
+                Program.mainfrm.dalduty.Save(Program.mainfrm.dutyinfo);
+
+                ssl.BackBillNo = null;
+                ssl.Details.Clear();
+                foreach (Shop_SellDetail sd in Program.mainfrm.ReMoveDetails)
+                {
+                    sd.Amount = -sd.Amount;
+                    ssl.Details.Add(sd);
+                }
+
+            }
+
+            if (ssl.Details.Count > 0)
+            {
+                string billNo = new DALSys_FormatSerialNo().GetSerialNo(GlobalValue.GShop.ShopNo);
+                ssl.BillNO = billNo;
+                ssl.BillAmount = ssl.Details.Sum(x => x.Price * x.Amount);
+                ssl.ActAmount = ssl.BillAmount;
+                ssl.ActCustomAmount = ssl.BillAmount;
+                ssl.BackFlag = false;
+
+                foreach (Shop_SellDetail detail in ssl.Details)
+                {
+                    detail.BillNO = billNo;
+                }
+
+                new DALShopSellList().SaveList(ssl);
+
+                Program.mainfrm.dutyinfo.BillCount++;
+                Program.mainfrm.dutyinfo.ActAmount += ssl.ActAmount;
+                Program.mainfrm.dutyinfo.BillAmount += ssl.BillAmount;
+
+                Program.mainfrm.dalduty.Save(Program.mainfrm.dutyinfo);
+                //执行存储过程，进行库存处理
+                new DALUnity().ExcuteStoredProcedure("usp_Shop_Sell_Cash",
+                    new string[] { GlobalValue.GAccount.AccountID.ToString(),
+                    GlobalValue.GShop.ShopID.ToString(),
                     ssl.BillNO});
+            }
+            if (sslback != null)
+            {
+
+                new CashPrint(sslback);
+
+            }
+            if (ssl.Details.Count > 0)
+            {
+                new CashPrint(ssl);
+            }
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            new CashPrint(ssl);
-        }
+
     }
 }

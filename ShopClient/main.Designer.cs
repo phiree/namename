@@ -43,6 +43,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.pnlselllist = new System.Windows.Forms.Panel();
+            this.btncancel = new System.Windows.Forms.Button();
             this.btnnext = new System.Windows.Forms.Button();
             this.btnPre = new System.Windows.Forms.Button();
             this.btnProSelect = new System.Windows.Forms.Button();
@@ -56,7 +57,6 @@
             this.lbCAmount = new System.Windows.Forms.Label();
             this.lbbackamount = new System.Windows.Forms.Label();
             this.pnlselldetail = new System.Windows.Forms.Panel();
-            this.btncancel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnlselllist.SuspendLayout();
             this.SuspendLayout();
@@ -150,6 +150,7 @@
             this.btnBack.TabIndex = 5;
             this.btnBack.Text = "退货";
             this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnNew
             // 
@@ -179,6 +180,7 @@
             this.btnDutyEnd.TabIndex = 3;
             this.btnDutyEnd.Text = "交班";
             this.btnDutyEnd.UseVisualStyleBackColor = true;
+            this.btnDutyEnd.Click += new System.EventHandler(this.btnDutyEnd_Click);
             // 
             // btnDutyBegin
             // 
@@ -230,6 +232,18 @@
             this.pnlselllist.Name = "pnlselllist";
             this.pnlselllist.Size = new System.Drawing.Size(177, 545);
             this.pnlselllist.TabIndex = 1;
+            // 
+            // btncancel
+            // 
+            this.btncancel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btncancel.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btncancel.Location = new System.Drawing.Point(0, 127);
+            this.btncancel.Name = "btncancel";
+            this.btncancel.Size = new System.Drawing.Size(177, 54);
+            this.btncancel.TabIndex = 13;
+            this.btncancel.Text = "取消单据";
+            this.btncancel.UseVisualStyleBackColor = true;
+            this.btncancel.Click += new System.EventHandler(this.btncancel_Click);
             // 
             // btnnext
             // 
@@ -375,18 +389,6 @@
             this.pnlselldetail.Name = "pnlselldetail";
             this.pnlselldetail.Size = new System.Drawing.Size(824, 545);
             this.pnlselldetail.TabIndex = 2;
-            // 
-            // btncancel
-            // 
-            this.btncancel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btncancel.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btncancel.Location = new System.Drawing.Point(0, 127);
-            this.btncancel.Name = "btncancel";
-            this.btncancel.Size = new System.Drawing.Size(177, 54);
-            this.btncancel.TabIndex = 13;
-            this.btncancel.Text = "取消单据";
-            this.btncancel.UseVisualStyleBackColor = true;
-            this.btncancel.Click += new System.EventHandler(this.btncancel_Click);
             // 
             // main
             // 

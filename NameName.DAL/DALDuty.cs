@@ -10,13 +10,23 @@ namespace NameName.DAL
     public class DALDuty : DALBase<Shop_DutyInfo>
     {
         /// <summary>
+        /// 交班
+        /// </summary>
+        /// <param name="dutyinfo"></param>
+        public void DutyEnd(Shop_DutyInfo dutyinfo)
+        {
+            dutyinfo.EndDate = new CommonFunctions().GetServerTime();
+            Save(dutyinfo);
+        }
+
+        /// <summary>
         /// 商店的当班人员
         /// 没有则返回nulll
         /// </summary>
         /// <param name="shopId"></param>
         public UserInfo GetDutyUser(ShopInfo shop)
         {
-          
+
             Shop_DutyInfo duty = QueryFutureValue(
                 string.Format(@"select u from Shop_DutyInfo u where u.Shop.ShopID='{0}'"
                , shop.ShopID));
@@ -24,8 +34,14 @@ namespace NameName.DAL
             UserInfo user = duty.User;
             if (user == null) return null;
             return duty.User;
-
         }
+
+        public void Save(Shop_DutyInfo dutyinfo)
+        {
+            session.Save(dutyinfo);
+            session.Flush();
+        }
+
         /// <summary>
         /// 用户正在当班的门店
         /// 没有则返回null
@@ -33,8 +49,8 @@ namespace NameName.DAL
         /// <param name="username"></param>
         public ShopInfo GetDutyShop(UserInfo user)
         {
-            
-            Shop_DutyInfo  duty = QueryFutureValue(
+
+            Shop_DutyInfo duty = QueryFutureValue(
                 string.Format(@"select u from Shop_DutyInfo u where u.User.UserName='{0}'"
                , user.UserName));
             if (duty == null) return null;
@@ -83,15 +99,14 @@ namespace NameName.DAL
                             dutynew.ActAmount = 0;
                             dutynew.BackAmount = 0;
                             dutynew.BackCount = 0;
-                            dutynew.BeginDate = DateTime.Now;
+                            dutynew.BeginDate = new CommonFunctions().GetServerTime();
                             dutynew.BillAmount = 0;
                             dutynew.BillCount = 0;
                             dutynew.EndDate = null;
                             dutynew.Shop = shop;
                             dutynew.User = user;
 
-                            session.Save(dutynew);
-                            session.Flush();
+                            Save(dutynew);
                             return dutynew;
                         }
                     }

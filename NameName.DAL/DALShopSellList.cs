@@ -15,5 +15,20 @@ namespace NameName.DAL
             session.Flush();
         }
 
+        public Shop_SellList GetByBillNO(string billno)
+        {
+            return session.Get<Shop_SellList>(billno);
+        }
+
+        public Shop_SellList GetBackBillByNo(string billno)
+        {
+            string sql = " select a from Shop_SellList a where a.BackBillNo='" + billno + "'";
+            
+            Shop_SellList ssl = QueryFutureValue(sql);
+            
+            return ssl;
+
+        }
+
     }
 }
