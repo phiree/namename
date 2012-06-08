@@ -102,4 +102,58 @@
             </div>
         </div>
     </div>
+    <!--库存上下限-->
+
+      <div runat="server" id="divStoreLimit">
+        <div class="ciline">
+            <div class="cill">
+                &nbsp;
+            </div>
+            <div class="cilr">
+                <div class="cilineforgridview">
+                    <asp:GridView ID="gvStoreLimit" runat="server" AutoGenerateColumns="False" BackColor="White"
+                        GridLines="Vertical" BorderColor="#C2D3ED" CellPadding="3" BorderStyle="Solid"
+                        BorderWidth="1px" HeaderStyle-Height="25" EmptyDataText="没有相关数据">
+                        <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
+                        <RowStyle Height="25px" BorderColor="#C2D3ED" BorderStyle="Solid" BorderWidth="1px"
+                            Wrap="False" />
+                        <Columns>
+                            <asp:BoundField DataField="ShopName" HeaderText="门店" />
+                            <asp:TemplateField HeaderText="价格">
+                                <ItemTemplate>
+                                <asp:HiddenField runat="server" ID="hfShopID" Value='<%#Eval("ShopID") %>' />
+                                   下限: <asp:TextBox runat="server" ID="tbLimitMin" ></asp:TextBox>
+                                    <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="范围：1-1000"
+                                        MaximumValue="1000" MinimumValue="1" Type="Double" ControlToValidate="tbLimitMin"
+                                        ValidationGroup="price"></asp:RangeValidator>
+                                       上限:  <asp:TextBox runat="server" ID="tbLimitMax"></asp:TextBox>
+                                    <asp:RangeValidator ID="RangeValidator2" runat="server" ErrorMessage="范围：1-1000"
+                                        MaximumValue="1000" MinimumValue="1" Type="Double" ControlToValidate="tbLimitMax"
+                                        ValidationGroup="price"></asp:RangeValidator>
+                                <asp:CompareValidator  runat="server" ControlToValidate="tbLimitMax" ControlToCompare="tbLimitMin" 
+                                Operator="GreaterThan" ErrorMessage="上限必须大于下限"></asp:CompareValidator>
+
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                        <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Center" CssClass="cigvp"
+                            Font-Size="15px" />
+                        <SelectedRowStyle BackColor="#008A8C" Font-Bold="True" ForeColor="White" />
+                        <HeaderStyle Height="25px" BackColor="#EDF4FC" Font-Bold="True" ForeColor="Black"
+                            HorizontalAlign="Center" Wrap="False"></HeaderStyle>
+                        <AlternatingRowStyle BackColor="#EDF4FC" />
+                    </asp:GridView>
+                </div>
+            </div>
+        </div>
+        <div class="ciline">
+            <div class="cill">
+                &nbsp;
+            </div>
+            <div class="cilr">
+                <asp:Button runat="server" ID="btnLimitSave" OnClick="btnLimitSave_Click" Text="保存" ValidationGroup="price" />
+            </div>
+        </div>
+    </div>
+
 </asp:Content>

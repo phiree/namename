@@ -162,6 +162,7 @@
     <Compile Include="Mapping\Shop_AccountSumMap.cs" />
     <Compile Include="Mapping\Shop_AccountDetailMap.cs" />
     <Compile Include="Mapping\Shop_AskDataMap.cs" />
+    <Compile Include="Mapping\Shop_StoreLimitMap.cs" />
     <Compile Include="ProInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -227,6 +228,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Sys_FormatSerialNo.cs" />
+    <Compile Include="Shop_StoreLimit.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
