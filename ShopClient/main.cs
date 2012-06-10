@@ -469,5 +469,11 @@ namespace ShopClient
             //库存查询
             new ProStore().ShowDialog();
         }
+
+        private void btnAsk_Click(object sender, EventArgs e)
+        {
+            //要货单
+            new AskBill().ShowDialog();
+        }
     }
 }

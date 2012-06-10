@@ -15,10 +15,10 @@ namespace NameName.DAL
         {
             ExcuteStoredProcedure(procedureName, new string[] { });
         }
+
         public void ExcuteStoredProcedure(string procedureName, string[] paramValues)
         {
             string sql = string.Format("exec {0}", procedureName);
-
 
             foreach (string value in paramValues)
             {
