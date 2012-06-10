@@ -50,6 +50,12 @@
                 <a href="BillImport.aspx">入库</a> </li>
         </ul>
     </div>
+    <div id="b30">
+        <ul>
+            <li id="b3001" class="cli" onmouseover="LeftOnOver('b30','01');" onmouseout="LeftOnLeave('b30','01');">
+                <a href="/store/">库存</a> </li>
+        </ul>
+    </div>
 </div>
 <div class="cleftupdownline">
 </div>

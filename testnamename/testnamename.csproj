@@ -62,6 +62,9 @@
     <Reference Include="nunit.framework">
       <HintPath>..\lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\lib\Rhino.Mocks.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -79,6 +82,7 @@
     <Compile Include="TestSellList.cs" />
     <Compile Include="DALUnityTest.cs" />
     <Compile Include="AccountSumtest.cs" />
+    <Compile Include="ShopStoreTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NameName.DAL\NameName.DAL.csproj">
