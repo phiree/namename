@@ -23,8 +23,7 @@ namespace ShopClient
                 pis[i] = new uc.ucProInfo();
                 pnlPro.Controls.Add(pis[i]);
             }
-            GlobalFun.LoadProCate(tabControl1);
-            ShowByCateAndPageNo(tabControl1.TabPages[0]);
+            
         }
 
         private void ShowByCateAndPageNo(TabPage tp)
@@ -172,6 +171,10 @@ namespace ShopClient
                 pi.OnSelectPro += new uc.ucProInfo.SelectPro(pi_OnSelectPro);
                 btnIndex++;
             }
+
+            GlobalFun.LoadProCate(tabControl1);
+            ShowByCateAndPageNo(tabControl1.TabPages[0]);
+
         }
 
         private void btnReLoad_Click(object sender, EventArgs e)

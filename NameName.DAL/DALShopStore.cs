@@ -11,7 +11,8 @@ namespace NameName.DAL
         //按照ShopID返回当前的库存信息
         public IList<Shop_Store> GetShopStoreByShopID(Guid shopid)
         {
-            return null;
+            string sql = " select a from Shop_Store a where a.ShopInfo.ShopID = '" + shopid + "'";
+            return QueryFutureList(sql);
         }
     }
 }

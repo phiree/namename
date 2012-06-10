@@ -37,7 +37,7 @@ namespace ShopClient
             int currPage = (int)tp.Tag;
             //在页面上显示！
 
-            IList<Shop_Store> CatePros = ss.Where<Shop_Store>(x => x.ProCate == tp.Text).ToList();
+            IList<Shop_Store> CatePros = ss.Where<Shop_Store>(x => x.ProInfo.ProCate == tp.Text).ToList();
             //当前页的产品数量！
             if (currPage < 0)
             {
@@ -55,7 +55,7 @@ namespace ShopClient
 
             int pagecount = 18;
             //一页放20个
-            IList<ProInfo> source = new List<ProInfo>();
+            IList<Shop_Store> source = new List<Shop_Store>();
             for (int i = currPage * pagecount; i < currPage * pagecount + pagecount; i++)
             {
                 if (i < CatePros.Count)
@@ -68,7 +68,7 @@ namespace ShopClient
             {
                 if (i < source.Count)
                 {
-                    pis[i].ProInfo = source[i];
+                    pis[i].ProInfo = source[i].ProInfo;
                     pis[i].LoadProInfo();
                     pis[i].Visible = true;
                 }
