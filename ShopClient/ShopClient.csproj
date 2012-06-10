@@ -153,12 +153,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Store.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Store.Designer.cs">
-      <DependentUpon>Store.cs</DependentUpon>
-    </Compile>
     <Compile Include="uc\NumInupt.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -178,6 +172,12 @@
       <DependentUpon>UserSelect.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalFun.cs" />
+    <Compile Include="ProStore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProStore.Designer.cs">
+      <DependentUpon>ProStore.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AskProduct.resx">
       <DependentUpon>AskProduct.cs</DependentUpon>
     </EmbeddedResource>
@@ -218,9 +218,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Store.resx">
-      <DependentUpon>Store.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="uc\NumInupt.resx">
       <DependentUpon>NumInupt.cs</DependentUpon>
     </EmbeddedResource>
@@ -229,6 +226,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserSelect.resx">
       <DependentUpon>UserSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProStore.resx">
+      <DependentUpon>ProStore.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>

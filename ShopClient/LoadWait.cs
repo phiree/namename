@@ -20,7 +20,7 @@ namespace ShopClient
         {
             DateTime t1 = DateTime.Now;
             ps.Show();
-            ps.LoadProInfo();
+            //ps.LoadProInfo();
             ps.Hide();
             DateTime t2 = DateTime.Now;
             TimeSpan ts1 = t2 - t1;

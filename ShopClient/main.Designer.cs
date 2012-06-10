@@ -30,7 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnpwd = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnstore = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.btnCheck = new System.Windows.Forms.Button();
             this.btnAsk = new System.Windows.Forms.Button();
@@ -64,7 +64,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.btnpwd);
-            this.panel1.Controls.Add(this.button6);
+            this.panel1.Controls.Add(this.btnstore);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.btnCheck);
             this.panel1.Controls.Add(this.btnAsk);
@@ -93,15 +93,16 @@
             this.btnpwd.UseVisualStyleBackColor = true;
             this.btnpwd.Click += new System.EventHandler(this.btnpwd_Click);
             // 
-            // button6
+            // btnstore
             // 
-            this.button6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button6.Location = new System.Drawing.Point(723, 0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 76);
-            this.button6.TabIndex = 9;
-            this.button6.Text = "库存";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnstore.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnstore.Location = new System.Drawing.Point(723, 0);
+            this.btnstore.Name = "btnstore";
+            this.btnstore.Size = new System.Drawing.Size(75, 76);
+            this.btnstore.TabIndex = 9;
+            this.btnstore.Text = "库存";
+            this.btnstore.UseVisualStyleBackColor = true;
+            this.btnstore.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 
@@ -420,7 +421,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button btnCheck;
         private System.Windows.Forms.Button btnAsk;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnstore;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnlselllist;

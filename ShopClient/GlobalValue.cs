@@ -13,5 +13,7 @@ namespace ShopClient
         public static UserInfo GUser = null;
 
         public static Account_Period GAccount = null;
+
+        public static IList<ProInfo> GProInfos = null;
     }
 }

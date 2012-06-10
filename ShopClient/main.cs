@@ -131,9 +131,9 @@ namespace ShopClient
             //更新图片数据
             UpDateImage();
             //加载产品数据
+            LoadProInfos();
             //显示正在加载数据的窗口!!!            
-            proselect.Show();
-            proselect.LoadProInfo();
+            proselect.Show();            
             proselect.Hide();
             this.Show();
             this.Text = GlobalValue.GShop.AreaInfo.AreaName + "-" + GlobalValue.GShop.ShopName + "-" + GlobalValue.GUser.TrueName + " 正在使用 么么 门店系统";
@@ -456,6 +456,18 @@ namespace ShopClient
                 btnProSelect.Enabled = false;
 
             }
+        }
+
+        public void LoadProInfos()
+        {
+            DALProInfo dpi = new DALProInfo();
+            GlobalValue.GProInfos = dpi.GetProsByAreaID(GlobalValue.GShop.AreaInfo.AreaID);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            //库存查询
+
         }
     }
 }

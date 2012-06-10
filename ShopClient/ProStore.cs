@@ -11,11 +11,12 @@ using NameName.DAL;
 
 namespace ShopClient
 {
-    public partial class ProSelect : Form
+    public partial class ProStore : Form
     {
         uc.ucProInfo[] pis = new uc.ucProInfo[18];
+        IList<Shop_Store> ss;
 
-        public ProSelect()
+        public ProStore()
         {
             InitializeComponent();
             for (int i = 0; i < 18; i++)
@@ -24,19 +25,19 @@ namespace ShopClient
                 pnlPro.Controls.Add(pis[i]);
             }
             GlobalFun.LoadProCate(tabControl1);
+            DALShopStore dss = new DALShopStore();
+            ss = dss.GetShopStoreByShopID(GlobalValue.GShop.ShopID);
             ShowByCateAndPageNo(tabControl1.TabPages[0]);
         }
 
         private void ShowByCateAndPageNo(TabPage tp)
         {
-            //DateTime t1 = DateTime.Now;
-            lbErrorInfo.Text = "";
             if (tp == null)
                 return;
             int currPage = (int)tp.Tag;
             //在页面上显示！
 
-            IList<ProInfo> CatePros = GlobalValue.GProInfos.Where<ProInfo>(x => x.ProCate == tp.Text).ToList();
+            IList<Shop_Store> CatePros = ss.Where<Shop_Store>(x => x.ProCate == tp.Text).ToList();
             //当前页的产品数量！
             if (currPage < 0)
             {
@@ -51,7 +52,6 @@ namespace ShopClient
                 tp.Tag = currPage;
                 return;
             }
-
 
             int pagecount = 18;
             //一页放20个
@@ -79,39 +79,6 @@ namespace ShopClient
                 }
             }
         }
-
-        void g_OnAddItem(ProInfo t, Rectangle position, Control gridcontainer)
-        {
-            uc.ucProInfo pi = new uc.ucProInfo();
-            pi.Left = position.Left;
-            pi.Top = position.Top;
-            pi.Size = position.Size;
-            pi.ShowQty = false;
-            pi.ProInfo = t;
-            pi.OnSelectPro += new uc.ucProInfo.SelectPro(pi_OnSelectPro);
-            gridcontainer.Controls.Add(pi);
-        }
-
-        void pi_OnSelectPro(object sender, ProInfo proinfo)
-        {
-            //显示输入产品数量的窗口
-            lbErrorInfo.Text = "";
-            decimal qty = new ProQtyInput().GetQty(proinfo, 0, false);
-            if (qty == 0)
-            {
-                return;
-            }
-            else if (Program.mainfrm.AddPro(proinfo, qty))
-            {
-                this.Hide();
-            }
-            else
-            {
-                lbErrorInfo.Text = "产品已经选择，不能重复选择";
-            }
-        }
-
-
 
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
@@ -169,14 +136,9 @@ namespace ShopClient
                 pi.Size = ItemSize;
                 pi.ShowQty = false;
                 pi.ProInfo = null;
-                pi.OnSelectPro += new uc.ucProInfo.SelectPro(pi_OnSelectPro);
+
                 btnIndex++;
             }
-        }
-
-        private void btnReLoad_Click(object sender, EventArgs e)
-        {
-            //刷新,重新载入!
         }
     }
 }

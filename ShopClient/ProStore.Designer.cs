@@ -1,6 +1,6 @@
 ﻿namespace ShopClient
 {
-    partial class ProSelect
+    partial class ProStore
     {
         /// <summary>
         /// Required designer variable.
@@ -32,11 +32,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.btnExit = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lbErrorInfo = new System.Windows.Forms.Label();
             this.btnpre = new System.Windows.Forms.Button();
             this.btnnext = new System.Windows.Forms.Button();
             this.pnlPro = new System.Windows.Forms.Panel();
-            this.btnReLoad = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -79,11 +77,9 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.lbErrorInfo);
             this.panel1.Controls.Add(this.btnpre);
             this.panel1.Controls.Add(this.btnnext);
             this.panel1.Controls.Add(this.btnExit);
-            this.panel1.Controls.Add(this.btnReLoad);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
@@ -91,21 +87,10 @@
             this.panel1.Size = new System.Drawing.Size(834, 85);
             this.panel1.TabIndex = 5;
             // 
-            // lbErrorInfo
-            // 
-            this.lbErrorInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbErrorInfo.Font = new System.Drawing.Font("宋体", 18F);
-            this.lbErrorInfo.Location = new System.Drawing.Point(100, 0);
-            this.lbErrorInfo.Name = "lbErrorInfo";
-            this.lbErrorInfo.Size = new System.Drawing.Size(462, 85);
-            this.lbErrorInfo.TabIndex = 6;
-            this.lbErrorInfo.Text = "产品已经存在";
-            this.lbErrorInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // btnpre
             // 
             this.btnpre.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnpre.Location = new System.Drawing.Point(562, 0);
+            this.btnpre.Location = new System.Drawing.Point(662, 0);
             this.btnpre.Name = "btnpre";
             this.btnpre.Size = new System.Drawing.Size(86, 85);
             this.btnpre.TabIndex = 4;
@@ -116,7 +101,7 @@
             // btnnext
             // 
             this.btnnext.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnnext.Location = new System.Drawing.Point(648, 0);
+            this.btnnext.Location = new System.Drawing.Point(748, 0);
             this.btnnext.Name = "btnnext";
             this.btnnext.Size = new System.Drawing.Size(86, 85);
             this.btnnext.TabIndex = 5;
@@ -132,19 +117,6 @@
             this.pnlPro.Size = new System.Drawing.Size(834, 370);
             this.pnlPro.TabIndex = 6;
             // 
-            // btnReLoad
-            // 
-            this.btnReLoad.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnReLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReLoad.Location = new System.Drawing.Point(734, 0);
-            this.btnReLoad.Margin = new System.Windows.Forms.Padding(4);
-            this.btnReLoad.Name = "btnReLoad";
-            this.btnReLoad.Size = new System.Drawing.Size(100, 85);
-            this.btnReLoad.TabIndex = 7;
-            this.btnReLoad.Text = "刷新";
-            this.btnReLoad.UseVisualStyleBackColor = true;
-            this.btnReLoad.Click += new System.EventHandler(this.btnReLoad_Click);
-            // 
             // ProSelect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -159,7 +131,7 @@
             this.Name = "ProSelect";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "产品选择";
+            this.Text = "产品库存查询";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProSelect_FormClosing);
             this.Load += new System.EventHandler(this.ProSelect_Load);
@@ -177,8 +149,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnnext;
         private System.Windows.Forms.Button btnpre;
-        private System.Windows.Forms.Label lbErrorInfo;
         private System.Windows.Forms.Panel pnlPro;
-        private System.Windows.Forms.Button btnReLoad;
     }
 }
