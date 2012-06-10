@@ -35,9 +35,14 @@
             this.btnpre = new System.Windows.Forms.Button();
             this.btnnext = new System.Windows.Forms.Button();
             this.pnlPro = new System.Windows.Forms.Panel();
-            this.lbErrorInfo = new System.Windows.Forms.Label();
+            this.pnlselllist = new System.Windows.Forms.Panel();
+            this.btnProSelect = new System.Windows.Forms.Button();
+            this.lbAmount = new System.Windows.Forms.Label();
+            this.btConfirm = new System.Windows.Forms.Button();
+            this.lbbackamount = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.pnlselllist.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage1
@@ -78,7 +83,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.lbErrorInfo);
             this.panel1.Controls.Add(this.btnpre);
             this.panel1.Controls.Add(this.btnnext);
             this.panel1.Controls.Add(this.btnExit);
@@ -119,22 +123,68 @@
             this.pnlPro.Size = new System.Drawing.Size(834, 370);
             this.pnlPro.TabIndex = 6;
             // 
-            // lbErrorInfo
+            // pnlselllist
             // 
-            this.lbErrorInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbErrorInfo.Font = new System.Drawing.Font("宋体", 18F);
-            this.lbErrorInfo.Location = new System.Drawing.Point(100, 0);
-            this.lbErrorInfo.Name = "lbErrorInfo";
-            this.lbErrorInfo.Size = new System.Drawing.Size(562, 85);
-            this.lbErrorInfo.TabIndex = 7;
-            this.lbErrorInfo.Text = "产品已经存在";
-            this.lbErrorInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pnlselllist.Controls.Add(this.btnProSelect);
+            this.pnlselllist.Controls.Add(this.lbAmount);
+            this.pnlselllist.Controls.Add(this.btConfirm);
+            this.pnlselllist.Controls.Add(this.lbbackamount);
+            this.pnlselllist.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlselllist.Location = new System.Drawing.Point(657, 110);
+            this.pnlselllist.Name = "pnlselllist";
+            this.pnlselllist.Size = new System.Drawing.Size(177, 370);
+            this.pnlselllist.TabIndex = 7;
+            // 
+            // btnProSelect
+            // 
+            this.btnProSelect.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnProSelect.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnProSelect.Location = new System.Drawing.Point(0, 194);
+            this.btnProSelect.Name = "btnProSelect";
+            this.btnProSelect.Size = new System.Drawing.Size(177, 54);
+            this.btnProSelect.TabIndex = 7;
+            this.btnProSelect.Text = "产品";
+            this.btnProSelect.UseVisualStyleBackColor = true;
+            this.btnProSelect.Click += new System.EventHandler(this.btnProSelect_Click);
+            // 
+            // lbAmount
+            // 
+            this.lbAmount.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lbAmount.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
+            this.lbAmount.Location = new System.Drawing.Point(0, 248);
+            this.lbAmount.Name = "lbAmount";
+            this.lbAmount.Size = new System.Drawing.Size(177, 34);
+            this.lbAmount.TabIndex = 2;
+            this.lbAmount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btConfirm
+            // 
+            this.btConfirm.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btConfirm.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btConfirm.Location = new System.Drawing.Point(0, 282);
+            this.btConfirm.Name = "btConfirm";
+            this.btConfirm.Size = new System.Drawing.Size(177, 54);
+            this.btConfirm.TabIndex = 3;
+            this.btConfirm.Text = "提交";
+            this.btConfirm.UseVisualStyleBackColor = true;
+            this.btConfirm.Click += new System.EventHandler(this.btConfirm_Click);
+            // 
+            // lbbackamount
+            // 
+            this.lbbackamount.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lbbackamount.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
+            this.lbbackamount.Location = new System.Drawing.Point(0, 336);
+            this.lbbackamount.Name = "lbbackamount";
+            this.lbbackamount.Size = new System.Drawing.Size(177, 34);
+            this.lbbackamount.TabIndex = 12;
+            this.lbbackamount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // AskBill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 480);
+            this.Controls.Add(this.pnlselllist);
             this.Controls.Add(this.pnlPro);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel1);
@@ -146,10 +196,11 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "产品库存查询";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AskBill_FormClosing);
             this.Load += new System.EventHandler(this.ProSelect_Load);
             this.tabControl1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.pnlselllist.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -163,6 +214,10 @@
         private System.Windows.Forms.Button btnnext;
         private System.Windows.Forms.Button btnpre;
         private System.Windows.Forms.Panel pnlPro;
-        private System.Windows.Forms.Label lbErrorInfo;
+        private System.Windows.Forms.Panel pnlselllist;
+        private System.Windows.Forms.Button btnProSelect;
+        private System.Windows.Forms.Label lbAmount;
+        private System.Windows.Forms.Button btConfirm;
+        private System.Windows.Forms.Label lbbackamount;
     }
 }

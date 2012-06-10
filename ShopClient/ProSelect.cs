@@ -15,6 +15,9 @@ namespace ShopClient
     {
         uc.ucProInfo[] pis = new uc.ucProInfo[18];
 
+        public delegate bool ProSelectQty(ProInfo proinfo, decimal qty);
+        public event ProSelectQty OnProSelectQty;
+
         public ProSelect()
         {
             InitializeComponent();
@@ -93,24 +96,27 @@ namespace ShopClient
 
         void pi_OnSelectPro(object sender, ProInfo proinfo)
         {
+            this.Hide();
             //显示输入产品数量的窗口
             lbErrorInfo.Text = "";
             decimal qty = new ProQtyInput().GetQty(proinfo, 0, false);
             if (qty == 0)
             {
+                this.Show();
                 return;
-            }
-            else if (Program.mainfrm.AddPro(proinfo, qty))
-            {
-                this.Hide();
             }
             else
             {
-                lbErrorInfo.Text = "产品已经选择，不能重复选择";
+                if (OnProSelectQty != null)
+                {
+                    if (!OnProSelectQty(proinfo, qty))
+                    {
+                        lbErrorInfo.Text = "产品已经选择，不能重复选择";
+                        this.Show();
+                    }
+                }
             }
         }
-
-
 
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {

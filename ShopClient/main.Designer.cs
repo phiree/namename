@@ -29,9 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnpwd = new System.Windows.Forms.Button();
+            this.btnImport = new System.Windows.Forms.Button();
+            this.btnasklist = new System.Windows.Forms.Button();
             this.btnstore = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnpwd = new System.Windows.Forms.Button();
             this.btnCheck = new System.Windows.Forms.Button();
             this.btnAsk = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -63,9 +65,11 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnpwd);
+            this.panel1.Controls.Add(this.btnImport);
+            this.panel1.Controls.Add(this.btnasklist);
             this.panel1.Controls.Add(this.btnstore);
-            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.btnpwd);
             this.panel1.Controls.Add(this.btnCheck);
             this.panel1.Controls.Add(this.btnAsk);
             this.panel1.Controls.Add(this.label2);
@@ -82,6 +86,47 @@
             this.panel1.Size = new System.Drawing.Size(1001, 76);
             this.panel1.TabIndex = 0;
             // 
+            // btnImport
+            // 
+            this.btnImport.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnImport.Location = new System.Drawing.Point(755, 0);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(75, 76);
+            this.btnImport.TabIndex = 8;
+            this.btnImport.Text = "入库单";
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
+            // btnasklist
+            // 
+            this.btnasklist.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnasklist.Location = new System.Drawing.Point(680, 0);
+            this.btnasklist.Name = "btnasklist";
+            this.btnasklist.Size = new System.Drawing.Size(75, 76);
+            this.btnasklist.TabIndex = 14;
+            this.btnasklist.Text = "历史要货单";
+            this.btnasklist.UseVisualStyleBackColor = true;
+            this.btnasklist.Click += new System.EventHandler(this.btnasklist_Click);
+            // 
+            // btnstore
+            // 
+            this.btnstore.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnstore.Location = new System.Drawing.Point(605, 0);
+            this.btnstore.Name = "btnstore";
+            this.btnstore.Size = new System.Drawing.Size(75, 76);
+            this.btnstore.TabIndex = 9;
+            this.btnstore.Text = "库存";
+            this.btnstore.UseVisualStyleBackColor = true;
+            this.btnstore.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // label6
+            // 
+            this.label6.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label6.Location = new System.Drawing.Point(585, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(20, 76);
+            this.label6.TabIndex = 13;
+            // 
             // btnpwd
             // 
             this.btnpwd.Dock = System.Windows.Forms.DockStyle.Right;
@@ -93,41 +138,21 @@
             this.btnpwd.UseVisualStyleBackColor = true;
             this.btnpwd.Click += new System.EventHandler(this.btnpwd_Click);
             // 
-            // btnstore
-            // 
-            this.btnstore.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnstore.Location = new System.Drawing.Point(723, 0);
-            this.btnstore.Name = "btnstore";
-            this.btnstore.Size = new System.Drawing.Size(75, 76);
-            this.btnstore.TabIndex = 9;
-            this.btnstore.Text = "库存";
-            this.btnstore.UseVisualStyleBackColor = true;
-            this.btnstore.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button5
-            // 
-            this.button5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button5.Location = new System.Drawing.Point(648, 0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 76);
-            this.button5.TabIndex = 8;
-            this.button5.Text = "入库单";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
             // btnCheck
             // 
             this.btnCheck.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnCheck.Location = new System.Drawing.Point(573, 0);
+            this.btnCheck.Location = new System.Drawing.Point(510, 0);
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.Size = new System.Drawing.Size(75, 76);
             this.btnCheck.TabIndex = 7;
             this.btnCheck.Text = "盘点";
             this.btnCheck.UseVisualStyleBackColor = true;
+            this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
             // 
             // btnAsk
             // 
             this.btnAsk.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnAsk.Location = new System.Drawing.Point(498, 0);
+            this.btnAsk.Location = new System.Drawing.Point(435, 0);
             this.btnAsk.Name = "btnAsk";
             this.btnAsk.Size = new System.Drawing.Size(75, 76);
             this.btnAsk.TabIndex = 6;
@@ -138,15 +163,15 @@
             // label2
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label2.Location = new System.Drawing.Point(457, 0);
+            this.label2.Location = new System.Drawing.Point(415, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 76);
+            this.label2.Size = new System.Drawing.Size(20, 76);
             this.label2.TabIndex = 11;
             // 
             // btnBack
             // 
             this.btnBack.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnBack.Location = new System.Drawing.Point(382, 0);
+            this.btnBack.Location = new System.Drawing.Point(340, 0);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(75, 76);
             this.btnBack.TabIndex = 5;
@@ -157,7 +182,7 @@
             // btnNew
             // 
             this.btnNew.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnNew.Location = new System.Drawing.Point(307, 0);
+            this.btnNew.Location = new System.Drawing.Point(265, 0);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 76);
             this.btnNew.TabIndex = 4;
@@ -168,15 +193,15 @@
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label1.Location = new System.Drawing.Point(266, 0);
+            this.label1.Location = new System.Drawing.Point(245, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 76);
+            this.label1.Size = new System.Drawing.Size(20, 76);
             this.label1.TabIndex = 10;
             // 
             // btnDutyEnd
             // 
             this.btnDutyEnd.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnDutyEnd.Location = new System.Drawing.Point(191, 0);
+            this.btnDutyEnd.Location = new System.Drawing.Point(170, 0);
             this.btnDutyEnd.Name = "btnDutyEnd";
             this.btnDutyEnd.Size = new System.Drawing.Size(75, 76);
             this.btnDutyEnd.TabIndex = 3;
@@ -187,7 +212,7 @@
             // btnDutyBegin
             // 
             this.btnDutyBegin.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnDutyBegin.Location = new System.Drawing.Point(116, 0);
+            this.btnDutyBegin.Location = new System.Drawing.Point(95, 0);
             this.btnDutyBegin.Name = "btnDutyBegin";
             this.btnDutyBegin.Size = new System.Drawing.Size(75, 76);
             this.btnDutyBegin.TabIndex = 2;
@@ -200,7 +225,7 @@
             this.label5.Dock = System.Windows.Forms.DockStyle.Left;
             this.label5.Location = new System.Drawing.Point(75, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 76);
+            this.label5.Size = new System.Drawing.Size(20, 76);
             this.label5.TabIndex = 12;
             // 
             // btnClose
@@ -257,7 +282,7 @@
             this.btnnext.TabIndex = 9;
             this.btnnext.Text = "下一页";
             this.btnnext.UseVisualStyleBackColor = true;
-            this.btnnext.Click += new System.EventHandler(this.button2_Click);
+            this.btnnext.Click += new System.EventHandler(this.btnnext_Click);
             // 
             // btnPre
             // 
@@ -269,7 +294,7 @@
             this.btnPre.TabIndex = 8;
             this.btnPre.Text = "上一页";
             this.btnPre.UseVisualStyleBackColor = true;
-            this.btnPre.Click += new System.EventHandler(this.button1_Click);
+            this.btnPre.Click += new System.EventHandler(this.btnPre_Click);
             // 
             // btnProSelect
             // 
@@ -419,7 +444,7 @@
         private System.Windows.Forms.Button btnDutyBegin;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.Button btnCheck;
         private System.Windows.Forms.Button btnAsk;
         private System.Windows.Forms.Button btnstore;
@@ -441,6 +466,8 @@
         private System.Windows.Forms.Label lbCAmount;
         private System.Windows.Forms.Label lbbackamount;
         private System.Windows.Forms.Button btncancel;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnasklist;
 
     }
 }

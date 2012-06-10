@@ -184,6 +184,12 @@
     <Compile Include="AskBill.Designer.cs">
       <DependentUpon>AskBill.cs</DependentUpon>
     </Compile>
+    <Compile Include="DateSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DateSelect.Designer.cs">
+      <DependentUpon>DateSelect.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AskProduct.resx">
       <DependentUpon>AskProduct.cs</DependentUpon>
     </EmbeddedResource>
@@ -238,6 +244,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AskBill.resx">
       <DependentUpon>AskBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DateSelect.resx">
+      <DependentUpon>DateSelect.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>

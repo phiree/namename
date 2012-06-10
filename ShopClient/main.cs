@@ -125,7 +125,8 @@ namespace ShopClient
             dss.Save(ss);
         }
 
-        ProSelect proselect = new ProSelect();
+        public ProSelect proselect = new ProSelect();
+
         public void LoginSuccess()
         {
             //更新图片数据
@@ -134,6 +135,7 @@ namespace ShopClient
             LoadProInfos();
             //显示正在加载数据的窗口!!!            
             proselect.Show();
+            proselect.OnProSelectQty += new ProSelect.ProSelectQty(proselect_OnProSelectQty);
             proselect.Hide();
             this.Show();
             this.Text = GlobalValue.GShop.AreaInfo.AreaName + "-" + GlobalValue.GShop.ShopName + "-" + GlobalValue.GUser.TrueName + " 正在使用 么么 门店系统";
@@ -165,6 +167,27 @@ namespace ShopClient
                     btnCheck.Enabled = true;
                 }
             }
+        }
+
+        bool proselect_OnProSelectQty(ProInfo proinfo, decimal qty)
+        {
+
+            if (selllist.Details.Where(x => x.Pro.ProID == proinfo.ProID).ToList().Count != 0)
+            {
+                return false;
+            }
+            Shop_SellDetail ss = new Shop_SellDetail();
+            ss.Pro = proinfo;
+            ss.Price = proinfo.ProPrices.Single<ProPrice>(x => x.AreaInfo.AreaID == GlobalValue.GShop.AreaInfo.AreaID).Price;
+            ss.Amount = qty;
+            selllist.Details.Add(ss);
+            //增加了一个产品，需要重新计算金额！
+            lbAmount.Text = GetSumAmount();
+
+            //重画界面
+            ShowSellDetailByPageNo();
+            return true;
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -245,27 +268,6 @@ namespace ShopClient
             //产品选择            
             proselect.Show();
 
-        }
-
-        internal bool AddPro(ProInfo proinfo, decimal qty)
-        {
-            //判断这个产品是否已经存在
-            if (selllist.Details.Where(x => x.Pro.ProID == proinfo.ProID).ToList().Count != 0)
-            {
-                return false;
-            }
-
-            Shop_SellDetail ss = new Shop_SellDetail();
-            ss.Pro = proinfo;
-            ss.Price = proinfo.ProPrices.Single<ProPrice>(x => x.AreaInfo.AreaID == GlobalValue.GShop.AreaInfo.AreaID).Price;
-            ss.Amount = qty;
-            selllist.Details.Add(ss);
-            //增加了一个产品，需要重新计算金额！
-            lbAmount.Text = GetSumAmount();
-
-            //重画界面
-            ShowSellDetailByPageNo();
-            return true;
         }
 
         private string GetSumAmount()
@@ -356,20 +358,13 @@ namespace ShopClient
             lbAmount.Text = GetSumAmount();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        void PageNext(bool next)
         {
-
             int CurrPage = (int)pnlselldetail.Tag;
-            CurrPage--;
-            pnlselldetail.Tag = CurrPage;
-            ShowSellDetailByPageNo();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-            int CurrPage = (int)pnlselldetail.Tag;
-            CurrPage++;
+            if (next)
+                CurrPage++;
+            else
+                CurrPage--;
             pnlselldetail.Tag = CurrPage;
             ShowSellDetailByPageNo();
         }
@@ -473,7 +468,47 @@ namespace ShopClient
         private void btnAsk_Click(object sender, EventArgs e)
         {
             //要货单
+            proselect.OnProSelectQty -= new ProSelect.ProSelectQty(proselect_OnProSelectQty);
             new AskBill().ShowDialog();
+            proselect.OnProSelectQty += new ProSelect.ProSelectQty(proselect_OnProSelectQty);
         }
+
+        private void btnPre_Click(object sender, EventArgs e)
+        {
+            PageNext(false);
+        }
+
+        private void btnnext_Click(object sender, EventArgs e)
+        {
+            PageNext(true);
+        }
+
+        private void btnasklist_Click(object sender, EventArgs e)
+        {
+            //历史要货单
+            DateTime begindate, enddate;
+            if (new DateSelect().SelectDate(out begindate, out enddate))
+            {
+ 
+            }
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            //入库单
+            DateTime begindate, enddate;
+            if (new DateSelect().SelectDate(out begindate, out enddate))
+            {
+
+            }
+        }
+
+        private void btnCheck_Click(object sender, EventArgs e)
+        {
+            //盘点
+
+        }
+
+
     }
 }

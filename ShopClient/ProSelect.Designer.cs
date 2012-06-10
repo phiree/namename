@@ -35,15 +35,15 @@
             this.lbErrorInfo = new System.Windows.Forms.Label();
             this.btnpre = new System.Windows.Forms.Button();
             this.btnnext = new System.Windows.Forms.Button();
-            this.pnlPro = new System.Windows.Forms.Panel();
             this.btnReLoad = new System.Windows.Forms.Button();
+            this.pnlPro = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage1
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Location = new System.Drawing.Point(4, 26);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(8);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Size = new System.Drawing.Size(826, 0);
@@ -124,14 +124,6 @@
             this.btnnext.UseVisualStyleBackColor = true;
             this.btnnext.Click += new System.EventHandler(this.btnnext_Click);
             // 
-            // pnlPro
-            // 
-            this.pnlPro.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlPro.Location = new System.Drawing.Point(0, 110);
-            this.pnlPro.Name = "pnlPro";
-            this.pnlPro.Size = new System.Drawing.Size(834, 370);
-            this.pnlPro.TabIndex = 6;
-            // 
             // btnReLoad
             // 
             this.btnReLoad.Dock = System.Windows.Forms.DockStyle.Right;
@@ -144,6 +136,14 @@
             this.btnReLoad.Text = "刷新";
             this.btnReLoad.UseVisualStyleBackColor = true;
             this.btnReLoad.Click += new System.EventHandler(this.btnReLoad_Click);
+            // 
+            // pnlPro
+            // 
+            this.pnlPro.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlPro.Location = new System.Drawing.Point(0, 110);
+            this.pnlPro.Name = "pnlPro";
+            this.pnlPro.Size = new System.Drawing.Size(834, 370);
+            this.pnlPro.TabIndex = 6;
             // 
             // ProSelect
             // 
@@ -160,6 +160,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "产品选择";
+            this.TopMost = true;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProSelect_FormClosing);
             this.Load += new System.EventHandler(this.ProSelect_Load);

@@ -19,6 +19,9 @@ namespace ShopClient
         public AskBill()
         {
             InitializeComponent();
+
+            Program.mainfrm.proselect.OnProSelectQty += new ProSelect.ProSelectQty(proselect_OnProSelectQty);
+
             for (int i = 0; i < 18; i++)
             {
                 pis[i] = new uc.ucProInfo();
@@ -29,6 +32,23 @@ namespace ShopClient
             DALShopAskData dsa = new DALShopAskData();
             sa = dsa.GetAskDataByShopID(GlobalValue.GShop.ShopID);
             ShowByCateAndPageNo(tabControl1.TabPages[0]);
+        }
+
+        bool proselect_OnProSelectQty(ProInfo proinfo, decimal qty)
+        {
+            if (sa.Where(x => x.ProInfo.ProID == proinfo.ProID).ToList().Count != 0)
+            {
+                return false;
+            }
+            Shop_AskData sad = new Shop_AskData();
+            sad.ProInfo = proinfo;
+            sad.Qty = qty;
+            sad.ShopInfo = GlobalValue.GShop;
+            sa.Add(sad);
+            new DALShopAskData().Save(sad);
+            //重画界面
+            ShowByCateAndPageNo(tabControl1.SelectedTab);
+            return true;
         }
 
         private void ShowByCateAndPageNo(TabPage tp)
@@ -91,7 +111,7 @@ namespace ShopClient
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
 
         private void btnnext_Click(object sender, EventArgs e)
@@ -167,6 +187,37 @@ namespace ShopClient
             }
 
         }
+
+        private void btConfirm_Click(object sender, EventArgs e)
+        {
+            //获得要货的单据号！！！
+            string billNo = new DALSys_FormatSerialNo().GetSerialNo("AB", false);
+            DALShopAskList sda = new DALShopAskList();
+            Shop_AskList sal = new Shop_AskList();
+            sal.AskBillNo = billNo;
+            sal.CrtDate = new CommonFunctions().GetServerTime();
+            sal.ShopInfo = GlobalValue.GShop;
+            sal.UserInfo = GlobalValue.GUser;
+            sal.State = 1;
+            sda.SaveList(sal);
+
+            new DALUnity().ExcuteStoredProcedure("usp_Shop_AskListCreate",
+                new string[] { GlobalValue.GShop.ShopID.ToString(), billNo });
+            //初始化
+            GlobalFun.MessageBoxHint("要货单上传成功！");
+        }
+
+        private void btnProSelect_Click(object sender, EventArgs e)
+        {
+            Program.mainfrm.proselect.Show();
+        }
+
+        private void AskBill_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Program.mainfrm.proselect.OnProSelectQty -= new ProSelect.ProSelectQty(proselect_OnProSelectQty);
+        }
+
+
     }
 }
 

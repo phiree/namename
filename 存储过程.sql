@@ -40,3 +40,20 @@ begin
 	Select Qty,ProID,@ShopID From #Temp2
 end
 Go
+
+if Exists (Select * from sysobjects where name = 'usp_Shop_AskListCreate')
+  Drop Proc usp_Shop_AskListCreate
+Go
+Create Proc usp_Shop_AskListCreate
+(  
+  @ShopID uniqueidentifier,
+  @AskBillNo VarChar(20)
+)
+as
+begin
+  insert Into Shop_AskDetail (Qty,ProInfo_ID,AskBillNo)
+    Select Qty,ProInfo_ID,@AskBillNo From Shop_AskData Where ShopInfo_ID = @ShopID
+  Delete Shop_AskData Where ShopInfo_ID= @ShopID
+
+end
+go

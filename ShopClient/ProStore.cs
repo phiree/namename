@@ -89,7 +89,7 @@ namespace ShopClient
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
 
         private void btnnext_Click(object sender, EventArgs e)
