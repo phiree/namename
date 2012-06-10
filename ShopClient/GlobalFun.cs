@@ -32,7 +32,6 @@ namespace ShopClient
                 tp.Text = s;
                 tc.TabPages.Add(tp);
             }
-
         }
     }
 }
