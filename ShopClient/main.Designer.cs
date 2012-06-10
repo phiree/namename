@@ -133,6 +133,7 @@
             this.btnAsk.TabIndex = 6;
             this.btnAsk.Text = "要货单";
             this.btnAsk.UseVisualStyleBackColor = true;
+            this.btnAsk.Click += new System.EventHandler(this.btnAsk_Click);
             // 
             // label2
             // 

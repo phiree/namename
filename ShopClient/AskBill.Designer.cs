@@ -1,6 +1,6 @@
 ﻿namespace ShopClient
 {
-    partial class ProStore
+    partial class AskBill
     {
         /// <summary>
         /// Required designer variable.
@@ -35,13 +35,14 @@
             this.btnpre = new System.Windows.Forms.Button();
             this.btnnext = new System.Windows.Forms.Button();
             this.pnlPro = new System.Windows.Forms.Panel();
+            this.lbErrorInfo = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage1
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Location = new System.Drawing.Point(4, 26);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(8);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Size = new System.Drawing.Size(826, 0);
@@ -77,6 +78,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lbErrorInfo);
             this.panel1.Controls.Add(this.btnpre);
             this.panel1.Controls.Add(this.btnnext);
             this.panel1.Controls.Add(this.btnExit);
@@ -117,7 +119,18 @@
             this.pnlPro.Size = new System.Drawing.Size(834, 370);
             this.pnlPro.TabIndex = 6;
             // 
-            // ProSelect
+            // lbErrorInfo
+            // 
+            this.lbErrorInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbErrorInfo.Font = new System.Drawing.Font("宋体", 18F);
+            this.lbErrorInfo.Location = new System.Drawing.Point(100, 0);
+            this.lbErrorInfo.Name = "lbErrorInfo";
+            this.lbErrorInfo.Size = new System.Drawing.Size(562, 85);
+            this.lbErrorInfo.TabIndex = 7;
+            this.lbErrorInfo.Text = "产品已经存在";
+            this.lbErrorInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // AskBill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -128,7 +141,7 @@
             this.Font = new System.Drawing.Font("宋体", 12F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "ProSelect";
+            this.Name = "AskBill";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "产品库存查询";
@@ -150,5 +163,6 @@
         private System.Windows.Forms.Button btnnext;
         private System.Windows.Forms.Button btnpre;
         private System.Windows.Forms.Panel pnlPro;
+        private System.Windows.Forms.Label lbErrorInfo;
     }
 }

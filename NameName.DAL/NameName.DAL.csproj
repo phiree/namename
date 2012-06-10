@@ -87,6 +87,7 @@
     <Compile Include="DALShopAskList.cs" />
     <Compile Include="DALShop_StoreLimit.cs" />
     <Compile Include="DALShopStore.cs" />
+    <Compile Include="DALShopAskData.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NameName.IDAL\NameName.IDAL.csproj">
