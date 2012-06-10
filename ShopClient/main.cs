@@ -489,7 +489,7 @@ namespace ShopClient
             DateTime begindate, enddate;
             if (new DateSelect().SelectDate(out begindate, out enddate))
             {
- 
+
             }
         }
 
@@ -508,6 +508,18 @@ namespace ShopClient
             //盘点
 
         }
+
+        private void btnCheckLlist_Click(object sender, EventArgs e)
+        {
+            //盘点单
+            DateTime begindate, enddate;
+            if (new DateSelect().SelectDate(out begindate, out enddate))
+            {
+
+            }
+        }
+
+
 
 
     }

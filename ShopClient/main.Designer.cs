@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCheckLlist = new System.Windows.Forms.Button();
             this.btnImport = new System.Windows.Forms.Button();
             this.btnasklist = new System.Windows.Forms.Button();
             this.btnstore = new System.Windows.Forms.Button();
@@ -65,6 +66,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnCheckLlist);
             this.panel1.Controls.Add(this.btnImport);
             this.panel1.Controls.Add(this.btnasklist);
             this.panel1.Controls.Add(this.btnstore);
@@ -86,6 +88,17 @@
             this.panel1.Size = new System.Drawing.Size(1001, 76);
             this.panel1.TabIndex = 0;
             // 
+            // btnCheckLlist
+            // 
+            this.btnCheckLlist.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnCheckLlist.Location = new System.Drawing.Point(830, 0);
+            this.btnCheckLlist.Name = "btnCheckLlist";
+            this.btnCheckLlist.Size = new System.Drawing.Size(75, 76);
+            this.btnCheckLlist.TabIndex = 15;
+            this.btnCheckLlist.Text = "盘点单";
+            this.btnCheckLlist.UseVisualStyleBackColor = true;
+            this.btnCheckLlist.Click += new System.EventHandler(this.btnCheckLlist_Click);
+            // 
             // btnImport
             // 
             this.btnImport.Dock = System.Windows.Forms.DockStyle.Left;
@@ -104,7 +117,7 @@
             this.btnasklist.Name = "btnasklist";
             this.btnasklist.Size = new System.Drawing.Size(75, 76);
             this.btnasklist.TabIndex = 14;
-            this.btnasklist.Text = "历史要货单";
+            this.btnasklist.Text = "要货单";
             this.btnasklist.UseVisualStyleBackColor = true;
             this.btnasklist.Click += new System.EventHandler(this.btnasklist_Click);
             // 
@@ -156,7 +169,7 @@
             this.btnAsk.Name = "btnAsk";
             this.btnAsk.Size = new System.Drawing.Size(75, 76);
             this.btnAsk.TabIndex = 6;
-            this.btnAsk.Text = "要货单";
+            this.btnAsk.Text = "要货";
             this.btnAsk.UseVisualStyleBackColor = true;
             this.btnAsk.Click += new System.EventHandler(this.btnAsk_Click);
             // 
@@ -468,6 +481,7 @@
         private System.Windows.Forms.Button btncancel;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnasklist;
+        private System.Windows.Forms.Button btnCheckLlist;
 
     }
 }

@@ -205,6 +205,7 @@ namespace ShopClient
                 new string[] { GlobalValue.GShop.ShopID.ToString(), billNo });
             //初始化
             GlobalFun.MessageBoxHint("要货单上传成功！");
+            this.Close();
         }
 
         private void btnProSelect_Click(object sender, EventArgs e)
