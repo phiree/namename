@@ -1,6 +1,6 @@
 ﻿namespace ShopClient.BillList
 {
-    partial class AskList
+    partial class AskDetail
     {
         /// <summary>
         /// Required designer variable.
@@ -28,24 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // AskList
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1120, 663);
-            this.Font = new System.Drawing.Font("宋体", 12F);
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "AskList";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "要货单列表";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.ResumeLayout(false);
-
+            this.Text = "AskDetail";
         }
 
         #endregion
-
     }
 }

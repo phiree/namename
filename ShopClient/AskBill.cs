@@ -217,8 +217,6 @@ namespace ShopClient
         {
             Program.mainfrm.proselect.OnProSelectQty -= new ProSelect.ProSelectQty(proselect_OnProSelectQty);
         }
-
-
     }
 }
 

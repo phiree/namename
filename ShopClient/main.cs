@@ -489,7 +489,7 @@ namespace ShopClient
             DateTime begindate, enddate;
             if (new DateSelect().SelectDate(out begindate, out enddate))
             {
-
+                new BillList.AskList().ShowAskList(begindate, enddate);
             }
         }
 

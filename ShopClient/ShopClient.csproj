@@ -94,11 +94,29 @@
     <Compile Include="AskProduct.Designer.cs">
       <DependentUpon>AskProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="BillList\AskDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BillList\AskDetail.Designer.cs">
+      <DependentUpon>AskDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="BillList\AskList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BillList\AskList.Designer.cs">
       <DependentUpon>AskList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BillList\DetailFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BillList\DetailFrm.Designer.cs">
+      <DependentUpon>DetailFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BillList\ListFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BillList\ListFrm.Designer.cs">
+      <DependentUpon>ListFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Cash.cs">
       <SubType>Form</SubType>
@@ -201,6 +219,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BillList\AskList.resx">
       <DependentUpon>AskList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BillList\DetailFrm.resx">
+      <DependentUpon>DetailFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BillList\ListFrm.resx">
+      <DependentUpon>ListFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cash.resx">
       <DependentUpon>Cash.cs</DependentUpon>
