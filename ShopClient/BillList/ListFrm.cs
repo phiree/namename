@@ -41,7 +41,7 @@ namespace ShopClient.BillList
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            string billno = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();            
+            string billno = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
         }
 
         private void btnExit_Click(object sender, EventArgs e)

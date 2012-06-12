@@ -15,6 +15,7 @@ namespace ShopClient.BillList
     {
         public AskList()
         {
+
         }
 
 
@@ -26,17 +27,13 @@ namespace ShopClient.BillList
             ShowDialog();
         }
 
-        //public override void GetData()
-        //    :base()
-        //{
-            
-        //    DALShopAskList dsal = new DALShopAskList();
-        //    IList<Shop_AskList> sals = dsal.GetByDateTime(, edate, GlobalValue.GShop.ShopID);
-            
-        //}
-
-
-
+        public override void GetData()
+        {
+            base.GetData();
+            DALShopAskList dsal = new DALShopAskList();
+            IList<Shop_AskList> sals = dsal.GetByDateTime(Bdate, EDate, GlobalValue.GShop.ShopID);
+            dataGridView1.DataSource = sals;
+        }
 
         //private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         //{
@@ -54,17 +51,6 @@ namespace ShopClient.BillList
         //                e.Value = "配货";
         //                break;
         //        }
-        //    }
-        //}
-
-        //private void label1_Click(object sender, EventArgs e)
-        //{
-        //    DateTime begindate, enddate;
-        //    if (new DateSelect().SelectDate(out begindate, out enddate))
-        //    {
-        //        bdate = begindate;
-        //        edate = enddate;
-        //        GetData();
         //    }
         //}
 

@@ -152,9 +152,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lbDate;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        public System.Windows.Forms.DataGridView dataGridView1;
     }
 }
