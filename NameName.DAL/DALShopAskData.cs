@@ -11,7 +11,7 @@ namespace NameName.DAL
         //按照ShopID返回当前的库存信息
         public IList<Shop_AskData> GetAskDataByShopID(Guid shopid)
         {
-            string sql = "delete Shop_AskData Where Qty <= 0 and ShopInfo.ShopID = '" + shopid + "'";
+            string sql = "delete Shop_AskData Where Qty = 0 and ShopInfo.ShopID = '" + shopid + "'";
             IQuery qry = session.CreateQuery(sql);
             qry.ExecuteUpdate();
             session.Flush();
