@@ -64,7 +64,7 @@
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(841, 19);
+            this.tabControl1.Size = new System.Drawing.Size(841, 28);
             this.tabControl1.TabIndex = 4;
             this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
@@ -118,10 +118,10 @@
             // pnlPro
             // 
             this.pnlPro.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlPro.Location = new System.Drawing.Point(0, 83);
+            this.pnlPro.Location = new System.Drawing.Point(0, 92);
             this.pnlPro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPro.Name = "pnlPro";
-            this.pnlPro.Size = new System.Drawing.Size(841, 422);
+            this.pnlPro.Size = new System.Drawing.Size(841, 413);
             this.pnlPro.TabIndex = 6;
             // 
             // pnlselllist
@@ -131,17 +131,17 @@
             this.pnlselllist.Controls.Add(this.btConfirm);
             this.pnlselllist.Controls.Add(this.lbbackamount);
             this.pnlselllist.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlselllist.Location = new System.Drawing.Point(708, 83);
+            this.pnlselllist.Location = new System.Drawing.Point(708, 92);
             this.pnlselllist.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlselllist.Name = "pnlselllist";
-            this.pnlselllist.Size = new System.Drawing.Size(133, 422);
+            this.pnlselllist.Size = new System.Drawing.Size(133, 413);
             this.pnlselllist.TabIndex = 7;
             // 
             // btnProSelect
             // 
             this.btnProSelect.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnProSelect.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnProSelect.Location = new System.Drawing.Point(0, 290);
+            this.btnProSelect.Location = new System.Drawing.Point(0, 281);
             this.btnProSelect.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnProSelect.Name = "btnProSelect";
             this.btnProSelect.Size = new System.Drawing.Size(133, 40);
@@ -154,7 +154,7 @@
             // 
             this.lbAmount.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lbAmount.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.lbAmount.Location = new System.Drawing.Point(0, 330);
+            this.lbAmount.Location = new System.Drawing.Point(0, 321);
             this.lbAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbAmount.Name = "lbAmount";
             this.lbAmount.Size = new System.Drawing.Size(133, 26);
@@ -165,7 +165,7 @@
             // 
             this.btConfirm.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btConfirm.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btConfirm.Location = new System.Drawing.Point(0, 356);
+            this.btConfirm.Location = new System.Drawing.Point(0, 347);
             this.btConfirm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btConfirm.Name = "btConfirm";
             this.btConfirm.Size = new System.Drawing.Size(133, 40);
@@ -178,7 +178,7 @@
             // 
             this.lbbackamount.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lbbackamount.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.lbbackamount.Location = new System.Drawing.Point(0, 396);
+            this.lbbackamount.Location = new System.Drawing.Point(0, 387);
             this.lbbackamount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbbackamount.Name = "lbbackamount";
             this.lbbackamount.Size = new System.Drawing.Size(133, 26);

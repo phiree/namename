@@ -183,9 +183,9 @@ namespace ShopClient
             selllist.Details.Add(ss);
             //增加了一个产品，需要重新计算金额！
             lbAmount.Text = GetSumAmount();
-
+            pnlselldetail.Tag = 100;
             //重画界面
-            ShowSellDetailByPageNo();
+            ShowSellDetailByPageNo(true);
             return true;
 
         }
@@ -276,7 +276,7 @@ namespace ShopClient
             return "金额:" + a;
         }
 
-        private void ShowSellDetailByPageNo()
+        private void ShowSellDetailByPageNo(bool needRefresh)
         {
             int currPage = (int)pnlselldetail.Tag;
             //在页面上显示！
@@ -285,14 +285,16 @@ namespace ShopClient
             {
                 currPage = 0;
                 pnlselldetail.Tag = currPage;
-                return;
+                if (!needRefresh) return;
             }
 
-            if (currPage > selllist.Details.Count / 18)
+            int MaxPage = selllist.Details.Count % 18 == 0 ? selllist.Details.Count / 18 -1: selllist.Details.Count / 18 ;
+
+            if (currPage > MaxPage)
             {
-                currPage = selllist.Details.Count / 18;
+                currPage = MaxPage;
                 pnlselldetail.Tag = currPage;
-                return;
+               if(!needRefresh) return;
             }
 
 
@@ -347,7 +349,7 @@ namespace ShopClient
                     ReMoveDetails.Add(ssd);
                 }
                 selllist.Details.Remove(ssd);
-                ShowSellDetailByPageNo();
+                ShowSellDetailByPageNo(true);
             }
             else
             {
@@ -366,7 +368,7 @@ namespace ShopClient
             else
                 CurrPage--;
             pnlselldetail.Tag = CurrPage;
-            ShowSellDetailByPageNo();
+            ShowSellDetailByPageNo(false);
         }
 
         private void btncancel_Click(object sender, EventArgs e)
@@ -446,7 +448,7 @@ namespace ShopClient
                     selllist.Details.Add(sdnew);
                 }
 
-                ShowSellDetailByPageNo();
+                ShowSellDetailByPageNo(true);
                 //不允许增加产品！不允许修改数量！！！
                 btnProSelect.Enabled = false;
 

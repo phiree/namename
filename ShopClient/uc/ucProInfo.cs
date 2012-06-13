@@ -64,7 +64,7 @@ namespace ShopClient.uc
         {
             if (OnSelectPro != null)
             {
-                OnSelectPro(sender, ProInfo);
+                OnSelectPro(this, ProInfo);
             }
         }
     }

@@ -20,12 +20,10 @@ namespace ShopClient
             MessageBox.Show(HintStr, "么么 门店系统", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        public static void LoadProCate(TabControl tc)
+        public static void LoadProCate(IList<string> Cates, TabControl tc)
         {
-
             tc.TabPages.Clear();
-            DALProInfo dpi = new DALProInfo();
-            foreach (string s in dpi.GetProCatesByAreaID(GlobalValue.GShop.AreaInfo.AreaID))
+            foreach (string s in Cates)
             {
                 TabPage tp = new TabPage();
                 tp.Tag = 0;
