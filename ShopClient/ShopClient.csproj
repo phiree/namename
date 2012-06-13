@@ -94,18 +94,6 @@
     <Compile Include="AskProduct.Designer.cs">
       <DependentUpon>AskProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="BillList\AskDetail.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BillList\AskDetail.Designer.cs">
-      <DependentUpon>AskDetail.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BillList\AskList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BillList\AskList.Designer.cs">
-      <DependentUpon>AskList.cs</DependentUpon>
-    </Compile>
     <Compile Include="BillList\DetailFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,9 +204,6 @@
     </Compile>
     <EmbeddedResource Include="AskProduct.resx">
       <DependentUpon>AskProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BillList\AskList.resx">
-      <DependentUpon>AskList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BillList\DetailFrm.resx">
       <DependentUpon>DetailFrm.cs</DependentUpon>

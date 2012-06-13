@@ -25,7 +25,7 @@ namespace ShopClient
             for (int i = 0; i < 18; i++)
             {
                 pis[i] = new uc.ucProInfo();
-                pis[i].ShowQty = true;
+
                 pnlPro.Controls.Add(pis[i]);
             }
             GlobalFun.LoadProCate(tabControl1);
@@ -90,7 +90,8 @@ namespace ShopClient
                 if (i < source.Count)
                 {
                     pis[i].ProInfo = source[i].ProInfo;
-                    pis[i].Qty = source[i].Qty;
+                    pis[i].LeftField = "";
+                    pis[i].RightField = "数量：" + source[i].Qty.ToString("0.00");
                     pis[i].LoadProInfo();
                     pis[i].Visible = true;
                     pis[i].Tag = source[i];
@@ -153,7 +154,7 @@ namespace ShopClient
                 pi.Left = left;
                 pi.Top = top;
                 pi.Size = ItemSize;
-                pi.ShowQty = false;
+
                 pi.ProInfo = null;
                 pi.OnSelectPro += new uc.ucProInfo.SelectPro(pi_OnSelectPro);
                 btnIndex++;
@@ -164,25 +165,22 @@ namespace ShopClient
         {
             //显示输入产品数量的窗口
             uc.ucProInfo upi = (uc.ucProInfo)sender;
-            decimal qty = new ProQtyInput().GetQty(proinfo, upi.Qty, true, true);
+            Shop_AskData sad = (Shop_AskData)upi.Tag;
+
+            decimal qty = new ProQtyInput().GetQty(proinfo, sad.Qty, true, true);
             if (qty == 0)
             {
                 return;
             }
             else if (qty == -1)
             {
-                //删除操作
-                Shop_AskData removes = (Shop_AskData)upi.Tag;
-                sa.Remove(removes);
-                new DALShopAskData().Delete(removes);
-
-
+                sa.Remove(sad);
+                new DALShopAskData().Delete(sad);
             }
             else
             {
-                Shop_AskData edtsa = (Shop_AskData)upi.Tag;
-                edtsa.Qty = qty;
-                upi.Qty = qty;
+                sad.Qty = qty;
+                upi.RightField = "数量：" + qty.ToString("0.00");
                 upi.LoadProInfo();
             }
 

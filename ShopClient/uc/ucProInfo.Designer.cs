@@ -33,8 +33,8 @@
             this.lbunit = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lbprice = new System.Windows.Forms.Label();
-            this.lbqty = new System.Windows.Forms.Label();
+            this.lbleft = new System.Windows.Forms.Label();
+            this.lbright = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picpro)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -86,35 +86,35 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.lbprice);
-            this.panel2.Controls.Add(this.lbqty);
+            this.panel2.Controls.Add(this.lbleft);
+            this.panel2.Controls.Add(this.lbright);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 171);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 29);
             this.panel2.TabIndex = 4;
             // 
-            // lbprice
+            // lbleft
             // 
-            this.lbprice.BackColor = System.Drawing.Color.Azure;
-            this.lbprice.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbprice.Location = new System.Drawing.Point(0, 0);
-            this.lbprice.Name = "lbprice";
-            this.lbprice.Size = new System.Drawing.Size(118, 29);
-            this.lbprice.TabIndex = 1;
-            this.lbprice.Text = "单价：";
-            this.lbprice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbleft.BackColor = System.Drawing.Color.Azure;
+            this.lbleft.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbleft.Location = new System.Drawing.Point(0, 0);
+            this.lbleft.Name = "lbleft";
+            this.lbleft.Size = new System.Drawing.Size(105, 29);
+            this.lbleft.TabIndex = 1;
+            this.lbleft.Text = "单价：";
+            this.lbleft.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lbqty
+            // lbright
             // 
-            this.lbqty.BackColor = System.Drawing.Color.AliceBlue;
-            this.lbqty.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lbqty.Location = new System.Drawing.Point(118, 0);
-            this.lbqty.Name = "lbqty";
-            this.lbqty.Size = new System.Drawing.Size(82, 29);
-            this.lbqty.TabIndex = 2;
-            this.lbqty.Text = "数量：100.00";
-            this.lbqty.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbright.BackColor = System.Drawing.Color.AliceBlue;
+            this.lbright.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lbright.Location = new System.Drawing.Point(105, 0);
+            this.lbright.Name = "lbright";
+            this.lbright.Size = new System.Drawing.Size(95, 29);
+            this.lbright.TabIndex = 2;
+            this.lbright.Text = "数量：100.00";
+            this.lbright.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // ucProInfo
             // 
@@ -139,7 +139,7 @@
         private System.Windows.Forms.Label lbunit;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lbprice;
-        private System.Windows.Forms.Label lbqty;
+        private System.Windows.Forms.Label lbleft;
+        private System.Windows.Forms.Label lbright;
     }
 }

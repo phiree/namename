@@ -56,12 +56,7 @@
             this.ucProInfo1.Location = new System.Drawing.Point(392, 102);
             this.ucProInfo1.Name = "ucProInfo1";
             this.ucProInfo1.ProInfo = null;
-            this.ucProInfo1.Qty = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.ucProInfo1.ShowQty = false;
+            
             this.ucProInfo1.Size = new System.Drawing.Size(210, 210);
             this.ucProInfo1.TabIndex = 7;
             // 

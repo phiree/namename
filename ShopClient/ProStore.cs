@@ -22,7 +22,7 @@ namespace ShopClient
             for (int i = 0; i < 18; i++)
             {
                 pis[i] = new uc.ucProInfo();
-                pis[i].ShowQty = true;
+
                 pnlPro.Controls.Add(pis[i]);
             }
             GlobalFun.LoadProCate(tabControl1);
@@ -70,7 +70,8 @@ namespace ShopClient
                 if (i < source.Count)
                 {
                     pis[i].ProInfo = source[i].ProInfo;
-                    pis[i].Qty = source[i].CurrQty;
+                    pis[i].LeftField = "单价：" + new DALProInfo().GetPrice(source[i].ProInfo.ProID, GlobalValue.GShop.AreaInfo.AreaID).Price.ToString("0.00");
+                    pis[i].RightField = "数量：" + source[i].CurrQty.ToString("0.00");
                     pis[i].LoadProInfo();
                     pis[i].Visible = true;
                 }
@@ -131,7 +132,7 @@ namespace ShopClient
                 pi.Left = left;
                 pi.Top = top;
                 pi.Size = ItemSize;
-                pi.ShowQty = false;
+                
                 pi.ProInfo = null;
 
                 btnIndex++;

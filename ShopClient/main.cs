@@ -319,8 +319,8 @@ namespace ShopClient
             pi.Left = position.Left;
             pi.Top = position.Top;
             pi.Size = position.Size;
-            pi.ShowQty = true;
-            pi.Qty = t.Amount;
+            pi.LeftField = "单价:" + t.Price.ToString("0.00");
+            pi.RightField = "数量:" + t.Amount.ToString("0.00");
             pi.ProInfo = t.Pro;
             pi.Tag = t;
             pi.OnSelectPro += new uc.ucProInfo.SelectPro(pi_OnSelectPro);
@@ -352,7 +352,7 @@ namespace ShopClient
             else
             {
                 ssd.Amount = qty;
-                pi.Qty = qty;
+                pi.RightField = "数量:" + qty.ToString("0.00");
                 pi.LoadProInfo();
             }
             lbAmount.Text = GetSumAmount();
@@ -489,8 +489,31 @@ namespace ShopClient
             DateTime begindate, enddate;
             if (new DateSelect().SelectDate(out begindate, out enddate))
             {
-                new BillList.AskList().ShowAskList(begindate, enddate);
+                //
+                List<BillList.DGVColumn> dgvcols = new List<BillList.DGVColumn>();
+                //BillList.DGVColumn d1 = new BillList.DGVColumn("单据号","AskBillNo");
+                dgvcols.Add(new BillList.DGVColumn("单据号", "AskBillNo"));
+                dgvcols.Add(new BillList.DGVColumn("单据时间", "CrtDate", DataGridViewAutoSizeColumnMode.Fill));
+                dgvcols.Add(new BillList.DGVColumn("单据状态", "StateName"));
+
+                BillList.ListFrm lf = new BillList.ListFrm("要货单", begindate, enddate, dgvcols);
+                lf.OnDateTimeSelect += new BillList.ListFrm.DateTimeSelect(lf_OnDateTimeSelect);
+                lf.OnRowDoubleClick += new BillList.ListFrm.RowDoubleClick(lf_OnRowDoubleClick);
+                lf.ShowDialog();
             }
+        }
+
+        void lf_OnRowDoubleClick(string billno)
+        {
+            new BillList.DetailFrm(billno).ShowDialog();
+        }
+
+        object lf_OnDateTimeSelect(DateTime begindate, DateTime enddate)
+        {
+            DALShopAskList dsal = new DALShopAskList();
+            IList<Shop_AskList> sals = dsal.GetByDateTime(begindate, enddate, GlobalValue.GShop.ShopID);
+            return sals;
+
         }
 
         private void btnImport_Click(object sender, EventArgs e)

@@ -71,6 +71,7 @@ namespace ShopClient
                 if (i < source.Count)
                 {
                     pis[i].ProInfo = source[i];
+                    pis[i].LeftField = "单价：" + new DALProInfo().GetPrice(source[i].ProID, GlobalValue.GShop.AreaInfo.AreaID).Price.ToString("0.00");
                     pis[i].LoadProInfo();
                     pis[i].Visible = true;
                 }
@@ -88,7 +89,7 @@ namespace ShopClient
             pi.Left = position.Left;
             pi.Top = position.Top;
             pi.Size = position.Size;
-            pi.ShowQty = false;
+
             pi.ProInfo = t;
             pi.OnSelectPro += new uc.ucProInfo.SelectPro(pi_OnSelectPro);
             gridcontainer.Controls.Add(pi);
@@ -172,7 +173,7 @@ namespace ShopClient
                 pi.Left = left;
                 pi.Top = top;
                 pi.Size = ItemSize;
-                pi.ShowQty = false;
+
                 pi.ProInfo = null;
                 pi.OnSelectPro += new uc.ucProInfo.SelectPro(pi_OnSelectPro);
                 btnIndex++;

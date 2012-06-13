@@ -12,7 +12,7 @@ namespace ShopClient.BillList
     public partial class DetailFrm : Form
     {
 
-        public DetailFrm()
+        public DetailFrm(string billno)
         {
             InitializeComponent();
         }
