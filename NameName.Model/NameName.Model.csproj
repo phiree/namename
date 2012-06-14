@@ -163,6 +163,7 @@
     <Compile Include="Mapping\Shop_AccountDetailMap.cs" />
     <Compile Include="Mapping\Shop_AskDataMap.cs" />
     <Compile Include="Mapping\Shop_StoreLimitMap.cs" />
+    <Compile Include="Mapping\Pur_ListMap.cs" />
     <Compile Include="ProInfo.cs">
       <SubType>Code</SubType>
     </Compile>
