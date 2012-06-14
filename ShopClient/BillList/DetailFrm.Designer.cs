@@ -49,6 +49,7 @@
             this.btnpre.TabIndex = 4;
             this.btnpre.Text = "上一页";
             this.btnpre.UseVisualStyleBackColor = true;
+            this.btnpre.Click += new System.EventHandler(this.btnpre_Click);
             // 
             // btnnext
             // 
@@ -59,6 +60,7 @@
             this.btnnext.TabIndex = 5;
             this.btnnext.Text = "下一页";
             this.btnnext.UseVisualStyleBackColor = true;
+            this.btnnext.Click += new System.EventHandler(this.btnnext_Click);
             // 
             // pnlPro
             // 
@@ -127,7 +129,7 @@
             this.lblistInfo.Text = "lblistInfo";
             this.lblistInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Detail
+            // DetailFrm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(831, 491);
@@ -135,8 +137,9 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("宋体", 12F);
-            this.Name = "Detail";
+            this.Name = "DetailFrm";
             this.Text = "Detail";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tabControl1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

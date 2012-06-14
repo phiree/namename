@@ -21,5 +21,36 @@ namespace ShopClient.BillList
         {
             this.Close();
         }
+
+        private void TransPage(bool next)
+        {
+            TabPage tg = tabControl1.SelectedTab;
+            int CurrPage = (int)tg.Tag;
+            if (next)
+            {
+                CurrPage++;
+            }
+            else
+            {
+                CurrPage--;
+            }
+            tg.Tag = CurrPage;
+            ShowByCateAndPageNo(tg);
+        }
+
+        private void ShowByCateAndPageNo(TabPage tg)
+        {
+            //显示数据
+        }
+
+        private void btnnext_Click(object sender, EventArgs e)
+        {
+            TransPage(true);
+        }
+
+        private void btnpre_Click(object sender, EventArgs e)
+        {
+            TransPage(false);
+        }
     }
 }

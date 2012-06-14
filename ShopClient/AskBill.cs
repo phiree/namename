@@ -28,10 +28,18 @@ namespace ShopClient
 
                 pnlPro.Controls.Add(pis[i]);
             }
-            GlobalFun.LoadProCate(tabControl1);
+
+            DALShopAskData dpa = new DALShopAskData();
+            IList<string> cates = dpa.AskCates(GlobalValue.GShop.ShopID);
+            GlobalFun.LoadProCate(cates, tabControl1);
+
+
             DALShopAskData dsa = new DALShopAskData();
             sa = dsa.GetAskDataByShopID(GlobalValue.GShop.ShopID);
-            ShowByCateAndPageNo(tabControl1.TabPages[0]);
+            if (tabControl1.TabPages.Count != 0)
+            {
+                ShowByCateAndPageNo(tabControl1.TabPages[0],false);
+            }
         }
 
         bool proselect_OnProSelectQty(ProInfo proinfo, decimal qty)
@@ -47,11 +55,33 @@ namespace ShopClient
             sa.Add(sad);
             new DALShopAskData().Save(sad);
             //重画界面
-            ShowByCateAndPageNo(tabControl1.SelectedTab);
+            //跳转到当前类别的页面！
+            bool isExistInCate = false;
+            
+            foreach (TabPage tp in tabControl1.TabPages)
+            {
+                if (tp.Text == proinfo.ProCate) 
+                { isExistInCate = true;
+                tabControl1.SelectedTab = tp;
+                    break; }
+            }
+            if (!isExistInCate)
+            
+            {
+                TabPage tp = new TabPage();
+                tp.Text = proinfo.ProCate;
+                tp.Tag = 0;
+                tabControl1.TabPages.Add(tp);
+                tabControl1.SelectedTab = tp;
+               
+            }
+
+            tabControl1.SelectedTab.Tag = 100;
+            ShowByCateAndPageNo(tabControl1.SelectedTab,true);
             return true;
         }
 
-        private void ShowByCateAndPageNo(TabPage tp)
+        private void ShowByCateAndPageNo(TabPage tp,bool needRefresh)
         {
             if (tp == null)
                 return;
@@ -66,10 +96,10 @@ namespace ShopClient
                 tp.Tag = currPage;
                 return;
             }
-
-            if (currPage > CatePros.Count / 18)
+            int MaxPage = CatePros.Count % 18 == 0 ? CatePros.Count / 18-1 : CatePros.Count / 18 ;
+            if (currPage > MaxPage)
             {
-                currPage = CatePros.Count / 18;
+                currPage = MaxPage;
                 tp.Tag = currPage;
                 return;
             }
@@ -107,7 +137,7 @@ namespace ShopClient
 
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
-            ShowByCateAndPageNo(e.TabPage);
+            ShowByCateAndPageNo(e.TabPage,false);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -117,20 +147,23 @@ namespace ShopClient
 
         private void btnnext_Click(object sender, EventArgs e)
         {
-            TabPage tg = tabControl1.SelectedTab;
-            int CurrPage = (int)tg.Tag;
-            CurrPage++;
-            tg.Tag = CurrPage;
-            ShowByCateAndPageNo(tg);
+            ChangePage(true);
         }
 
         private void btnpre_Click(object sender, EventArgs e)
         {
+            ChangePage(false);
+        }
+
+        private void ChangePage(bool isNext)
+        {
             TabPage tg = tabControl1.SelectedTab;
             int CurrPage = (int)tg.Tag;
-            CurrPage--;
+            if (isNext) CurrPage++;
+            else
+                CurrPage--;
             tg.Tag = CurrPage;
-            ShowByCateAndPageNo(tg);
+            ShowByCateAndPageNo(tg,false);
         }
 
 

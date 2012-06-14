@@ -91,10 +91,6 @@
     <Compile Include="DALShop_AccountDetail.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NameName.IDAL\NameName.IDAL.csproj">
-      <Project>{F3D24AB7-DED8-427B-8F97-EE12D9F67351}</Project>
-      <Name>NameName.IDAL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\NameName.Model\NameName.Model.csproj">
       <Project>{A84D74B0-8175-4F3D-B7C9-34BAF70396FE}</Project>
       <Name>NameName.Model</Name>

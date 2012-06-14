@@ -262,6 +262,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AskBill.resx">
       <DependentUpon>AskBill.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="DateSelect.resx">
       <DependentUpon>DateSelect.cs</DependentUpon>

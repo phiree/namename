@@ -129,22 +129,30 @@ namespace ShopClient
             this.Hide();
         }
 
-        private void btnnext_Click(object sender, EventArgs e)
+        private void TransPage(bool next)
         {
             TabPage tg = tabControl1.SelectedTab;
             int CurrPage = (int)tg.Tag;
-            CurrPage++;
+            if (next)
+            {
+                CurrPage++;
+            }
+            else
+            {
+                CurrPage--;
+            }
             tg.Tag = CurrPage;
             ShowByCateAndPageNo(tg);
         }
 
+        private void btnnext_Click(object sender, EventArgs e)
+        {
+            TransPage(true);
+        }
+
         private void btnpre_Click(object sender, EventArgs e)
         {
-            TabPage tg = tabControl1.SelectedTab;
-            int CurrPage = (int)tg.Tag;
-            CurrPage--;
-            tg.Tag = CurrPage;
-            ShowByCateAndPageNo(tg);
+            TransPage(false);
         }
 
 
@@ -179,7 +187,10 @@ namespace ShopClient
                 btnIndex++;
             }
 
-            GlobalFun.LoadProCate(tabControl1);
+            DALProInfo dpi = new DALProInfo();
+            List<string> cates = dpi.GetProCatesByAreaID(GlobalValue.GShop.AreaInfo.AreaID).ToList();
+            GlobalFun.LoadProCate(cates, tabControl1);
+
             ShowByCateAndPageNo(tabControl1.TabPages[0]);
 
         }
