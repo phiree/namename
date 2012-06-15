@@ -7,6 +7,6 @@ namespace NameName.DAL
 {
   public  class DALSession
     {
-        protected ISession session = new HybridSessionBuilder().GetSession();
+        public ISession session = new HybridSessionBuilder().GetSession();
     }
 }

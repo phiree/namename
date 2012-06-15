@@ -4,7 +4,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
     <div>
-        门店:<asp:DropDownList AutoPostBack="true" runat="server" ID="ddlShops">
+        门店:<asp:DropDownList AutoPostBack="true" runat="server" ID="ddlShops" 
+            onselectedindexchanged="ddlShops_SelectedIndexChanged">
         </asp:DropDownList>
         <asp:TextBox runat="server" ID="tbxkeyword"></asp:TextBox>
         <asp:Button runat="server" OnClick="btnSearch_Click" ID="btnSearch" Text="搜索" />
@@ -16,7 +17,7 @@
                     <img alt="" style="height:100px;width:100px;" src='/propic/imgsmall/<%#Eval("ProInfo.PicName") %>' />
                     <div>
                    名称: <span style="color:Blue;cursor:pointer; " onclick='Open("<%#Eval("ProInfo.ProID") %>")'> <%#Eval("ShopInfo.ShopName") %></span> 
-                    库存:<span style="font-size:large"><%#Eval("CurrQty") %></span> </div>
+                    库存:<span style="font-size:large"><%#Eval("CurrQty") %></span></div>
                 </div>
             </ItemTemplate>
         </asp:DataList>

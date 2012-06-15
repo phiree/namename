@@ -26,11 +26,11 @@ public partial class Store_Default : System.Web.UI.Page
 
     void BindData()
     {
-        
+        DetailType = ddlShops.SelectedValue == Guid.Empty.ToString() ? "1" : "2";
         string keyWord = tbxkeyword.Text;
         string shopId = ddlShops.SelectedValue;
 
-        IList<Shop_Store> stores = BuildTestData();// new DALShopStore().GetList(shopId, keyWord, 0, 100);
+        IList<Shop_Store> stores = new DALShopStore().GetList(shopId, keyWord, 0, 9999);
         dlShopStore.DataSource = stores;
         dlShopStore.DataBind();
       
@@ -41,7 +41,7 @@ public partial class Store_Default : System.Web.UI.Page
    
     protected void btnSearch_Click(object sender, EventArgs e)
     {
-        DetailType = ddlShops.SelectedValue == Guid.Empty.ToString() ? "1" : "2";
+      
         BindData();
     }
 
@@ -85,5 +85,9 @@ public partial class Store_Default : System.Web.UI.Page
         }
 
         return stores;
+    }
+    protected void ddlShops_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        BindData();
     }
 }

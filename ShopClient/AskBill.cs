@@ -25,13 +25,21 @@ namespace ShopClient
             for (int i = 0; i < 18; i++)
             {
                 pis[i] = new uc.ucProInfo();
-                pis[i].ShowQty = true;
+
                 pnlPro.Controls.Add(pis[i]);
             }
-            GlobalFun.LoadProCate(tabControl1);
+
+            DALShopAskData dpa = new DALShopAskData();
+            IList<string> cates = dpa.AskCates(GlobalValue.GShop.ShopID);
+            GlobalFun.LoadProCate(cates, tabControl1);
+
+
             DALShopAskData dsa = new DALShopAskData();
             sa = dsa.GetAskDataByShopID(GlobalValue.GShop.ShopID);
-            ShowByCateAndPageNo(tabControl1.TabPages[0]);
+            if (tabControl1.TabPages.Count != 0)
+            {
+                ShowByCateAndPageNo(tabControl1.TabPages[0],false);
+            }
         }
 
         bool proselect_OnProSelectQty(ProInfo proinfo, decimal qty)
@@ -47,11 +55,33 @@ namespace ShopClient
             sa.Add(sad);
             new DALShopAskData().Save(sad);
             //重画界面
-            ShowByCateAndPageNo(tabControl1.SelectedTab);
+            //跳转到当前类别的页面！
+            bool isExistInCate = false;
+            
+            foreach (TabPage tp in tabControl1.TabPages)
+            {
+                if (tp.Text == proinfo.ProCate) 
+                { isExistInCate = true;
+                tabControl1.SelectedTab = tp;
+                    break; }
+            }
+            if (!isExistInCate)
+            
+            {
+                TabPage tp = new TabPage();
+                tp.Text = proinfo.ProCate;
+                tp.Tag = 0;
+                tabControl1.TabPages.Add(tp);
+                tabControl1.SelectedTab = tp;
+               
+            }
+
+            tabControl1.SelectedTab.Tag = 100;
+            ShowByCateAndPageNo(tabControl1.SelectedTab,true);
             return true;
         }
 
-        private void ShowByCateAndPageNo(TabPage tp)
+        private void ShowByCateAndPageNo(TabPage tp,bool needRefresh)
         {
             if (tp == null)
                 return;
@@ -66,10 +96,10 @@ namespace ShopClient
                 tp.Tag = currPage;
                 return;
             }
-
-            if (currPage > CatePros.Count / 18)
+            int MaxPage = CatePros.Count % 18 == 0 ? CatePros.Count / 18-1 : CatePros.Count / 18 ;
+            if (currPage > MaxPage)
             {
-                currPage = CatePros.Count / 18;
+                currPage = MaxPage;
                 tp.Tag = currPage;
                 return;
             }
@@ -90,7 +120,8 @@ namespace ShopClient
                 if (i < source.Count)
                 {
                     pis[i].ProInfo = source[i].ProInfo;
-                    pis[i].Qty = source[i].Qty;
+                    pis[i].LeftField = "";
+                    pis[i].RightField = "数量：" + source[i].Qty.ToString("0.00");
                     pis[i].LoadProInfo();
                     pis[i].Visible = true;
                     pis[i].Tag = source[i];
@@ -106,7 +137,7 @@ namespace ShopClient
 
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
-            ShowByCateAndPageNo(e.TabPage);
+            ShowByCateAndPageNo(e.TabPage,false);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -116,20 +147,23 @@ namespace ShopClient
 
         private void btnnext_Click(object sender, EventArgs e)
         {
-            TabPage tg = tabControl1.SelectedTab;
-            int CurrPage = (int)tg.Tag;
-            CurrPage++;
-            tg.Tag = CurrPage;
-            ShowByCateAndPageNo(tg);
+            ChangePage(true);
         }
 
         private void btnpre_Click(object sender, EventArgs e)
         {
+            ChangePage(false);
+        }
+
+        private void ChangePage(bool isNext)
+        {
             TabPage tg = tabControl1.SelectedTab;
             int CurrPage = (int)tg.Tag;
-            CurrPage--;
+            if (isNext) CurrPage++;
+            else
+                CurrPage--;
             tg.Tag = CurrPage;
-            ShowByCateAndPageNo(tg);
+            ShowByCateAndPageNo(tg,false);
         }
 
 
@@ -153,7 +187,7 @@ namespace ShopClient
                 pi.Left = left;
                 pi.Top = top;
                 pi.Size = ItemSize;
-                pi.ShowQty = false;
+
                 pi.ProInfo = null;
                 pi.OnSelectPro += new uc.ucProInfo.SelectPro(pi_OnSelectPro);
                 btnIndex++;
@@ -164,25 +198,22 @@ namespace ShopClient
         {
             //显示输入产品数量的窗口
             uc.ucProInfo upi = (uc.ucProInfo)sender;
-            decimal qty = new ProQtyInput().GetQty(proinfo, upi.Qty, true, true);
+            Shop_AskData sad = (Shop_AskData)upi.Tag;
+
+            decimal qty = new ProQtyInput().GetQty(proinfo, sad.Qty, true, true);
             if (qty == 0)
             {
                 return;
             }
             else if (qty == -1)
             {
-                //删除操作
-                Shop_AskData removes = (Shop_AskData)upi.Tag;
-                sa.Remove(removes);
-                new DALShopAskData().Delete(removes);
-
-
+                sa.Remove(sad);
+                new DALShopAskData().Delete(sad);
             }
             else
             {
-                Shop_AskData edtsa = (Shop_AskData)upi.Tag;
-                edtsa.Qty = qty;
-                upi.Qty = qty;
+                sad.Qty = qty;
+                upi.RightField = "数量：" + qty.ToString("0.00");
                 upi.LoadProInfo();
             }
 
@@ -205,6 +236,7 @@ namespace ShopClient
                 new string[] { GlobalValue.GShop.ShopID.ToString(), billNo });
             //初始化
             GlobalFun.MessageBoxHint("要货单上传成功！");
+            this.Close();
         }
 
         private void btnProSelect_Click(object sender, EventArgs e)
@@ -216,8 +248,6 @@ namespace ShopClient
         {
             Program.mainfrm.proselect.OnProSelectQty -= new ProSelect.ProSelectQty(proselect_OnProSelectQty);
         }
-
-
     }
 }
 

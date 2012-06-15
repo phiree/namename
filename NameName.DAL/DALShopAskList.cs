@@ -14,13 +14,15 @@ namespace NameName.DAL
             session.Flush();
         }
 
-        //public Shop_AskList GetListWithNotConfirm(ShopInfo shopinfo)
-        //{
-        //    string sql = " select a from Shop_AskList a where a.ShopInfo.ShopID='" + shopinfo.ShopID.ToString() + "' and a.State = 0";
-        //    IQuery query = session.CreateQuery(sql);
-        //    Shop_AskList shopasklist = query.FutureValue<Shop_AskList>().Value;
-        //    return shopasklist;
-        //}
+
+        public IList<Shop_AskList> GetByDateTime(DateTime begindate, DateTime enddate, Guid shopid)
+        {
+            string sql = " select a from Shop_AskList a where a.CrtDate between '" + begindate + "' and '" + enddate.AddDays(1) + "' and a.ShopInfo.ShopID = '" + shopid + "'";
+
+            IList<Shop_AskList> sas = QueryFutureList(sql).ToList();
+
+            return sas;
+        }
 
     }
 }

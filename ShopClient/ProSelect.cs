@@ -71,6 +71,7 @@ namespace ShopClient
                 if (i < source.Count)
                 {
                     pis[i].ProInfo = source[i];
+                    pis[i].LeftField = "单价：" + new DALProInfo().GetPrice(source[i].ProID, GlobalValue.GShop.AreaInfo.AreaID).Price.ToString("0.00");
                     pis[i].LoadProInfo();
                     pis[i].Visible = true;
                 }
@@ -88,7 +89,7 @@ namespace ShopClient
             pi.Left = position.Left;
             pi.Top = position.Top;
             pi.Size = position.Size;
-            pi.ShowQty = false;
+
             pi.ProInfo = t;
             pi.OnSelectPro += new uc.ucProInfo.SelectPro(pi_OnSelectPro);
             gridcontainer.Controls.Add(pi);
@@ -128,22 +129,30 @@ namespace ShopClient
             this.Hide();
         }
 
-        private void btnnext_Click(object sender, EventArgs e)
+        private void TransPage(bool next)
         {
             TabPage tg = tabControl1.SelectedTab;
             int CurrPage = (int)tg.Tag;
-            CurrPage++;
+            if (next)
+            {
+                CurrPage++;
+            }
+            else
+            {
+                CurrPage--;
+            }
             tg.Tag = CurrPage;
             ShowByCateAndPageNo(tg);
         }
 
+        private void btnnext_Click(object sender, EventArgs e)
+        {
+            TransPage(true);
+        }
+
         private void btnpre_Click(object sender, EventArgs e)
         {
-            TabPage tg = tabControl1.SelectedTab;
-            int CurrPage = (int)tg.Tag;
-            CurrPage--;
-            tg.Tag = CurrPage;
-            ShowByCateAndPageNo(tg);
+            TransPage(false);
         }
 
 
@@ -172,13 +181,16 @@ namespace ShopClient
                 pi.Left = left;
                 pi.Top = top;
                 pi.Size = ItemSize;
-                pi.ShowQty = false;
+
                 pi.ProInfo = null;
                 pi.OnSelectPro += new uc.ucProInfo.SelectPro(pi_OnSelectPro);
                 btnIndex++;
             }
 
-            GlobalFun.LoadProCate(tabControl1);
+            DALProInfo dpi = new DALProInfo();
+            List<string> cates = dpi.GetProCatesByAreaID(GlobalValue.GShop.AreaInfo.AreaID).ToList();
+            GlobalFun.LoadProCate(cates, tabControl1);
+
             ShowByCateAndPageNo(tabControl1.TabPages[0]);
 
         }

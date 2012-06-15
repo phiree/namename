@@ -141,9 +141,10 @@
     <Compile Include="DepartInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="EnumRight.cs">
+    <Compile Include="Enums\EnumRight.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Enums\PurchaseState.cs" />
     <Compile Include="Mapping\ProInfoMap.cs" />
     <Compile Include="Mapping\ProPriceMap.cs" />
     <Compile Include="Mapping\ShopInfoMap.cs" />
@@ -163,6 +164,7 @@
     <Compile Include="Mapping\Shop_AccountDetailMap.cs" />
     <Compile Include="Mapping\Shop_AskDataMap.cs" />
     <Compile Include="Mapping\Shop_StoreLimitMap.cs" />
+    <Compile Include="Mapping\Pur_ListMap.cs" />
     <Compile Include="ProInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -22,10 +22,12 @@ namespace ShopClient
             for (int i = 0; i < 18; i++)
             {
                 pis[i] = new uc.ucProInfo();
-                pis[i].ShowQty = true;
+
                 pnlPro.Controls.Add(pis[i]);
             }
-            GlobalFun.LoadProCate(tabControl1);
+            DALProInfo dpi = new DALProInfo();
+            List<string> cates = dpi.GetProCatesByAreaID(GlobalValue.GShop.AreaInfo.AreaID).ToList();
+            GlobalFun.LoadProCate(cates, tabControl1);
             DALShopStore dss = new DALShopStore();
             ss = dss.GetShopStoreByShopID(GlobalValue.GShop.ShopID);
             ShowByCateAndPageNo(tabControl1.TabPages[0]);
@@ -70,7 +72,8 @@ namespace ShopClient
                 if (i < source.Count)
                 {
                     pis[i].ProInfo = source[i].ProInfo;
-                    pis[i].Qty = source[i].CurrQty;
+                    pis[i].LeftField = "单价：" + new DALProInfo().GetPrice(source[i].ProInfo.ProID, GlobalValue.GShop.AreaInfo.AreaID).Price.ToString("0.00");
+                    pis[i].RightField = "数量：" + source[i].CurrQty.ToString("0.00");
                     pis[i].LoadProInfo();
                     pis[i].Visible = true;
                 }
@@ -92,22 +95,30 @@ namespace ShopClient
             this.Close();
         }
 
-        private void btnnext_Click(object sender, EventArgs e)
+        private void TransPage(bool next)
         {
             TabPage tg = tabControl1.SelectedTab;
             int CurrPage = (int)tg.Tag;
-            CurrPage++;
+            if (next)
+            {
+                CurrPage++;
+            }
+            else
+            {
+                CurrPage--;
+            }
             tg.Tag = CurrPage;
             ShowByCateAndPageNo(tg);
         }
 
+        private void btnnext_Click(object sender, EventArgs e)
+        {
+            TransPage(true);
+        }
+
         private void btnpre_Click(object sender, EventArgs e)
         {
-            TabPage tg = tabControl1.SelectedTab;
-            int CurrPage = (int)tg.Tag;
-            CurrPage--;
-            tg.Tag = CurrPage;
-            ShowByCateAndPageNo(tg);
+            TransPage(false);
         }
 
 
@@ -131,7 +142,7 @@ namespace ShopClient
                 pi.Left = left;
                 pi.Top = top;
                 pi.Size = ItemSize;
-                pi.ShowQty = false;
+
                 pi.ProInfo = null;
 
                 btnIndex++;

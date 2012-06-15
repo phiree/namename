@@ -26,11 +26,11 @@ namespace ShopClient
 
         public decimal GetQty(ProInfo proinfo, decimal qty, bool CanDelete, bool CanEditQty)
         {
+           // ucProInfo1.LeftField = "单价：" + new DALProInfo().GetPrice(proinfo.ProID, GlobalValue.GShop.AreaInfo.AreaID).Price.ToString("0.00");
             ucProInfo1.ProInfo = proinfo;
             if (qty != 0)
             {
-                ucProInfo1.ShowQty = true;
-                ucProInfo1.Qty = qty;
+                ucProInfo1.RightField = "数量:" + qty.ToString("0.00");
             }
             //ucProInfo1.LoadProInfo();
 

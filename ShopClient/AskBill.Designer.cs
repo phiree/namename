@@ -48,9 +48,9 @@
             // tabPage1
             // 
             this.tabPage1.Location = new System.Drawing.Point(4, 26);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(8);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(826, 0);
+            this.tabPage1.Size = new System.Drawing.Size(833, 0);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -59,12 +59,12 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tabControl1.Location = new System.Drawing.Point(0, 85);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(8);
+            this.tabControl1.Location = new System.Drawing.Point(0, 64);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(834, 25);
+            this.tabControl1.Size = new System.Drawing.Size(841, 28);
             this.tabControl1.TabIndex = 4;
             this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
@@ -73,9 +73,8 @@
             this.btnExit.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Location = new System.Drawing.Point(0, 0);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(100, 85);
+            this.btnExit.Size = new System.Drawing.Size(75, 64);
             this.btnExit.TabIndex = 3;
             this.btnExit.Text = "退出";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -88,17 +87,17 @@
             this.panel1.Controls.Add(this.btnExit);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(834, 85);
+            this.panel1.Size = new System.Drawing.Size(841, 64);
             this.panel1.TabIndex = 5;
             // 
             // btnpre
             // 
             this.btnpre.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnpre.Location = new System.Drawing.Point(662, 0);
+            this.btnpre.Location = new System.Drawing.Point(713, 0);
+            this.btnpre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnpre.Name = "btnpre";
-            this.btnpre.Size = new System.Drawing.Size(86, 85);
+            this.btnpre.Size = new System.Drawing.Size(64, 64);
             this.btnpre.TabIndex = 4;
             this.btnpre.Text = "上一页";
             this.btnpre.UseVisualStyleBackColor = true;
@@ -107,9 +106,10 @@
             // btnnext
             // 
             this.btnnext.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnnext.Location = new System.Drawing.Point(748, 0);
+            this.btnnext.Location = new System.Drawing.Point(777, 0);
+            this.btnnext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnnext.Name = "btnnext";
-            this.btnnext.Size = new System.Drawing.Size(86, 85);
+            this.btnnext.Size = new System.Drawing.Size(64, 64);
             this.btnnext.TabIndex = 5;
             this.btnnext.Text = "下一页";
             this.btnnext.UseVisualStyleBackColor = true;
@@ -118,9 +118,10 @@
             // pnlPro
             // 
             this.pnlPro.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlPro.Location = new System.Drawing.Point(0, 110);
+            this.pnlPro.Location = new System.Drawing.Point(0, 92);
+            this.pnlPro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPro.Name = "pnlPro";
-            this.pnlPro.Size = new System.Drawing.Size(834, 370);
+            this.pnlPro.Size = new System.Drawing.Size(841, 413);
             this.pnlPro.TabIndex = 6;
             // 
             // pnlselllist
@@ -130,18 +131,20 @@
             this.pnlselllist.Controls.Add(this.btConfirm);
             this.pnlselllist.Controls.Add(this.lbbackamount);
             this.pnlselllist.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlselllist.Location = new System.Drawing.Point(657, 110);
+            this.pnlselllist.Location = new System.Drawing.Point(708, 92);
+            this.pnlselllist.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlselllist.Name = "pnlselllist";
-            this.pnlselllist.Size = new System.Drawing.Size(177, 370);
+            this.pnlselllist.Size = new System.Drawing.Size(133, 413);
             this.pnlselllist.TabIndex = 7;
             // 
             // btnProSelect
             // 
             this.btnProSelect.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnProSelect.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnProSelect.Location = new System.Drawing.Point(0, 194);
+            this.btnProSelect.Location = new System.Drawing.Point(0, 281);
+            this.btnProSelect.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnProSelect.Name = "btnProSelect";
-            this.btnProSelect.Size = new System.Drawing.Size(177, 54);
+            this.btnProSelect.Size = new System.Drawing.Size(133, 40);
             this.btnProSelect.TabIndex = 7;
             this.btnProSelect.Text = "产品";
             this.btnProSelect.UseVisualStyleBackColor = true;
@@ -151,9 +154,10 @@
             // 
             this.lbAmount.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lbAmount.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.lbAmount.Location = new System.Drawing.Point(0, 248);
+            this.lbAmount.Location = new System.Drawing.Point(0, 321);
+            this.lbAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbAmount.Name = "lbAmount";
-            this.lbAmount.Size = new System.Drawing.Size(177, 34);
+            this.lbAmount.Size = new System.Drawing.Size(133, 26);
             this.lbAmount.TabIndex = 2;
             this.lbAmount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -161,9 +165,10 @@
             // 
             this.btConfirm.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btConfirm.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btConfirm.Location = new System.Drawing.Point(0, 282);
+            this.btConfirm.Location = new System.Drawing.Point(0, 347);
+            this.btConfirm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btConfirm.Name = "btConfirm";
-            this.btConfirm.Size = new System.Drawing.Size(177, 54);
+            this.btConfirm.Size = new System.Drawing.Size(133, 40);
             this.btConfirm.TabIndex = 3;
             this.btConfirm.Text = "提交";
             this.btConfirm.UseVisualStyleBackColor = true;
@@ -173,24 +178,23 @@
             // 
             this.lbbackamount.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lbbackamount.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.lbbackamount.Location = new System.Drawing.Point(0, 336);
+            this.lbbackamount.Location = new System.Drawing.Point(0, 387);
+            this.lbbackamount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbbackamount.Name = "lbbackamount";
-            this.lbbackamount.Size = new System.Drawing.Size(177, 34);
+            this.lbbackamount.Size = new System.Drawing.Size(133, 26);
             this.lbbackamount.TabIndex = 12;
             this.lbbackamount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // AskBill
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 480);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(841, 505);
             this.Controls.Add(this.pnlselllist);
             this.Controls.Add(this.pnlPro);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("宋体", 12F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AskBill";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

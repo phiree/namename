@@ -18,10 +18,8 @@ namespace ShopClient.uc
         public delegate void SelectPro(object sender, ProInfo proinfo);
         public event SelectPro OnSelectPro;
 
-        public decimal Qty { get; set; }
-
-        public bool ShowQty { get; set; }
-
+        public string LeftField { get; set; }
+        public string RightField { get; set; }
 
         public ProInfo ProInfo { get; set; }
 
@@ -37,8 +35,10 @@ namespace ShopClient.uc
 
         private void ucProInfo_Load(object sender, EventArgs e)
         {
-            lbqty.Visible = ShowQty;
-            lbqty.Text = Qty.ToString("0.00");
+            lbleft.Text = LeftField;
+            //lbleft.Text = "单价：" + new DALProInfo().GetPrice(ProInfo.ProID, GlobalValue.GShop.AreaInfo.AreaID).Price.ToString("0.00");
+            lbright.Text = RightField;
+
             if (ProInfo == null)
             {
                 this.Visible = false;
@@ -47,9 +47,7 @@ namespace ShopClient.uc
 
             lbproname.Text = ProInfo.Name;
             lbunit.Text = ProInfo.Unit;
-            lbprice.Text = new DALProInfo().GetPrice(ProInfo.ProID, GlobalValue.GShop.AreaInfo.AreaID).Price.ToString("0.00");
             //加载图片
-
             string filename = Application.StartupPath + "\\proimg\\" + ProInfo.PicName;
             if (File.Exists(filename))
             {
@@ -66,7 +64,7 @@ namespace ShopClient.uc
         {
             if (OnSelectPro != null)
             {
-                OnSelectPro(sender, ProInfo);
+                OnSelectPro(this, ProInfo);
             }
         }
     }

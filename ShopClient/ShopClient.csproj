@@ -94,6 +94,18 @@
     <Compile Include="AskProduct.Designer.cs">
       <DependentUpon>AskProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="BillList\DetailFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BillList\DetailFrm.Designer.cs">
+      <DependentUpon>DetailFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BillList\ListFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BillList\ListFrm.Designer.cs">
+      <DependentUpon>ListFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cash.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,6 +205,12 @@
     <EmbeddedResource Include="AskProduct.resx">
       <DependentUpon>AskProduct.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BillList\DetailFrm.resx">
+      <DependentUpon>DetailFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BillList\ListFrm.resx">
+      <DependentUpon>ListFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cash.resx">
       <DependentUpon>Cash.cs</DependentUpon>
     </EmbeddedResource>
@@ -244,6 +262,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AskBill.resx">
       <DependentUpon>AskBill.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="DateSelect.resx">
       <DependentUpon>DateSelect.cs</DependentUpon>
@@ -293,6 +312,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

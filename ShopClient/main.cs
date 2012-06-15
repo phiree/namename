@@ -183,9 +183,9 @@ namespace ShopClient
             selllist.Details.Add(ss);
             //增加了一个产品，需要重新计算金额！
             lbAmount.Text = GetSumAmount();
-
+            pnlselldetail.Tag = 100;
             //重画界面
-            ShowSellDetailByPageNo();
+            ShowSellDetailByPageNo(true);
             return true;
 
         }
@@ -276,7 +276,7 @@ namespace ShopClient
             return "金额:" + a;
         }
 
-        private void ShowSellDetailByPageNo()
+        private void ShowSellDetailByPageNo(bool needRefresh)
         {
             int currPage = (int)pnlselldetail.Tag;
             //在页面上显示！
@@ -285,14 +285,16 @@ namespace ShopClient
             {
                 currPage = 0;
                 pnlselldetail.Tag = currPage;
-                return;
+                if (!needRefresh) return;
             }
 
-            if (currPage > selllist.Details.Count / 18)
+            int MaxPage = selllist.Details.Count % 18 == 0 ? selllist.Details.Count / 18 -1: selllist.Details.Count / 18 ;
+
+            if (currPage > MaxPage)
             {
-                currPage = selllist.Details.Count / 18;
+                currPage = MaxPage;
                 pnlselldetail.Tag = currPage;
-                return;
+               if(!needRefresh) return;
             }
 
 
@@ -319,8 +321,8 @@ namespace ShopClient
             pi.Left = position.Left;
             pi.Top = position.Top;
             pi.Size = position.Size;
-            pi.ShowQty = true;
-            pi.Qty = t.Amount;
+            pi.LeftField = "单价:" + t.Price.ToString("0.00");
+            pi.RightField = "数量:" + t.Amount.ToString("0.00");
             pi.ProInfo = t.Pro;
             pi.Tag = t;
             pi.OnSelectPro += new uc.ucProInfo.SelectPro(pi_OnSelectPro);
@@ -347,12 +349,12 @@ namespace ShopClient
                     ReMoveDetails.Add(ssd);
                 }
                 selllist.Details.Remove(ssd);
-                ShowSellDetailByPageNo();
+                ShowSellDetailByPageNo(true);
             }
             else
             {
                 ssd.Amount = qty;
-                pi.Qty = qty;
+                pi.RightField = "数量:" + qty.ToString("0.00");
                 pi.LoadProInfo();
             }
             lbAmount.Text = GetSumAmount();
@@ -366,7 +368,7 @@ namespace ShopClient
             else
                 CurrPage--;
             pnlselldetail.Tag = CurrPage;
-            ShowSellDetailByPageNo();
+            ShowSellDetailByPageNo(false);
         }
 
         private void btncancel_Click(object sender, EventArgs e)
@@ -446,7 +448,7 @@ namespace ShopClient
                     selllist.Details.Add(sdnew);
                 }
 
-                ShowSellDetailByPageNo();
+                ShowSellDetailByPageNo(true);
                 //不允许增加产品！不允许修改数量！！！
                 btnProSelect.Enabled = false;
 
@@ -489,8 +491,31 @@ namespace ShopClient
             DateTime begindate, enddate;
             if (new DateSelect().SelectDate(out begindate, out enddate))
             {
- 
+                //
+                List<BillList.DGVColumn> dgvcols = new List<BillList.DGVColumn>();
+                //BillList.DGVColumn d1 = new BillList.DGVColumn("单据号","AskBillNo");
+                dgvcols.Add(new BillList.DGVColumn("单据号", "AskBillNo"));
+                dgvcols.Add(new BillList.DGVColumn("单据时间", "CrtDate", DataGridViewAutoSizeColumnMode.Fill));
+                dgvcols.Add(new BillList.DGVColumn("单据状态", "StateName"));
+
+                BillList.ListFrm lf = new BillList.ListFrm("要货单", begindate, enddate, dgvcols);
+                lf.OnDateTimeSelect += new BillList.ListFrm.DateTimeSelect(lf_OnDateTimeSelect);
+                lf.OnRowDoubleClick += new BillList.ListFrm.RowDoubleClick(lf_OnRowDoubleClick);
+                lf.ShowDialog();
             }
+        }
+
+        void lf_OnRowDoubleClick(string billno)
+        {
+            new BillList.DetailFrm(billno).ShowDialog();
+        }
+
+        object lf_OnDateTimeSelect(DateTime begindate, DateTime enddate)
+        {
+            DALShopAskList dsal = new DALShopAskList();
+            IList<Shop_AskList> sals = dsal.GetByDateTime(begindate, enddate, GlobalValue.GShop.ShopID);
+            return sals;
+
         }
 
         private void btnImport_Click(object sender, EventArgs e)
@@ -508,6 +533,18 @@ namespace ShopClient
             //盘点
 
         }
+
+        private void btnCheckLlist_Click(object sender, EventArgs e)
+        {
+            //盘点单
+            DateTime begindate, enddate;
+            if (new DateSelect().SelectDate(out begindate, out enddate))
+            {
+
+            }
+        }
+
+
 
 
     }
