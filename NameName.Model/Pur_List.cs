@@ -33,7 +33,7 @@ namespace NameName.Model
         /// <summary>
         /// 采购单状态:1 待审核 2 审核 3 报销配货
         /// </summary>
-        public virtual Enums.PurchaseState PurchaseState {get;set;}
+        public virtual int State{get;set;}
         /// <summary>
         /// 采购单所在区域
         /// </summary>
