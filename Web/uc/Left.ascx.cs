@@ -14,6 +14,8 @@ public partial class uc_left : System.Web.UI.UserControl
 
         //权限处理
 
+
+
     }
 
 }

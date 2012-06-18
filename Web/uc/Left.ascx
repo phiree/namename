@@ -48,12 +48,12 @@
         <ul>
             <li id="b3001" class="cli" onmouseover="LeftOnOver('b30','01');" onmouseout="LeftOnLeave('b30','01');">
                 <a href="BillImport.aspx">入库</a> </li>
-        </ul>
-    </div>
-    <div id="b30">
-        <ul>
-            <li id="b3001" class="cli" onmouseover="LeftOnOver('b30','01');" onmouseout="LeftOnLeave('b30','01');">
+       
+            <li id="b3002" class="cli" onmouseover="LeftOnOver('b30','02');" onmouseout="LeftOnLeave('b30','02');">
                 <a href="/store/">库存</a> </li>
+       
+            <li id="b3003" class="cli" onmouseover="LeftOnOver('b30','03');" onmouseout="LeftOnLeave('b30','03');">
+                <a href="/PurchaseList/">采购</a> </li>
         </ul>
     </div>
 </div>

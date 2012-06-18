@@ -17,6 +17,7 @@ namespace NameName.Model
         public virtual  int OrderNO{get;set;}
         public virtual  int RightSet{get;set;}
         public virtual  DepartInfo DepartInfo{get;set;}
+        public virtual AreaInfo AreaInfo { get; set; }
         public virtual ShopInfo ShopInfo { get; set; }
         public virtual bool IsShopUser { get; set; }
         public virtual bool IsShopManager { get; set; }        

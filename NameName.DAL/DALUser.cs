@@ -18,7 +18,7 @@ namespace NameName.DAL
         {            
             string sql = @"select u 
                         from UserInfo u 
-                        where u.DepartInfo.DepartID='" + departid.ToString() + "' and u.ShopInfo = null and u.IsShopUser = true";
+                        where u.DepartInfo.DepartID='" + departid.ToString() + "' and u.ShopInfo = null and u.IsShopUser = true and u.DeleteFlag=false";
 
        
             return QueryFutureList(sql);
@@ -89,6 +89,24 @@ namespace NameName.DAL
                 , userName
                 , pwd));
             return user != null;
+        }
+        public IList<UserInfo> GetAllUserNoAssigned(Guid departid)
+        {
+            string sql = @"select u 
+                        from UserInfo u 
+                        where u.DepartInfo.DepartID='" + departid.ToString() + "' and u.AreaInfo = null and u.DeleteFlag=false ";
+
+            IList<UserInfo> purUsers = QueryFutureList(sql);
+
+            return QueryFutureList(sql);
+        }
+
+        public void RemoveUserFromArea(string username)
+        {
+            UserInfo user = GetByUserName(username);
+            user.AreaInfo = null;
+           
+            Save(user);
         }
     }
 }

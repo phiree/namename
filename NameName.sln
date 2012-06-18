@@ -47,7 +47,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{416EC36C-60B
 		lib\Remotion.Data.Linq.dll = lib\Remotion.Data.Linq.dll
 		lib\RestSharp.dll = lib\RestSharp.dll
 		lib\Rhino.Mocks.dll = lib\Rhino.Mocks.dll
-		lib\net40\WebDriver.xml = lib\net40\WebDriver.xml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testnamename", "testnamename\testnamename.csproj", "{0AF4CA3B-A80C-4ECB-B688-ED1CAADE3865}"

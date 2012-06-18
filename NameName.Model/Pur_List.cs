@@ -29,7 +29,7 @@ namespace NameName.Model
        /// <summary>
        /// 审核时间
        /// </summary>
-        public virtual DateTime ChkDate{get;set;}
+        public virtual DateTime? ChkDate{get;set;}
         /// <summary>
         /// 采购单状态:1 待审核 2 审核 3 报销配货
         /// </summary>

@@ -26,11 +26,12 @@ public partial class Area_Edit : System.Web.UI.Page
         areaid = Request["AreaID"];
         if (!IsPostBack)
         {
-
+            aSelect.HRef = "/area/UserSelect.aspx?areaid=" + areaid;
             if (areaid != null)
             {
 
                 BindArea();
+               
             }
             else
             {
@@ -38,6 +39,16 @@ public partial class Area_Edit : System.Web.UI.Page
                 divSetPrice.Visible = false;
             }
         }
+    }
+
+    private void BindAreaUsers()
+    {
+        //显示控制
+
+        IList<UserInfo> purUsers = ai.PurUsers;
+        GridView1.DataSource = purUsers;
+        GridView1.DataBind();
+       
     }
 
     private void BindArea()
@@ -51,6 +62,10 @@ public partial class Area_Edit : System.Web.UI.Page
         ai = dalArea.GetByAreaID(new Guid(areaid));
         tbOrderNo.Text = ai.OrderNO.ToString();
         tbAreaName.Text = ai.AreaName;
+
+        BindAreaUsers();
+
+
 
     }
 
@@ -97,5 +112,10 @@ public partial class Area_Edit : System.Web.UI.Page
 
         //价格复制
 
+    }
+
+    private void AssignUser()
+    { 
+        
     }
 }

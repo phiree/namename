@@ -15,6 +15,7 @@ namespace NameName.Model.Mapping
             HasMany<ShopInfo>(x => x.AreaShops).Inverse();
             Map(x => x.DeleteFlag);
             Map(x => x.OrderNO);
+            HasMany<UserInfo>(x => x.PurUsers).Inverse();
            
             
         }

@@ -141,9 +141,7 @@
     <Compile Include="DepartInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Enums\EnumRight.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Enums\MemberRight.cs" />
     <Compile Include="Enums\PurchaseState.cs" />
     <Compile Include="Mapping\ProInfoMap.cs" />
     <Compile Include="Mapping\ProPriceMap.cs" />

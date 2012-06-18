@@ -5,7 +5,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NameName.DAL;
 using NameName.Model;
-
+using NameName.Model.Enums;
 public partial class Member_Edit : System.Web.UI.Page
 {
     string UserName;
@@ -62,7 +62,7 @@ public partial class Member_Edit : System.Web.UI.Page
 
     private void BindRight()
     {
-        foreach (EnumRight u in Enum.GetValues(typeof(EnumRight)))
+        foreach (MemberRight u in Enum.GetValues(typeof(NameName.Model.Enums.MemberRight)))
         {
             cbxRights.Items.Add(new ListItem(u.ToString(), ((int)u).ToString()));
         }

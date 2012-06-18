@@ -68,7 +68,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL\BLLPurchase.cs" />
     <Compile Include="CommonFunctions.cs" />
     <Compile Include="DALAccount.cs" />
     <Compile Include="DALArea.cs" />
@@ -101,6 +100,9 @@
       <Project>{5A3BF82D-6904-4CC0-ACE8-F999586D0375}</Project>
       <Name>NameNameConfig</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BLL\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

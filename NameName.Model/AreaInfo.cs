@@ -19,6 +19,7 @@ namespace NameName.Model
         public virtual int OrderNO { get; set; }
         public virtual bool DeleteFlag { get; set; }
         public virtual IList<ShopInfo> AreaShops { get; set; }
+        public virtual IList<UserInfo> PurUsers { get; set; }
 
     }
 }

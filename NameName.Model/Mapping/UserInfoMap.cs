@@ -22,6 +22,7 @@ namespace NameName.Model.Mapping
             Map(x => x.IsShopUser);
             Map(x => x.IsShopManager);
             References<ShopInfo>(x => x.ShopInfo);
+            References<AreaInfo>(x => x.AreaInfo);
 
         }
     }

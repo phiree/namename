@@ -97,13 +97,10 @@
     <Compile Include="FormatSerialNoTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProInfotest.cs" />
-    <Compile Include="TestHQL.cs" />
     <Compile Include="TestSellList.cs" />
     <Compile Include="DALUnityTest.cs" />
     <Compile Include="AccountSumtest.cs" />
     <Compile Include="ShopStoreTest.cs" />
-    <Compile Include="webtest\basepage.cs" />
-    <Compile Include="webtest\poPurList.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NameName.DAL\NameName.DAL.csproj">
@@ -114,11 +111,6 @@
       <Project>{A84D74B0-8175-4F3D-B7C9-34BAF70396FE}</Project>
       <Name>NameName.Model</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="IEDriverServer.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -15,6 +15,7 @@ namespace NameName.Model.Mapping
             References<UserInfo>(x => x.ChkUser);
             References<UserInfo>(x => x.PurUser);
             Map(x => x.State);
+            Map(x => x.CrtDate);
         }
     }
 }
