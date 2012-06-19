@@ -54,6 +54,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{67343DDB-3A04-432F-9D66-7BFDBE281F5B}"
 	ProjectSection(SolutionItems) = preProject
 		InitScript.sql = InitScript.sql
+		procedure.sql = procedure.sql
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NameNameConfig", "NameNameConfig\NameNameConfig.csproj", "{5A3BF82D-6904-4CC0-ACE8-F999586D0375}"
