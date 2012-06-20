@@ -33,7 +33,7 @@ public partial class PurchaseList_Default : System.Web.UI.Page
 
     private void BindList()
     {
-        string begindate =  BeginDate.Value;
+        string begindate = BeginDate.Value;
         string enddate = EndDate.Value;
         PurchaseState state=(PurchaseState)(Convert.ToInt32(rbl.SelectedValue) );
 

@@ -11,5 +11,5 @@ namespace NameNameConfig
         public const string DataBase = "namename";
         public const string Uid = "sa";
         public const string Pwd = "admin";
-    } 
+    }
 }
