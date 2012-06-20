@@ -11,14 +11,13 @@ namespace NameName.DAL
     {
         public IList<Pur_List> GetList(string strbegin, string strend,PurchaseState state)
         {
-            DateTime begin = Convert.ToDateTime(strbegin);
-            DateTime end = Convert.ToDateTime(strend);
+          
             string condition = string.Empty;
             condition += "and p.State=" + (int)state;
             if (state != PurchaseState.未审核)
             {
            
-                condition += " and p.CrtDate between '{0}' and '{1}'";
+                condition +=string.Format( " and p.CrtDate between '{0}' and '{1}'",strbegin,strend);
             }
             return GetList(condition);
 

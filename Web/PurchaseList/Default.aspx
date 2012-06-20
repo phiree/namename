@@ -102,7 +102,7 @@
                                <%#Eval("PurUser.TrueName") %>
                             </td>
                              <td>
-                               <%#Eval("State")%>
+                               <%#(NameName.Model.Enums.PurchaseState)Eval("State")%>
                             </td>
                         </tr>
                     </ItemTemplate>

@@ -18,8 +18,8 @@ public partial class PurchaseList_Default : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            BeginDate.Value = DateTime.Now.AddMonths(-1).ToString("YYYY-MM-dd");
-            EndDate.Value = DateTime.Now.ToString("YYYY-MM-dd");
+            BeginDate.Value = DateTime.Now.AddMonths(-1).ToString("yyyy-MM-dd");
+            EndDate.Value = DateTime.Now.ToString("yyyy-MM-dd");
             BindList();
 
             
@@ -44,6 +44,8 @@ public partial class PurchaseList_Default : System.Web.UI.Page
 
     protected void lbAdd_Click(object sender, EventArgs e)
     {
+        rbl.SelectedIndex = 0;
+
      UserCookieInfo   uc = new WebUserCookie(WebUserCookie.CookierUser).GetCookiesValues();
 
         dp.Create(uc.UserName);
