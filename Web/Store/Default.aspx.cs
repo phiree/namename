@@ -30,7 +30,7 @@ public partial class Store_Default : System.Web.UI.Page
         string keyWord = tbxkeyword.Text;
         string shopId = ddlShops.SelectedValue;
 
-        IList<Shop_Store> stores = new DALShopStore().GetList(shopId, keyWord, 0, 9999);
+        IList<Shop_Store> stores = BuildTestData();// new DALShopStore().GetList(shopId, keyWord, 0, 9999);
         dlShopStore.DataSource = stores;
         dlShopStore.DataBind();
       
